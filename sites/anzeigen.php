@@ -121,7 +121,7 @@ if(!isset($_GET['m'])){
                                                          echo '<td width="50px">'.$row['bemerkung'].'</td>';
                                                          echo '<td width="50px">'.$row['bezeichnung'].'</td>';
                                                          echo '<td width="50px">'.($minuten_ist-$minuten_soll).'</td>';
-                                                         echo '<td width="20px"><a href="erfassung.php?maid='.$maid.'&eid='.$row['eid'].'&do=edit"><span class="glyphicon glyphicon-pencil"></span></a></td>';
+                                                         echo '<td width="20px"><a href="erfassung.php?eid='.$row['eid'].'&do=edit"><span class="glyphicon glyphicon-pencil"></span></a></td>';
                                                          echo '</tr>';
                                                  }
                                         }else{

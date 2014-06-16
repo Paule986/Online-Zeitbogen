@@ -7,6 +7,8 @@ $zusatzinclude = "
 
 require('../includes/header.php');
 require('../includes/mysql.php');
+// MAID einlesen
+$maid = $_SESSION['maid'];
 $timestamp = time();
 $datum_now = date("Y-m-d",$timestamp);
 //$maid = $_SESSION['maid'];
@@ -128,7 +130,7 @@ if(!isset($_GET['m'])){
                                                  echo"<h3>Keine Eintr&auml;ge</h3>";
 
                                         }
-                                    require('../includes/footer.php');
+
                                 ?>
 
 
@@ -139,3 +141,5 @@ if(!isset($_GET['m'])){
 
 
     </div>
+
+    <?php  require('../includes/footer.php'); ?>

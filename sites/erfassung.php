@@ -9,7 +9,7 @@ require('../includes/header.php');
 require('../includes/mysql.php');
 $timestamp = time();
 $maid =$_SESSION['maid'];
-
+$notiz = "";
         if(isset($_GET['do'])){
                  $doo = $_GET['do'];
          }else{
@@ -29,12 +29,15 @@ $maid =$_SESSION['maid'];
         if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="NULL";
         if(isset($_POST['datum'])){$datum_neu = mysqli_real_escape_string($link,$_POST['datum']); }else $datum_neu ="";
 
+
         if($doo=="neu"){
                  $sqladd = "INSERT INTO erfassung (datum,beginn,ende,maid,bemerkung,aid) VALUES('".$datum_neu."','".$beginn_neu.":00','".$ende_neu.":00',".$maid.",'".$bemerkung_neu."','".$aid_neu."');";
                  $link->query($sqladd);
+                 $notiz = "<h2><span class='label label-success'>Erfassung erfolgreich.</span></h2>";
         }else if($doo=="edit"){
                  $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00' AND ende = '".$ende_neu.":00' AND bemerkung = '".$bemerkung_neu."' AND aid = '".$aid_neu."' WHERE eid = '".$eid."';";
                  $link->query($sqledit);
+                 $notiz = "<h2><span class='label label-success'>Bearbeitung erfolgreich.</span></h2>";
         }
   }
 
@@ -70,7 +73,7 @@ $maid =$_SESSION['maid'];
                  }else{
                          echo"<h3>Heute erfassen</h2>";
                  } ?>
-         <form class="navbar-form navbar-left" role="search" action="?maid=<?php echo $maid; ?>" method="POST" >
+         <form class="navbar-form navbar-left" role="search" action="" method="POST" >
          <div class="form-group">
          <div class="input-group">
          <input type="text" value="<?php if(isset($feld_beginn))echo $feld_beginn; ?>" class="form-control one" placeholder="Arbeitsbeginn Bsp.: 06:30" name="arbeitsbeginn" id="arbeitsbeginn">
@@ -95,11 +98,13 @@ $maid =$_SESSION['maid'];
          </select>
          </div>
          <button type="submit" name="submitneu" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span> Erfassen</button>
+         <?php echo $notiz;  ?>
          </form>
          </div>
+
     </div>
     <?php
 
-    require('../includes/footer.php'); 
+    require('../includes/footer.php');
 
     ?>

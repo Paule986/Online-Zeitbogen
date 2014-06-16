@@ -63,7 +63,7 @@ if(!isset($_GET['m'])){
 
                         <tbody>
 
-                                <?php
+<?php
 
                                         // heutiges Datum ermitteln
                                         $timestamp = time();
@@ -79,12 +79,28 @@ if(!isset($_GET['m'])){
                                         // Befehl ausführen - Soll Stunden von MA anzeigen
                                         $result_soll = $link->query("SELECT sollstd FROM mitarbeiter WHERE maid = '".$maid."'");
                                         $minuten_soll="";
+
+                                        if(isset($_POST['save'])){
+
+                                                                 // Variablen filtern, um mysql injections zu verhindern.
+                                                                 if(isset($_POST['arbeitsbeginn'])){$beginn_neu = mysqli_real_escape_string($link,$_POST['arbeitsbeginn']); }else $beginn_neu ="";
+                                                                 if(isset($_POST['arbeitsende'])){$ende_neu = mysqli_real_escape_string($link,$_POST['arbeitsende']); }else $ende_neu ="";
+                                                                 if(isset($_POST['bemerkung'])){$bemerkung_neu = mysqli_real_escape_string($link,$_POST['bemerkung']); }else $bemerkung_neu ="";
+                                                                 if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="99";
+                                                                 if(isset($_POST['eid'])){$eid_neu = mysqli_real_escape_string($link,$_POST['eid']); }else $eid_neu ="";
+
+                                                                 // Änderungen in DB speichern
+                                                                 $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid_neu.";";
+                                                                 $link->query($sqledit);
+
+                                                        }
+
                                         while($row_soll = mysqli_fetch_array($result_soll)){
                                                  // Sollstunden aus DB in Minuten / Tag berechnen
                                                  $minuten_soll =($row_soll['sollstd'])*60/5;
                                         }
                                         // Erfassungsdatensätze des eingetsellten Monats von MA anzeigen
-                                        $result = $link->query("SELECT erfassung.beginn, erfassung.ende, erfassung.datum, erfassung.bemerkung, erfassung.eid, arbeitsfrei.bezeichnung FROM erfassung, arbeitsfrei WHERE erfassung.maid = '".$maid."' AND erfassung.aid = arbeitsfrei.aid AND DATE(erfassung.datum) BETWEEN ".$datum_interval_anfang." AND ".$datum_interval_ende." ORDER BY datum");
+                                        $result = $link->query("SELECT erfassung.beginn, erfassung.ende, erfassung.datum, erfassung.bemerkung, erfassung.eid, erfassung.aid, arbeitsfrei.bezeichnung FROM erfassung, arbeitsfrei WHERE erfassung.maid = '".$maid."' AND erfassung.aid = arbeitsfrei.aid AND DATE(erfassung.datum) BETWEEN ".$datum_interval_anfang." AND ".$datum_interval_ende." ORDER BY datum");
                                         // Testen, ob Datensätze vorhanden
                                         if($result->num_rows>0){
                                                  // Datensätze in Array $row speichern
@@ -116,6 +132,35 @@ if(!isset($_GET['m'])){
                                                          $tag[6] = "Sa";
                                                          $wochentag = $tag[date_format($date, 'w')];
                                                          // Daten aus DB in Tabelle anzeigen
+
+
+                                                        if(isset($_POST['edit'])&&($_POST['eid']==$row['eid'])){
+
+                                                         echo '<tr>';
+                                                         echo '<form class="navbar-form navbar-left" role="search" action="?m='.$monat_now_z.'" method="POST" >';
+                                                         echo '<td width="50px">'.$wochentag.", ".$date_format.'</td>';
+                                                         echo '<td width="50px"><input type="text" value="'.$beginn_format.'" class="form-control one" placeholder="Arbeitsbeginn Bsp.: 06:30" name="arbeitsbeginn" id="arbeitsbeginn"></td>';
+                                                         echo '<td width="50px"><input type="text" value="'.$ende_format.'" class="form-control one" placeholder="Arbeitsende Bsp.: 16:30" name="arbeitsende" id="arbeitsende"></td>';
+                                                         echo '<td width="50px"><input type="text" value="'.$row['bemerkung'].'" class="form-control one" placeholder="Bemerkung Bsp.: Homeoffice" name="bemerkung" id="bemerkung"></td>';
+                                                         echo '<td width="50px"><select name="arbeitsfrei" id="arbeitsfrei" class="form-control">';
+
+                                                         $result_liste = $link->query("SELECT * FROM arbeitsfrei ORDER BY aid DESC;");
+                                                         $liste = "";
+                                                         while($row_aid = mysqli_fetch_array($result_liste)){
+                                                                 if($row['aid']==$row_aid['aid']){
+                                                                         $selected = "SELECTED";
+                                                                 }else{
+                                                                         $selected = "";
+                                                                 }
+                                                                 $liste .= "<option ".$selected." value = '".$row_aid['aid']."'>".$row_aid['bezeichnung']."</option>\n";
+                                                         }
+                                                         echo $liste;
+                                                         echo '</select></td>';
+                                                         echo '<td width="50px">( '.($minuten_ist-$minuten_soll).' )</td>';
+                                                         echo '<input type="hidden" name="eid" value="'.$_POST['eid'].'">';
+                                                         echo '<td width="20px"><button type="submit" name="save" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span>&nbsp;Speichern</button></td></form>';
+                                                         echo '</tr>';
+                                                         }else{
                                                          echo '<tr>';
                                                          echo '<td width="50px">'.$wochentag.", ".$date_format.'</td>';
                                                          echo '<td width="50px">'.$beginn_format.'</td>';
@@ -123,8 +168,13 @@ if(!isset($_GET['m'])){
                                                          echo '<td width="50px">'.$row['bemerkung'].'</td>';
                                                          echo '<td width="50px">'.$row['bezeichnung'].'</td>';
                                                          echo '<td width="50px">'.($minuten_ist-$minuten_soll).'</td>';
-                                                         echo '<td width="20px"><a href="erfassung.php?eid='.$row['eid'].'&do=edit"><span class="glyphicon glyphicon-pencil"></span></a></td>';
+                                                         echo '<form class="navbar-form navbar-left" role="search" action="" method="POST" >    ';
+                                                         echo '<input type="hidden" name="eid" value="'.$row['eid'].'">';
+                                                         echo '<td width="20px"><button type="submit" name="edit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Bearbeiten</button></td></form>';
+                                                         //echo '<td width="20px"><a href="erfassung.php?maid='.$maid.'&eid='.$row['eid'].'&do=edit"><span class="glyphicon glyphicon-pencil"></span></a></td>';
                                                          echo '</tr>';
+                                                         }
+
                                                  }
                                         }else{
                                                  echo"<h3>Keine Eintr&auml;ge</h3>";

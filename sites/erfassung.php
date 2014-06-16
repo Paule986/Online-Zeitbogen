@@ -33,11 +33,11 @@ $notiz = "";
         if($doo=="neu"){
                  $sqladd = "INSERT INTO erfassung (datum,beginn,ende,maid,bemerkung,aid) VALUES('".$datum_neu."','".$beginn_neu.":00','".$ende_neu.":00',".$maid.",'".$bemerkung_neu."','".$aid_neu."');";
                  $link->query($sqladd);
-                 $notiz = "<h2><span class='label label-success'>Erfassung erfolgreich.</span></h2>";
+                 $notiz = "<div class='alert alert-success'>Erfassung erfolgreich.</div>";
         }else if($doo=="edit"){
-                 $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00' AND ende = '".$ende_neu.":00' AND bemerkung = '".$bemerkung_neu."' AND aid = '".$aid_neu."' WHERE eid = '".$eid."';";
+                 $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid.";";
                  $link->query($sqledit);
-                 $notiz = "<h2><span class='label label-success'>Bearbeitung erfolgreich.</span></h2>";
+                 $notiz = "<div class='alert alert-success'>Bearbeitung erfolgreich.</div>";
         }
   }
 

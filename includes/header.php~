@@ -10,11 +10,11 @@ $_SESSION['maid'] = "112";
     <meta charset="UTF-8">
     <title><?php echo $seitentitel; ?> - Online-Gleitzeitbogen</title>
     <!-- Bootstrap-CSS -->
-    <!-- <link href="../includes/css/bootstrap.css" rel="stylesheet"> -->
+    <link href="../includes/css/bootstrap.css" rel="stylesheet">
     <link href="../includes/css/master.css" rel="stylesheet">
     <link href="../includes/css/signin.css" rel="stylesheet">
-    <!-- Zusaetzliche Scripte - individuell geladen -->
-    <!-- <?php echo $zusatzinclude; ?> -->
+    <!-- Zusätzliche Scripte - individuell geladen -->
+    <?php echo $zusatzinclude; ?>
     <!-- Scripte - weiÃŸ nicht ob das gebraucht wird -->
     <script type="text/javascript" src="../includes/js/bootstrap.js"></script>
     <script type="text/javascript" src="../includes/js/application.js"></script>
@@ -28,7 +28,7 @@ $_SESSION['maid'] = "112";
             <div class="span12">
               <div class="html5-header portal-header">
                 <div class="html5-figure main-image"> <a href="#" title="Link f&uml;hrt zur Startseite von Berlin.de">
-                    <img class="portal-logo hide-mobile" src="../includes/images/berlin_de.png"
+                    <img class="portal-logo hide-mobile" src="/includes/images/berlin_de.png"
                       alt="Bild zeigt: Berlin.de Logo"
                       title="Link f&uuml;hrt zur Startseite von Berlin.de">
                   </a> </div>
@@ -54,3 +54,5 @@ $_SESSION['maid'] = "112";
             <div class="row">
               <div class="span12">
                 <div class="container">
+            <!-- ggf. Menue gleich hier includen??  -->
+            <?php  require('menue.php'); ?>

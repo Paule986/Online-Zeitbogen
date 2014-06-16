@@ -14,7 +14,7 @@
                         <ul class="nav level1">
                           <li class="active"><a href="#">Startseite</a></li>
                           <li><a href="../sites/erfassung.php">Eingabe</a></li>
-                          <li><a href="#">Übersicht</a></li>
+                          <li><a href="#">Uuml;bersicht</a></li>
                           <li><a href="../sites/kalender.php">Fehltage</a></li>
                           <li><a href="#">Hilfe</a></li>
                         </ul>

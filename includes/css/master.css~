@@ -1368,7 +1368,7 @@ a.extern:after{content:"";padding-right:11px;background-image:url(images/link_ex
 .content-footer{border-top:1px solid #c6c6c6;margin-top:40px;padding-top:20px}.content-footer a{text-decoration:none}.content-footer a:hover{text-decoration:none}
 .content-footer .nav{overflow:hidden}.content-footer .nav li{height:auto;width:auto;min-height:32px;display:block;float:left;color:#9d9d9d;font-weight:normal}.content-footer .nav li a{color:#003684;padding-top:7px;padding-left:0;padding-right:20px}
 .content-footer .nav .right{float:right}
-.icon-footer{background-image:url(../images/sprite_footer.png);background-repeat:no-repeat;display:block;padding-left:32px;min-height:32px}.icon-footer.icon-printer_32{background-position:0 -152px}
+.icon-footer{background-image:url(images/sprite_footer.png);background-repeat:no-repeat;display:block;padding-left:32px;min-height:32px}.icon-footer.icon-printer_32{background-position:0 -152px}
 .icon-footer.icon-information_32{background-position:0 -114px;padding-left:26px}
 .icon-footer.icon-mail_32{background-position:0 -35px}
 .icon-footer.icon-imprint_32{background-position:0 4px}

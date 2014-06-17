@@ -9,12 +9,12 @@ $_SESSION['maid'] = "112";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title><?php echo $seitentitel; ?> - Online-Gleitzeitbogen</title>
+    <!-- Zusaetzliche Scripte - individuell geladen -->
+    <?php echo $zusatzinclude; ?>
     <!-- Bootstrap-CSS -->
-    <!-- <link href="../includes/css/bootstrap.css" rel="stylesheet"> -->
+    <link href="../includes/css/bootstrap.css" rel="stylesheet">
     <link href="../includes/css/master.css" rel="stylesheet">
     <link href="../includes/css/signin.css" rel="stylesheet">
-    <!-- Zusaetzliche Scripte - individuell geladen -->
-    <!-- <?php echo $zusatzinclude; ?> -->
     <!-- Scripte - weiß nicht ob das gebraucht wird -->
     <script type="text/javascript" src="../includes/js/bootstrap.js"></script>
     <script type="text/javascript" src="../includes/js/application.js"></script>

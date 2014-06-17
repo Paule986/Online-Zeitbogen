@@ -1,0 +1,4 @@
+MAID
+Für den Testbetrieb ohne Login ist die Mitarbeiter ID (maid) provisorisch im header festgelegt.
+Sie ist von allen Seiten, in denen der header inkludiert wird wie folgt erreichbar:
+$_SESSION['maid']

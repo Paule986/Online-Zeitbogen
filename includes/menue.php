@@ -1,6 +1,6 @@
-                        <div class="row">
-                        <div class="span12">
-                        <div class="span12">
+                        <div class="row"> <!-- Bei den DIVs hier oben passt was nicht  -->
+                        <div class="span12"> <!-- Wenn ich mich nicht irre, werden sie geöffnet, ->
+                        <div class="span12">  <!-- aber nicht wieder geschlossen  -->
                   <!-- template start: navi-top -->
                   <div class="content-navi-wrapper navbar">
                     <div class="html5-nav content-navi-top navbar-inner"> <button

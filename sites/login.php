@@ -13,8 +13,8 @@ $usern = $_POST["usern"];
 $passwort = md5($_POST["passwort"]);
 
 $abfrage = "SELECT usern, passwort FROM mitarbeiter WHERE usern LIKE '$usern' LIMIT 1";
-$ergebnis = mysqli_query($abfrage);
-$row = mysqli_fetch_object($ergebnis);
+$ergebnis = mysql_query($abfrage);
+$row = mysql_fetch_object($ergebnis);
 
 if($row->passwort == $passwort)
     {

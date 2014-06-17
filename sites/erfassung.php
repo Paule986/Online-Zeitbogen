@@ -1,13 +1,15 @@
 <?php
 // Seitentitel setzen
 $seitentitel = "Erfassung";
-// zusätzliche Dateien includen
+// zusÃ¤tzliche Dateien includen
 $zusatzinclude = "
 <script type='text/javascript' src='../includes/js/jquery.js'></script>
 <link rel='stylesheet' href='../includes/css/bootstrap-theme.min.css'>
 ";
 // Header includen
 require('../includes/header.php');
+// Menü inkludieren
+require('../includes/menue.php');
 // mysql connect includen
 require('../includes/mysql.php');
 $timestamp = time();
@@ -16,7 +18,7 @@ $maid =$_SESSION['maid'];
 // "Speichern erfolgreich"-Meldung Variabe definieren
 $notiz = "";
          // Abfragen, ob von Kalender kommend
-         // und ob Eintrag geändert oder neu erstellt werden soll
+         // und ob Eintrag geÃ¤ndert oder neu erstellt werden soll
         if(isset($_GET['do'])){
                  $doo = $_GET['do'];
          }else{
@@ -44,7 +46,7 @@ $notiz = "";
                  // Erfolgreich-Meldung erstellen
                  $notiz = "<div class='alert alert-success'>Erfassung erfolgreich.</div>";
         }else if($doo=="edit"){
-                 // Wenn Eintrag bereits vorhanden, diesen in DB abändern
+                 // Wenn Eintrag bereits vorhanden, diesen in DB abÃ¤ndern
                  $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid.";";
                  $link->query($sqledit);
                  // Erfolgreich-Meldung erstellen

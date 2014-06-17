@@ -6,14 +6,12 @@ $zusatzinclude = "
 <script type='text/javascript' src='../includes/js/jquery.js'></script>
 <link rel='stylesheet' href='../includes/css/bootstrap-theme.min.css'>
 ";
-// header includieren
-require('../includes/header.php');
-// mysql connect includen
-require('../includes/mysql.php');
-// MAID einlesen
-$maid = $_SESSION['maid'];
-$timestamp = time();
-$datum_now = date("Y-m-d",$timestamp);
+require('../includes/header.php');   // header inkludieren
+require)=('../includes/menue.php');  // Menü inkludieren
+require('../includes/mysql.php');    // mysql connect includen
+$maid = $_SESSION['maid'];           // MAID einlesen
+$timestamp = time();                 // Timestamp erstellen
+$datum_now = date("Y-m-d",$timestamp);  // Datum formatieren
 
 // Monatsnamen für die Anzeige festlegen
 $monate = array(1=>"Januar",
@@ -31,9 +29,9 @@ $monate = array(1=>"Januar",
 // Aktuellen Monat raussuchen
 $monat_now_t = $monate[date("n",$timestamp)];
 
-// Testen, ob bereits Monat über URL übergeben
+// Testen, ob bereits Monat Ã¼ber URL Ã¼bergeben
 if(!isset($_GET['m'])){
-         //Keine Übergabe --> aktuelles Datum nutzen
+         //Keine Ãœbergabe --> aktuelles Datum nutzen
          $monat_now_t = $monate[date("n",$timestamp)];
          $monat_now_z =date("n",$timestamp);
          $GLOBALS["now_m"] = $monat_now_z;
@@ -71,12 +69,12 @@ if(!isset($_GET['m'])){
                                         // Interval Anfang erstellen
                                         $datum_interval_anfang = $datum_now_y."".$datum_now_m."01";
                                         $datum_interval_ende = $datum_now_y."".$datum_now_m."31";
-                                        // Befehl ausführen - Soll Stunden von MA anzeigen
+                                        // Befehl ausfÃ¼hren - Soll Stunden von MA anzeigen
                                         $result_soll = $link->query("SELECT sollstd FROM mitarbeiter WHERE maid = '".$maid."'");
                                         $minuten_soll="";
 
                                         if(isset($_POST['save'])){
-                                        // Wenn Speichern Button geklickt, daten in DB ändern
+                                        // Wenn Speichern Button geklickt, daten in DB Ã¤ndern
 
                                                                  // Variablen filtern, um mysql injections zu verhindern.
                                                                  if(isset($_POST['arbeitsbeginn'])){$beginn_neu = mysqli_real_escape_string($link,$_POST['arbeitsbeginn']); }else $beginn_neu ="";
@@ -85,7 +83,7 @@ if(!isset($_GET['m'])){
                                                                  if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="99";
                                                                  if(isset($_POST['eid'])){$eid_neu = mysqli_real_escape_string($link,$_POST['eid']); }else $eid_neu ="";
 
-                                                                 // Änderungen in DB speichern
+                                                                 // Ã„nderungen in DB speichern
                                                                  $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid_neu.";";
                                                                  $link->query($sqledit);
 
@@ -95,14 +93,14 @@ if(!isset($_GET['m'])){
                                                  // Sollstunden aus DB in Minuten / Tag berechnen
                                                  $minuten_soll =($row_soll['sollstd'])*60/5;
                                         }
-                                        // Erfassungsdatensätze des eingetsellten Monats von MA anzeigen
+                                        // ErfassungsdatensÃ¤tze des eingetsellten Monats von MA anzeigen
                                         $result = $link->query("SELECT erfassung.beginn, erfassung.ende, erfassung.datum, erfassung.bemerkung, erfassung.eid, erfassung.aid, arbeitsfrei.bezeichnung FROM erfassung, arbeitsfrei WHERE erfassung.maid = '".$maid."' AND erfassung.aid = arbeitsfrei.aid AND DATE(erfassung.datum) BETWEEN ".$datum_interval_anfang." AND ".$datum_interval_ende." ORDER BY datum");
-                                        // Testen, ob Datensätze vorhanden
+                                        // Testen, ob DatensÃ¤tze vorhanden
                                         if($result->num_rows>0){
-                                                 // Datensätze in Array $row speichern
+                                                 // DatensÃ¤tze in Array $row speichern
                                                  while($row = mysqli_fetch_array($result)){
                                                          // Arbeitszeit berechnen
-                                                         /// Datumsobjekt für Beginn & Ende erstellen
+                                                         /// Datumsobjekt fÃ¼r Beginn & Ende erstellen
                                                          $date_beginn = date_create($row['beginn']);
                                                          $date_ende = date_create($row['ende']);
                                                          /// Differenz zwischen Beginn & Ende berechnen
@@ -140,7 +138,7 @@ if(!isset($_GET['m'])){
                                                          echo '<td width="20px"><input type="text" value="'.$ende_format.'" class="form-control" placeholder="Arbeitsende Bsp.: 16:30" name="arbeitsende" id="arbeitsende"></td>';
                                                          echo '<td width="50px"><input type="text" value="'.$row['bemerkung'].'" class="form-control" placeholder="Bemerkung Bsp.: Homeoffice" name="bemerkung" id="bemerkung"></td>';
                                                          echo '<td width="20px"><select name="arbeitsfrei" id="arbeitsfrei" class="form-control">';
-                                                         // SELECT Feld mit Arbeitsfrei Varianten aus DB füllen
+                                                         // SELECT Feld mit Arbeitsfrei Varianten aus DB fÃ¼llen
                                                          $result_liste = $link->query("SELECT * FROM arbeitsfrei ORDER BY aid DESC;");
                                                          $liste = "";
                                                          while($row_aid = mysqli_fetch_array($result_liste)){

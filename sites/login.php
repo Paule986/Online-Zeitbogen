@@ -9,10 +9,10 @@ require('../includes/mysql.php');
 $usern = $_POST["usern"];
 $passwort = md5($_POST["passwort"]);
 
-$abfrage = "SELECT maid, usern, passwort FROM mitarbeiter WHERE usern = '$usern' AND passwort = '$passwort' LIMIT 1";
-$ergebnis = mysqli_query($abfrage);
+
+$ergebnis = mysqli_query($abfrage, "SELECT maid, usern, passwort FROM mitarbeiter WHERE usern = '$usern' AND passwort = '$passwort' LIMIT 1");
 $_SESSION["maid"]=$row->maid;
-$row = mysqli_fetch_object($ergebnis);
+$row = $ergebnis -> fetch_array(MYSQLI_ASSOC);
 
 if($row->passwort == $passwort)
     {

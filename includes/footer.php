@@ -1,3 +1,4 @@
+	<?php  mysqli_close($link); ?>
 		</div>
               </div>
             </div>

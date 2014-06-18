@@ -10,13 +10,14 @@ $usern = $_POST["usern"];
 $passwort = md5($_POST["passwort"]);
 
 
-$ergebnis = mysqli_query($link, "SELECT maid, usern, passwort, rechte FROM mitarbeiter WHERE usern = '$usern' AND passwort = '$passwort' LIMIT 1");
-$num_rows = mysqli_num_rows($ergebnis);
-if($num_rows==1){
-    $row = $ergebnis -> fetch_array(MYSQLI_ASSOC);
-    $_SESSION["maid"] = $row->maid;
-    $_SESSION["usern"] = $row->usern;
-    $_SESSION["admin"] = $row->rechte;
+$result = $link->query("SELECT maid, usern, passwort, rechte FROM mitarbeiter WHERE usern = '$usern' AND passwort = '$passwort' LIMIT 1");
+ if($result->num_rows==1){
+// DatensÃƒÂ¤tze in Array $row speichern
+    while($row = mysqli_fetch_array($result)){
+    $_SESSION["maid"] = $row['maid'];
+    $_SESSION["usern"] = $row['usern'];
+    $_SESSION["admin"] = $row['rechte'];
+    }
     echo "<div align='center'><h2>Login erfolgreich. <br> Sie werden automatisch weitergeleitet</h2></div>";
     echo '<meta http-equiv="refresh" content="0; url=anzeigen.php">';
     }

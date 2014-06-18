@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(!isset($_SESSION["maid"])){
+
+echo'<meta http-equiv="refresh" content="0; url=index.php">';
+
+}
 // Provisorische maid
 $_SESSION['maid'] = "112";
 ?>

@@ -12,10 +12,12 @@
                         <span class="icon-bar"></span> </button>
                       <div class="nav-collapse mainnav-collapse collapse">
                         <ul class="nav level1">
-                          <li class="active"><a href="#">Startseite</a></li>
+                          <li class="active"><a href="../sites/dashboard.php">Startseite</a></li>
                           <li><a href="../sites/erfassung.php">Eingabe</a></li>
-                          <li><a href="#">Übersicht</a></li>
-                          <li><a href="../sites/kalender.php">Fehltage</a></li>
+                          <li><a href="../sites/kalender.php">Kalender</a></li>
+                          <li><a href="../sites/anzeigen.php">Liste</a></li>
+                          <li><a href="../sites/mitarbeiter.php">Mitarbeiter</a></li>
+                          <li><a href="../sites/behoerden.php">Behörden</a></li>
                           <li><a href="#">Hilfe</a></li>
                         </ul>
                       </div>

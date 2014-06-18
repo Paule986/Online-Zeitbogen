@@ -3,7 +3,12 @@ session_start();
 
 // Provisorische maid
 // $_SESSION['maid'] = "112";
-?>
+
+  $checkindex = substr($_SERVER['PHP_SELF'],-9);
+  if(!isset($_SESSION['maid'])&&($checkindex!="index.php")){
+      echo'<meta http-equiv="refresh" content="0; url=index.php">';
+  }
+  ?>
 <!DOCTYPE html>
 <html>
   <head>

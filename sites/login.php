@@ -11,7 +11,7 @@ $passwort = md5($_POST["passwort"]);
 
 
 $ergebnis = mysqli_query($link, "SELECT maid, usern, passwort, rechte FROM mitarbeiter WHERE usern = '$usern' AND passwort = '$passwort' LIMIT 1");
-$num_rows = mysql_num_rows($ergebnis);
+$num_rows = mysqli_num_rows($ergebnis);
 if($num_rows==1){
     $row = $ergebnis -> fetch_array(MYSQLI_ASSOC);
     $_SESSION["maid"] = $row->maid;

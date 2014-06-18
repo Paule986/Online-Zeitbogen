@@ -3,8 +3,9 @@ session_start();
 
 // Provisorische maid
 // $_SESSION['maid'] = "112";
-
+  // akteulle Seite aus URL laden
   $checkindex = substr($_SERVER['PHP_SELF'],-9);
+  // Um Endlosschleife bei Weiterleitung zu verhindern, nur weiterleiten, wenn nicht bereits auf index.php
   if(!isset($_SESSION['maid'])&&($checkindex!="index.php")){
       echo'<meta http-equiv="refresh" content="0; url=index.php">';
   }

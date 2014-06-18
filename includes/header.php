@@ -6,7 +6,7 @@ echo'<meta http-equiv="refresh" content="0; url=index.php">';
 
 }
 // Provisorische maid
-$_SESSION['maid'] = "112";
+// $_SESSION['maid'] = "112";
 ?>
 <!DOCTYPE html>
 <html>

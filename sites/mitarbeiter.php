@@ -20,7 +20,7 @@
 	$notiz ="";
   	error_reporting(0);
    
- 
+ // if($_SESSION["admin"]==1){
  // Selct über Behörden Tabelle
  
 	 $sqlbh = "SELECT * FROM behoerde";
@@ -347,11 +347,11 @@ else {
 	}
 	
 	echo" </table></div>";
-	?>
 
-
-
-<?php
+//else{
+	
+//echo "<div class='alert alert-danger'>Sie haben keine Adminrechte !</div>";	
+//}
 
 	require('../includes/footer.php');
 ?>

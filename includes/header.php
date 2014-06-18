@@ -1,16 +1,17 @@
 <?php
 session_start();
-if(!isset($_SESSION["maid"])){
 
-echo'<meta http-equiv="refresh" content="10; url=index.php">';
-
-}
 // Provisorische maid
 // $_SESSION['maid'] = "112";
 ?>
 <!DOCTYPE html>
 <html>
   <head>
+  <?php
+  if(!isset($_SESSION["maid"])){
+      echo'<meta http-equiv="refresh" content="0; url=index.php">';
+  }
+  ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title><?php echo $seitentitel; ?> - Online-Gleitzeitbogen</title>

@@ -8,7 +8,7 @@ session_start();
 <html>
   <head>
   <?php
-  if($_SESSION["maid"]!=""){
+  if(!isset($_SESSION["maid"])){
       echo'<meta http-equiv="refresh" content="0; url=index.php">';
   }
   ?>

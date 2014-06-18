@@ -6,7 +6,7 @@ require('../includes/menue.php');
 
 if(isset($_SESSION['maid'])){
 
-   if($_GET['do']==logout){
+   if($_GET['do']=="logout"){
       session_destroy();
    }
    echo "<a href='?do=logout'>Logout</a>";

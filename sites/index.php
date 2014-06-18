@@ -9,7 +9,7 @@ if(isset($_SESSION['maid'])){
    if($_GET['do']==logout){
       session_destroy();
    }
-   echo <a href='?do=logout'>Logout</a>
+   echo "<a href='?do=logout'>Logout</a>";
    }
 ?>
    <form class="form-signin" role="form" action="login.php" method="post">

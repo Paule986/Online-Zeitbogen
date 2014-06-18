@@ -2,18 +2,16 @@
 $seitentitel = "Home";
 require('../includes/header.php');
 require('../includes/menue.php');
-?>
-
-<?php
-session_start();
+require('../includes/mysql.php');
 ?>
 
 <?php
 $usern = $_POST["usern"];
 $passwort = md5($_POST["passwort"]);
 
-$abfrage = "SELECT usern, passwort FROM mitarbeiter WHERE usern LIKE '$usern' LIMIT 1";
+$abfrage = "SELECT maid, usern, passwort FROM mitarbeiter WHERE usern = '$usern' AND passwort = '$passwort' LIMIT 1";
 $ergebnis = mysqli_query($abfrage);
+$_SESSION["maid"]=$row->maid;
 $row = mysqli_fetch_object($ergebnis);
 
 if($row->passwort == $passwort)

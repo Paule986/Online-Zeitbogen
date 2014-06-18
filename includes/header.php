@@ -14,9 +14,9 @@ session_start();
   ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title><?php echo $seitentitel; ?> - Online-Gleitzeitbogen</title>
+    <title><?php if(isset($seitentitel)){echo $seitentitel;} ?> - Online-Gleitzeitbogen</title>
     <!-- Zusaetzliche Scripte - individuell geladen -->
-    <?php echo $zusatzinclude; ?>
+    <?php if(isset($zusatzinclude)){ echo $zusatzinclude; }?>
     <!-- Bootstrap-CSS -->
     <link href="../includes/css/bootstrap.css" rel="stylesheet">
     <link href="../includes/css/master.css" rel="stylesheet">

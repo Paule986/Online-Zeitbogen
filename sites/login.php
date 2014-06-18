@@ -10,12 +10,13 @@ $usern = $_POST["usern"];
 $passwort = md5($_POST["passwort"]);
 
 
-$ergebnis = mysqli_query($link, "SELECT maid, usern, passwort FROM mitarbeiter WHERE usern = '$usern' AND passwort = '$passwort' LIMIT 1");
+$ergebnis = mysqli_query($link, "SELECT maid, usern, passwort, rechte FROM mitarbeiter WHERE usern = '$usern' AND passwort = '$passwort' LIMIT 1");
 $num_rows = mysql_num_rows($ergebnis);
 if($num_rows==1){
     $row = $ergebnis -> fetch_array(MYSQLI_ASSOC);
     $_SESSION["maid"] = $row->maid;
     $_SESSION["usern"] = $row->usern;
+    $_SESSION["admin"] = $row->rechte;
     echo "<div align='center'><h2>Login erfolgreich. <br> Sie werden automatisch weitergeleitet, wenn nicht klicken sie hier: </h2> <br> <a href=\"geheim.php\">Gesch&uuml;tzer Bereich</a></div>";
     echo '<meta http-equiv="refresh" content="0; url=anzeigen.php">';
     }

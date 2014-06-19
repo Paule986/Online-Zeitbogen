@@ -348,7 +348,7 @@ else {
 	
 	echo" </table></div>";
 
-else{
+}else{
 	
 echo "<div class='alert alert-danger'>Sie haben keine Adminrechte !</div>";	
 }

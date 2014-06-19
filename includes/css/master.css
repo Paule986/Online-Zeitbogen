@@ -2806,3 +2806,12 @@ body .mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded{background
   background-color: #B1B3EE;
   color: #090D1A;
 }
+
+/*klasse für ausblenden der Mitarbeiterliste
+
+-----------------------------------------------------*/
+
+.hidelist {
+	display:none !important;
+	
+	}

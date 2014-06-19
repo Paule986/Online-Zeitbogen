@@ -6,7 +6,7 @@ require('../includes/menue.php');
 
 if(isset($_SESSION['maid'])){
    // Abfragen ob Logout Link geklickt, wenn ja Session löschen
-   if(isset($_GET['do'])){ $do = $_GET['do'];}
+   if(isset($_GET['do'])){ $do = $_GET['do'];}else{$do = "";}
    if($do == "logout"){
       session_destroy();
    }

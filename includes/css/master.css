@@ -1306,7 +1306,7 @@ a.extern:after{content:"";padding-right:11px;background-image:url(images/link_ex
 .navbar ul{list-style:none}
 .navbar .nav>.active>a:hover,.navbar .nav>.active>a:focus{background-color:transparent;color:inherit}
 .navbar .nav>li{text-shadow:0 0 0 transparent}.navbar .nav>li>a{background-color:transparent;-webkit-box-shadow:0 0 0 transparent;-moz-box-shadow:0 0 0 transparent;box-shadow:0 0 0 transparent}
-.content-navi-top{background-image:url(images/bg-amplitude-blue.gif);background-repeat:no-repeat;background-position:bottom left;padding-bottom:15px;overflow:visible;height:40px;margin-bottom:10px;font-size:1.2em;position:relative}
+.content-navi-top{background-image:url(../images/bg-amplitude-blue.gif);background-repeat:no-repeat;background-position:bottom left;padding-bottom:15px;overflow:visible;height:40px;margin-bottom:10px;font-size:1.2em;position:relative}
 .content-navi-top.smallfontsize{font-size:14px;}.content-navi-top.smallfontsize .nav ul li{font-size:14px;}
 .content-navi-top .nav.level1>li{border:1px solid transparent}.content-navi-top .nav.level1>li.active{border:1px solid #253276}
 .content-navi-top .nav{display:block;float:left;left:0;margin:0 10px 0 0;position:relative;z-index:1;width:720px;}.content-navi-top .nav li{height:auto;display:block;float:left;margin-right:5px;position:relative}.content-navi-top .nav li a{color:#000;display:block;float:none;text-decoration:none;padding:4px 9px 10px}
@@ -1320,8 +1320,8 @@ a.extern:after{content:"";padding-right:11px;background-image:url(images/link_ex
 .content-navi-top .nav ul li.active{background-color:#162c60}.content-navi-top .nav ul li.active a{color:#fff;padding:9px;border:1px solid #162c60}
 .content-navi-top .nav ul ul{left:100%;top:0}
 .content-navi-top .nav li:hover>ul{visibility:visible}
-.content-navi-top .beberlin{position:absolute;right:25px;top:-6px}.content-navi-top .beberlin .bb-logo{width:110px;height:30px;display:block;background:url(images/logo_beberlin_darkblue.png) no-repeat 0 0 transparent;text-indent:-99999px;overflow:hidden}
-.content-navi-wrapper{height:auto;min-height:30px;position:static;background-image:url(images/bg-amplitude-blue.gif);background-repeat:no-repeat;background-position:left bottom;margin-bottom:0;padding-bottom:21px}.content-navi-wrapper .content-navi-top{position:relative;margin-bottom:0;padding-bottom:0;background-image:none;height:auto}
+.content-navi-top .beberlin{position:absolute;right:25px;top:-6px}.content-navi-top .beberlin .bb-logo{width:110px;height:30px;display:block;background:url(../images/logo_beberlin_darkblue.png) no-repeat 0 0 transparent;text-indent:-99999px;overflow:hidden}
+.content-navi-wrapper{height:auto;min-height:30px;position:static;background-image:url(../images/bg-amplitude-blue.gif);background-repeat:no-repeat;background-position:left bottom;margin-bottom:0;padding-bottom:21px}.content-navi-wrapper .content-navi-top{position:relative;margin-bottom:0;padding-bottom:0;background-image:none;height:auto}
 .column-left{min-height:20px;}
 .content-navigation-left.navbar{list-style-type:none;margin:0 0 20px 0;border:1px solid #e4e4e4;background:#ececec}.content-navigation-left.navbar ul{display:block;margin:0;width:100%;padding:0;background-color:#ececec}.content-navigation-left.navbar ul.nav li{float:none;display:block;text-shadow:0 0 0 transparent;box-shadow:0 0 0 transparent;word-wrap:break-word}.content-navigation-left.navbar ul.nav li>a{font-weight:normal;margin:0;padding:9px 0 9px 8px;color:#272727;background-color:#ececec;display:block;text-shadow:0 0 0 transparent;box-shadow:0 0 0 transparent}
 .content-navigation-left.navbar ul.nav li.active>a{font-weight:bold;background:transparent;text-shadow:0 0 0 transparent;box-shadow:0 0 0 transparent}.content-navigation-left.navbar ul.nav li.active>a:hover{background-color:inherit;text-shadow:0 0 0 transparent;box-shadow:0 0 0 transparent;color:inherit;text-decoration:underline}

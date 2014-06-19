@@ -19,7 +19,7 @@ $result = $link->query("SELECT maid, usern, passwort, rechte FROM mitarbeiter WH
     $_SESSION["admin"] = $row['rechte'];
     }
     echo "<div align='center'><h2>Login erfolgreich. <br> Sie werden automatisch weitergeleitet</h2></div>";
-    echo '<meta http-equiv="refresh" content="0; url=anzeigen.php">';
+    echo '<meta http-equiv="refresh" content="0; url=dashboard.php">';
     }
 else
     {

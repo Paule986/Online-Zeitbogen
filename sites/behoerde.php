@@ -61,7 +61,7 @@ require('../includes/mysql.php');
 				<th>Verantwortlicher</th>
 			</tr>
 		 <?php
-			$abfrage = "SELECT art,name,verantwortlich FROM behoerde";
+			$abfrage = "SELECT art,name,verantwortlich,rahmenzeit_beginn, rahmenzeit_ende FROM behoerde";
 			$ergebnis = mysqli_query($link, $abfrage);
 			while($row = mysqli_fetch_array($ergebnis))
 					{
@@ -69,6 +69,8 @@ require('../includes/mysql.php');
 					echo '<td>'.$row['art'].'</td>';
 					echo '<td>'.$row['name'].'</td>';
 					echo '<td>'.$row['verantwortlich'].'</td>';
+					echo '<td>'.$row['rahmenzeit_beginn'].'</td>';
+					echo '<td>'.$row['rahmenzeit_ende'].'</td>';
 					echo '</tr>';
 					}
 		?>

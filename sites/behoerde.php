@@ -1,4 +1,6 @@
 <?php
+// Seitentitel setzen
+$seitentitel = "Behörde";
 //Header inkludieren
 require('../includes/header.php');
 // Menü inkludieren

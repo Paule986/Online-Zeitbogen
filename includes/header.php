@@ -25,7 +25,7 @@ session_start();
     <link href="../includes/css/signin.css" rel="stylesheet">
     <!-- Scripte - weiß nicht ob das gebraucht wird -->
     <script type="text/javascript" src="../includes/js/bootstrap.js"></script>
-    <script type="text/javascript" src="../includes/js/application.js"></script>
+
   </head>
   <body>
     <!-- Beginn: Header -->

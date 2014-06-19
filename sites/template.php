@@ -4,8 +4,10 @@
 
 <!-- Beginn: Inkludieren von Header und Menue -->
 	<?php 
-		include "../includes/header.php";
-		include "../includes/menue.php";
+		$seitentitel = "Seitentitel";
+		require ('../includes/header.php');
+		require('../includes/menue.php');
+		require('../includes/mysql.php');
 	?>
 <!-- Ende: Inkludieren von Header und Menue -->
 
@@ -15,6 +17,6 @@
 
 <!-- Beginn: Inkludieren von Footer -->
 <?php 
-include "../includes/footer.php"; 
+require('../includes/footer.php'); 
 ?>
 <!-- Ende: Inkludieren von Footer -->

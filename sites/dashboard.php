@@ -31,16 +31,17 @@ $monat_now_t = $monate[date("n",$timestamp)];
 
          $result_ma = $link->query("SELECT mitarbeiter.vname, mitarbeiter.nname, mitarbeiter.stez, mitarbeiter.sollstd, behoerde.art, behoerde.name, behoerde.rahmenzeit_beginn, behoerde.rahmenzeit_ende, status.bezeichnung FROM mitarbeiter, behoerde, status WHERE mitarbeiter.maid = '".$maid."' AND mitarbeiter.bid=behoerde.bid AND mitarbeiter.sid=status.sid");
                                         while($row_ma = mysqli_fetch_array($result_ma)){
-                                                 echo $row_ma['vname']."&nbsp;".$row_ma['nname'];
+                                                 echo "<h2>Stammdaten</h2>";
+                                                 echo "<a>".$row_ma['vname']."&nbsp;".$row_ma['nname']."</a>";
                                                  echo"<br>";
-                                                 echo $row_ma['stez'];
+                                                 echo "<a>".$row_ma['stez']."</a>";
                                                  echo"<br>";
-                                                 echo $row_ma['art']."&nbsp;/&nbsp;".$row_ma['name'];
+                                                 echo "<a>".$row_ma['art']."&nbsp;/&nbsp;".$row_ma['name']."</a>";
                                                  echo"<br>";
-                                                 echo $row_ma['bezeichnung'];
+                                                 echo "<a>".$row_ma['bezeichnung']."</a>";
                                                  $soll_std = $row_ma['sollstd'];
-                                                 $rahmen_a = $row_ma['rahmenzeit_beginn'];
-                                                 $rahmen_e = $row_ma['rahmenzeit_ende'];
+                                                 echo "<h2>Rahmenzeit</h2>";
+                                                 echo "<a>Von ".substr($row_ma['rahmenzeit_beginn'],0,-3)." bis ".substr($row_ma['rahmenzeit_ende'],0,-3);
                                         }
 
 

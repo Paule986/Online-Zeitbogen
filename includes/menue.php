@@ -17,7 +17,7 @@
                           <li><a href="../sites/kalender.php">Kalender</a></li>
                           <li><a href="../sites/anzeigen.php">Liste</a></li>
                           <li><a href="../sites/mitarbeiter.php">Mitarbeiter</a></li>
-                          <li><a href="../sites/behoerdenliste.php">Behörden</a></li>
+                          <li><a href="../sites/behoerde.php">Behörden</a></li>
                           <li><a href="#">Hilfe</a></li>
                         </ul>
                       </div>

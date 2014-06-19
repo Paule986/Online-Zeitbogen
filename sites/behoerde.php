@@ -8,6 +8,7 @@ require('../includes/menue.php');
 // mysql connect includen
 require('../includes/mysql.php');
 
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,9 +18,6 @@ require('../includes/mysql.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
         
     <title>Behördenliste</title>
-
-    <!-- Bootstrap-CSS -->
-    <link href="../includes/css/bootstrap.min.css" rel="stylesheet">
 	<style>
 		.btn-kurz
 			{
@@ -41,9 +39,10 @@ require('../includes/mysql.php');
 		<input type="text" name="rhmzen" id="rhmzen1" class="form-control btn-kurz" placeholder="Rahmenzeit Ende" required>
 		<!--<input type="datetime-local" name="rhmzbg" id="rhmzbg1" class="form-control btn-kurz" placeholder="Rahmenzeit Beginn" required>
 		<input type="datetime-local" name="rhmzen" id="rhmzen1" class="form-control btn-kurz" placeholder="Rahmenzeit Ende" required>-->
-        <button class="btn btn-lg btn-primary btn-block  btn-kurz" type="submit" name ="submit">Eingabe bestätigen</button>
+        <button class="btn btn-lg btn-primary btn-block  btn-kurz" type="submit" name ="eingabe_ja">Eingabe bestätigen</button>
     </form>
 		<?php
+			if (isset($_POST['eingabe_ja'])) {
 			$behoerde = $_POST["behoerde"];
 			$bezirk = $_POST["bezirk"];
 			$verantw = $_POST["verantw"];
@@ -52,9 +51,9 @@ require('../includes/mysql.php');
 			
 			$eintrag = "INSERT INTO behoerde (art, name, verantwortlich, rahmenzeit_beginn, rahmenzeit_ende) VALUES ('$behoerde', '$bezirk', '$verantw', '$rhmzbg', '$rhmzen')";
 			$eintragen = mysqli_query($link, $eintrag);
+			}
 		?>
 	
-	  <br>
 		<table class="table table-striped">
 			<tr>
 				<th>Behördenname</th>

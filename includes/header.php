@@ -23,7 +23,7 @@ session_start();
     <link href="../includes/css/bootstrap.css" rel="stylesheet">
     <link href="../includes/css/master.css" rel="stylesheet">
     <link href="../includes/css/signin.css" rel="stylesheet">
-    <!-- Scripte - weiß nicht ob das gebraucht wird -->
+
     <script type="text/javascript" src="../includes/js/bootstrap.js"></script>
 
   </head>

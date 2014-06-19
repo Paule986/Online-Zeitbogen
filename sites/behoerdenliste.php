@@ -1,5 +1,11 @@
 <?php
-include("mysql.php");
+//Header inkludieren
+require('../includes/header.php');
+// Menü inkludieren
+require('../includes/menue.php');
+// mysql connect includen
+require('../includes/mysql.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -69,3 +75,6 @@ include("mysql.php");
 	</div> 
   </body>
 </html>
+<?php
+	require('../includes/footer.php');
+?>

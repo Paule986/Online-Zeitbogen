@@ -6,7 +6,6 @@
 	<?php 
 		$seitentitel = "Seitentitel";
 		require ('../includes/header.php');
-		require('../includes/menue.php');
 		require('../includes/mysql.php');
 	?>
 <!-- Ende: Inkludieren von Header und Menue -->

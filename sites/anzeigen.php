@@ -7,7 +7,6 @@ $zusatzinclude = "
 <link rel='stylesheet' href='../includes/css/bootstrap-theme.min.css'>
 ";
 require('../includes/header.php');   // header inkludieren
-require('../includes/menue.php');  // Menü inkludieren
 require('../includes/mysql.php');    // mysql connect includen
 $maid = $_SESSION['maid'];           // MAID einlesen
 $timestamp = time();                 // Timestamp erstellen

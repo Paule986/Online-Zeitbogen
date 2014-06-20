@@ -8,8 +8,6 @@ $zusatzinclude = "
 ";
 // Header includen
 require('../includes/header.php');
-// Menü inkludieren
-require('../includes/menue.php');
 // mysql connect includen
 require('../includes/mysql.php');
 $timestamp = time();

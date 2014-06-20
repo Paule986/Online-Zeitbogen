@@ -3,8 +3,7 @@
 $seitentitel = "Behörden";
 //Header inkludieren
 require('../includes/header.php');
-// Menü inkludieren
-require('../includes/menue.php');
+
 // mysql connect includen
 require('../includes/mysql.php');
 

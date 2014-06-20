@@ -1,8 +1,6 @@
 <?php
 $seitentitel = "Home";
 require('../includes/header.php');
-require('../includes/menue.php');
-
 
 if(isset($_SESSION['maid'])){
    // Abfragen ob Logout Link geklickt, wenn ja Session löschen

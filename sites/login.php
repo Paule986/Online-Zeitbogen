@@ -1,7 +1,6 @@
 <?php
 $seitentitel = "Home";
 require('../includes/header.php');
-require('../includes/menue.php');
 require('../includes/mysql.php');
 ?>
 

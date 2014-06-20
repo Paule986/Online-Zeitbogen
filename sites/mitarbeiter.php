@@ -14,7 +14,6 @@
 	
 	
 	require('../includes/header.php');   // header inkludieren
-	require('../includes/menue.php');  // Menü inkludieren
 	require('../includes/mysql.php');    // mysql connect includen
 
 	$notiz ="";

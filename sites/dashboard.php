@@ -2,7 +2,6 @@
 
 $seitentitel = "&Uuml;bersicht";
 require('../includes/header.php');
-require('../includes/menue.php');
 require('../includes/mysql.php');
 
 $soll_std = "";

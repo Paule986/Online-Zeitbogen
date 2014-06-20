@@ -8,7 +8,6 @@ $zusatzinclude = "
 <link rel='stylesheet' href='../includes/css/responsive-calendar.css'>
 ";
 require('../includes/header.php'); // header includieren
-require('../includes/menue.php');  // Menü inkludieren
 require('../includes/mysql.php');  // Mysql Connect Datei einbinden
 $maid = $_SESSION['maid'];         // MAID einlesen
 $timestamp = time();               // Timestamp für Datumsoperationen erstellen

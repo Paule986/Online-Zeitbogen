@@ -6,28 +6,7 @@ require('../includes/header.php');
 
 // mysql connect includen
 require('../includes/mysql.php');
-
-
 ?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-    <title>Behördenliste</title>
-	<style>
-		.btn-kurz
-			{
-				width: 250px;
-			}
-	</style>
-	
-  </head>
-
-  <body>
-
     <div class="container">
 	<form class="form-signin" role="form" method="post">
     <h2 class="form-signin-heading">Bitte Behörde eintragen:</h2>

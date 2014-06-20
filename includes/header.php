@@ -66,7 +66,7 @@ session_start();
 								<button data-target=".mainnav-collapse" data-toggle="collapse" class="btn btn-navbar collapsed" type="button"><span class="icon-bar"></span></button>
 								<div class="nav-collapse mainnav-collapse collapse">
 									<ul class="nav level1">
-														<li><a class="menu" href="../includes/test.php">Startseite</a></li>
+														<li><a class="menu" href="../sites/dashboard.php">Startseite</a></li>
 														<li><a class="menu" href="../sites/erfassung.php">Eingabe</a></li>
 														<li><a class="menu" href="../sites/kalender.php">Kalender</a></li>
 														<li><a class="menu" href="../sites/anzeigen.php">Liste</a></li>

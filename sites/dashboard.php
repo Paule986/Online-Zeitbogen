@@ -1,6 +1,8 @@
 <?php
 
 $seitentitel = "&Uuml;bersicht";
+// Navigation active setzen
+$navsite =1 ;
 require('../includes/header.php');
 require('../includes/mysql.php');
 

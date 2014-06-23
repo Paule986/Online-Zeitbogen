@@ -1,6 +1,8 @@
 <?php
 // Seitentitel setzen
 $seitentitel = "Behörden";
+// Navigation active setzen
+$navsite =6 ;
 //Header inkludieren
 require('../includes/header.php');
 

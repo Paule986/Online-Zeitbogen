@@ -2,6 +2,8 @@
 // Seitentitel setzen
 
 	$seitentitel = "Liste anzeigen";
+// Navigation active setzen
+$navsite =5 ;
 	
 // zusätzliche Dateien includieren
 

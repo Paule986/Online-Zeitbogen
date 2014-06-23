@@ -58,26 +58,6 @@ session_start();
 			</div>
 		 <!-- Ende: Institution -->
 		 
-		 <!-- Beginn: Menue -->
-			 <div class="row">
-
-					<div class="content-navi-wrapper navbar">
-							<div class="html5-nav content-navi-top navbar-inner">
-								<button data-target=".mainnav-collapse" data-toggle="collapse" class="btn btn-navbar collapsed" type="button"><span class="icon-bar"></span></button>
-								<div class="nav-collapse mainnav-collapse collapse">
-									<ul class="nav level1">
-														<li><a class="menu" href="../sites/dashboard.php">Startseite</a></li>
-														<li><a class="menu" href="../sites/erfassung.php">Eingabe</a></li>
-														<li><a class="menu" href="../sites/kalender.php">Kalender</a></li>
-														<li><a class="menu" href="../sites/anzeigen.php">Liste</a></li>
-														<li><a class="menu" href="../sites/mitarbeiter.php">Mitarbeiter</a></li>
-														<li><a class="menu" href="../sites/behoerde.php">Behörden</a></li>
-														<li><a class="menu" href="#">Hilfe</a></li>
-									</ul>
-								</div>
-								<div class="beberlin"><a href="" class="bb-logo">beBerlin</a>
-							</div>
-					</div>
-
-			 </div>
-		 <!-- Ende: Menue -->
+		<?php
+		require('../includes/menue.php');
+		?>

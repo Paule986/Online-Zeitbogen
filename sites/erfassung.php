@@ -1,6 +1,8 @@
 <?php
 // Seitentitel setzen
 $seitentitel = "Erfassung";
+// Navigation active setzen
+$navsite =2 ;
 // zusÃ¤tzliche Dateien includen
 $zusatzinclude = "
 <script type='text/javascript' src='../includes/js/jquery.js'></script>

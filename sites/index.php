@@ -1,5 +1,6 @@
 <?php
 $seitentitel = "Home";
+$navsite="1";
 require('../includes/header.php');
 
 if(isset($_SESSION['maid'])){

@@ -2807,6 +2807,11 @@ body .mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded{background
   color: #090D1A;
 }
 
+.day.fehlt {
+  background-color: #FE2E2E;
+  color: #090D1A;
+}
+
 /*klasse für ausblenden der Mitarbeiterliste
 
 -----------------------------------------------------*/

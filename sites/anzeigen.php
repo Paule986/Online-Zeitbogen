@@ -1,6 +1,8 @@
 <?php
 // Seitentitel setzen
 $seitentitel = "Liste anzeigen";
+// Navigation active setzen
+$navsite =4 ;
 // zusätzliche Dateien includieren
 $zusatzinclude = "
 <script type='text/javascript' src='../includes/js/jquery.js'></script>

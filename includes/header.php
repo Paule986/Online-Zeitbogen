@@ -54,6 +54,15 @@ session_start();
 							<span class="title">Online-Gleitzeitbogen</span>
 						</a> 
 					</div>
+					<div class="span12">
+						<ul class="nav">
+							<li>
+						    		<div class="popover-container zentral-login">
+								<a title="" class="login-btn popover-link" href="index.php?do=logout">Abmelden</a>
+						    		</div>
+							</li>
+						</ul>	
+					</div>	
 				</div>
 			</div>
 		 <!-- Ende: Institution -->

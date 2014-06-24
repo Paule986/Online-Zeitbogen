@@ -7,12 +7,12 @@ $nav4 = "";
 $nav5 = "";
 $nav6 = "";
 switch($navsite){
-                        case 1: $nav1 = '"class="active"'; break;
-                        case 2: $nav2 = '"class="active"'; break;
-                        case 3: $nav3 = '"class="active"'; break;
-                        case 4: $nav4 = '"class="active"'; break;
-                        case 5: $nav5 = '"class="active"'; break;
-                        case 6: $nav6 = '"class="active"'; break;
+                        case 1: $nav1 = 'class="active"'; break;
+                        case 2: $nav2 = 'class="active"'; break;
+                        case 3: $nav3 = 'class="active"'; break;
+                        case 4: $nav4 = 'class="active"'; break;
+                        case 5: $nav5 = 'class="active"'; break;
+                        case 6: $nav6 = 'class="active"'; break;
                         }
 
 ?>

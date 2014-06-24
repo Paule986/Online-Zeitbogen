@@ -16,9 +16,7 @@ switch($navsite){
                         }
 
 ?>
-                        <div class="row"> <!-- Bei den DIVs hier oben passt was nicht  -->
-                        <div class="span12"> <!-- Wenn ich mich nicht irre, werden sie geöffnet, ->
-                        <div class="span12">  <!-- aber nicht wieder geschlossen  -->
+                        <div class="row">
                   <!-- template start: navi-top -->
                   <div class="content-navi-wrapper navbar">
                     <div class="html5-nav content-navi-top navbar-inner"> <button
@@ -42,5 +40,4 @@ switch($navsite){
                       <div class="beberlin"><a href="" class="bb-logo">beBerlin</a></div>
                     </div>
                   </div>
-                  <!-- /template end: navi-top --> </div>
-              </div>
+                  <!-- /template end: navi-top -->

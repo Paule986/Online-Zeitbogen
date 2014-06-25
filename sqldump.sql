@@ -7,33 +7,27 @@
 -- Server Version: 5.6.16
 -- PHP-Version: 5.5.11
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
 --
 -- Datenbank: `zeiterfassungsbogen`
 --
 
+CREATE DATABASE IF NOT EXISTS zeiterfassungsbogen;
+USE zeiterfassungsbogen;
+
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `arbeitsfrei`
+-- Tabellenstruktur fÃ¼r Tabelle `arbeitsfrei`
 --
 
 CREATE TABLE IF NOT EXISTS `arbeitsfrei` (
   `aid` int(20) NOT NULL AUTO_INCREMENT,
   `bezeichnung` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`aid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Abwesenheitsgruende' AUTO_INCREMENT=100 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Abwesenheitsgruende' AUTO_INCREMENT=100 ;
 
 --
--- Daten für Tabelle `arbeitsfrei`
+-- Daten fÃ¼r Tabelle `arbeitsfrei`
 --
 
 INSERT INTO `arbeitsfrei` (`aid`, `bezeichnung`) VALUES
@@ -45,7 +39,7 @@ INSERT INTO `arbeitsfrei` (`aid`, `bezeichnung`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `behoerde`
+-- Tabellenstruktur fÃ¼r Tabelle `behoerde`
 --
 
 CREATE TABLE IF NOT EXISTS `behoerde` (
@@ -56,10 +50,10 @@ CREATE TABLE IF NOT EXISTS `behoerde` (
   `rahmenzeit_beginn` time NOT NULL,
   `rahmenzeit_ende` time NOT NULL,
   PRIMARY KEY (`bid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=24 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
--- Daten für Tabelle `behoerde`
+-- Daten fÃ¼r Tabelle `behoerde`
 --
 
 INSERT INTO `behoerde` (`bid`, `art`, `name`, `verantwortlich`, `rahmenzeit_beginn`, `rahmenzeit_ende`) VALUES
@@ -70,27 +64,27 @@ INSERT INTO `behoerde` (`bid`, `art`, `name`, `verantwortlich`, `rahmenzeit_begi
 (5, 'Senatsverwaltung', 'Wirtschaft, Technologie und Forschung', 'Fr. Yzer', '06:00:00', '19:30:00'),
 (6, 'Senatsverwaltung', 'Bildung, Jugend und Wissenschaft', 'Fr. Scheeres', '06:00:00', '19:30:00'),
 (7, 'Senatsverwaltung', 'Gesundheit und Soziales', 'Hr. Czaja', '06:00:00', '19:30:00'),
-(8, 'Senatsverwaltung', 'Stadtentwicklung und Umwelt', 'Hr. Müller', '06:00:00', '19:00:00'),
+(8, 'Senatsverwaltung', 'Stadtentwicklung und Umwelt', 'Hr. MÃ¼ller', '06:00:00', '19:00:00'),
 (9, 'Bezirksamt', 'Charlottenburg-Wilmersdorf', 'Hr. Naumann', '06:00:00', '20:00:00'),
 (10, 'Bezirksamt', 'Friedrichshain-Kreuzberg', 'Fr. Herrmann', '06:00:00', '20:00:00'),
 (11, 'Bezirksamt', 'Lichtenberg', 'Hr. Geisel', '06:00:00', '19:00:00'),
-(12, 'Bezirksamt', 'Neukölln', 'Hr. Buschkowsky', '06:30:00', '20:00:00'),
-(13, 'Bezirksamt', 'Pankow', 'Hr. Köhne', '06:00:00', '19:30:00'),
+(12, 'Bezirksamt', 'NeukÃ¶lln', 'Hr. Buschkowsky', '06:30:00', '20:00:00'),
+(13, 'Bezirksamt', 'Pankow', 'Hr. KÃ¶hne', '06:00:00', '19:30:00'),
 (14, 'Bezirksamt', 'Spandau', 'Hr. Kleebank', '06:00:00', '19:30:00'),
-(15, 'Bezirksamt', 'Treptow-Köpenick', 'Hr. Igel', '06:00:00', '20:00:00'),
+(15, 'Bezirksamt', 'Treptow-KÃ¶penick', 'Hr. Igel', '06:00:00', '20:00:00'),
 (16, 'Bezirksamt', 'Mitte', 'Hr. Hanke', '06:00:00', '20:00:00'),
-(17, 'Bezirksamt', 'Marzahn-Hellersdorf', 'Hr. Komoß', '06:00:00', '19:30:00'),
+(17, 'Bezirksamt', 'Marzahn-Hellersdorf', 'Hr. KomoÃŸ', '06:00:00', '19:30:00'),
 (18, 'Bezirksamt', 'Reinickendorf', 'Hr. Balzer', '06:00:00', '19:00:00'),
-(19, 'Bezirksamt', 'Tempelhof-Schöneberg', 'Fr. Schöttler', '06:00:00', '19:30:00'),
+(19, 'Bezirksamt', 'Tempelhof-SchÃ¶neberg', 'Fr. SchÃ¶ttler', '06:00:00', '19:30:00'),
 (20, 'Bezirksamt', 'Steglitz-Zehlendorf', 'Hr. Kopp', '06:00:00', '20:30:00'),
-(21, 'Nachgeordnete/Sonderbehörde', 'Polizei', 'Hr. Kandt', '06:00:00', '19:30:00'),
-(22, 'Nachgeordnete/Sonderbehörde', 'Landesamt für Bürger- und Ordnungsangelegenheiten', 'Fr. Langenheide', '06:00:00', '19:30:00'),
-(23, 'Nachgeordnete/Sonderbehörde', 'Landesamt für Gesundheit und Soziales', 'Hr. Allert', '06:00:00', '19:30:00');
+(21, 'Nachgeordnete/SonderbehÃ¶rde', 'Polizei', 'Hr. Kandt', '06:00:00', '19:30:00'),
+(22, 'Nachgeordnete/SonderbehÃ¶rde', 'Landesamt fÃ¼r BÃ¼rger- und Ordnungsangelegenheiten', 'Fr. Langenheide', '06:00:00', '19:30:00'),
+(23, 'Nachgeordnete/SonderbehÃ¶rde', 'Landesamt fÃ¼r Gesundheit und Soziales', 'Hr. Allert', '06:00:00', '19:30:00');
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `erfassung`
+-- Tabellenstruktur fÃ¼r Tabelle `erfassung`
 --
 
 CREATE TABLE IF NOT EXISTS `erfassung` (
@@ -105,10 +99,10 @@ CREATE TABLE IF NOT EXISTS `erfassung` (
   PRIMARY KEY (`eid`),
   KEY `maid` (`maid`),
   KEY `aid` (`aid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
--- Daten für Tabelle `erfassung`
+-- Daten fÃ¼r Tabelle `erfassung`
 --
 
 INSERT INTO `erfassung` (`eid`, `maid`, `datum`, `beginn`, `ende`, `maneintrag`, `bemerkung`, `aid`) VALUES
@@ -125,7 +119,7 @@ INSERT INTO `erfassung` (`eid`, `maid`, `datum`, `beginn`, `ende`, `maneintrag`,
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `feiertage`
+-- Tabellenstruktur fÃ¼r Tabelle `feiertage`
 --
 
 CREATE TABLE IF NOT EXISTS `feiertage` (
@@ -133,10 +127,10 @@ CREATE TABLE IF NOT EXISTS `feiertage` (
   `datum` date NOT NULL,
   `bezeichnung` text NOT NULL,
   PRIMARY KEY (`fid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
--- Daten für Tabelle `feiertage`
+-- Daten fÃ¼r Tabelle `feiertage`
 --
 
 INSERT INTO `feiertage` (`fid`, `datum`, `bezeichnung`) VALUES
@@ -153,7 +147,7 @@ INSERT INTO `feiertage` (`fid`, `datum`, `bezeichnung`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `mitarbeiter`
+-- Tabellenstruktur fÃ¼r Tabelle `mitarbeiter`
 --
 
 CREATE TABLE IF NOT EXISTS `mitarbeiter` (
@@ -170,32 +164,32 @@ CREATE TABLE IF NOT EXISTS `mitarbeiter` (
   PRIMARY KEY (`maid`),
   KEY `sid` (`sid`),
   KEY `bid` (`bid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Nutzerdaten und Einstellungen zu Nutzern' AUTO_INCREMENT=114 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COMMENT='Nutzerdaten und Einstellungen zu Nutzern' AUTO_INCREMENT=114 ;
 
 --
--- Daten für Tabelle `mitarbeiter`
+-- Daten fÃ¼r Tabelle `mitarbeiter`
 --
 
 INSERT INTO `mitarbeiter` (`maid`, `vname`, `nname`, `stez`, `sollstd`, `bid`, `sid`, `usern`, `passwort`, `rechte`) VALUES
 (2, 'Hans', 'Honka', 'IA25', 40, 10, NULL, 'Honki', '', 2),
-(3, 'Karl', 'Käfer', 'IVA2', 39, 0, NULL, 'Kaeferkarl', NULL, 2),
-(112, 'Sheldon', 'Cooper', 'IA25', 40, 0, NULL, 'Shelly', '81dc9bdb52d04dc20036dbd8313ed055', 2),
+(3, 'Karl', 'KÃ¤fer', 'IVA2', 39, 0, NULL, 'Kaeferkarl', NULL, 2),
+(112, 'Sheldon', 'Cooper', 'IA25', 40, 0, NULL, 'Shelly', '81dc9bdb52d04dc20036dbd8313ed055', 1),
 (113, 'Maxi', 'Muster', 'P0815', 40, 1, NULL, 'maxim', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 
 -- --------------------------------------------------------
 
 --
--- Tabellenstruktur für Tabelle `status`
+-- Tabellenstruktur fÃ¼r Tabelle `status`
 --
 
 CREATE TABLE IF NOT EXISTS `status` (
   `sid` int(11) NOT NULL AUTO_INCREMENT,
   `bezeichnung` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`sid`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
--- Daten für Tabelle `status`
+-- Daten fÃ¼r Tabelle `status`
 --
 
 INSERT INTO `status` (`sid`, `bezeichnung`) VALUES
@@ -203,6 +197,24 @@ INSERT INTO `status` (`sid`, `bezeichnung`) VALUES
 (2, 'Angestellter'),
 (3, 'Azubi');
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur fÃ¼r Tabelle `urlaub`
+--
+
+CREATE TABLE IF NOT EXISTS `urlaub` (
+  `maid` int(11) NOT NULL AUTO_INCREMENT,
+  `tage` int(3) DEFAULT 30,
+  PRIMARY KEY (`maid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=114 ;
+
+--
+-- Daten fÃ¼r Tabelle `urlaub`
+--
+
+INSERT INTO `urlaub` (`maid`, `tage`) VALUES
+(2, '30'),
+(3, '30'),
+(112, '30'),
+(113, '30');

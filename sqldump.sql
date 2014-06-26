@@ -34,6 +34,7 @@ INSERT INTO `arbeitsfrei` (`aid`, `bezeichnung`) VALUES
 (1, 'Gleittag'),
 (2, 'Urlaub'),
 (3, 'krank'),
+(88, 'nicht erfasst'),
 (99, 'nein');
 
 -- --------------------------------------------------------
@@ -171,10 +172,10 @@ CREATE TABLE IF NOT EXISTS `mitarbeiter` (
 --
 
 INSERT INTO `mitarbeiter` (`maid`, `vname`, `nname`, `stez`, `sollstd`, `bid`, `sid`, `usern`, `passwort`, `rechte`) VALUES
-(2, 'Hans', 'Honka', 'IA25', 40, 10, NULL, 'Honki', '', 2),
-(3, 'Karl', 'Käfer', 'IVA2', 39, 0, NULL, 'Kaeferkarl', NULL, 2),
-(112, 'Sheldon', 'Cooper', 'IA25', 40, 0, NULL, 'Shelly', '81dc9bdb52d04dc20036dbd8313ed055', 1),
-(113, 'Maxi', 'Muster', 'P0815', 40, 1, NULL, 'maxim', '81dc9bdb52d04dc20036dbd8313ed055', 1);
+(2, 'Hans', 'Honka', 'IA25', 40, 1, 1, 'Honki', '', 2),
+(3, 'Karl', 'Käfer', 'IVA2', 39, 1, 1, 'Kaeferkarl', NULL, 2),
+(112, 'Sheldon', 'Cooper', 'IA25', 40, 1, 1, 'Shelly', '81dc9bdb52d04dc20036dbd8313ed055', 1),
+(113, 'Maxi', 'Muster', 'P0815', 40, 1, 1, 'maxim', '81dc9bdb52d04dc20036dbd8313ed055', 1);
 
 -- --------------------------------------------------------
 

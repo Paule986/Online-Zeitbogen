@@ -25,7 +25,7 @@ while($row_ma = mysqli_fetch_array($result_ma)){
          }else{
          $thisday=$dayinmonth;
          }
-         $sqladd = $link->query("INSERT INTO erfassung (datum,maid) VALUES('".$datum_year_cal."-".$datum_monat_cal."-".$thisday."',".$row_ma['maid'].");");
+         $sqladd = $link->query("INSERT INTO erfassung (datum,maid,aid) VALUES('".$datum_year_cal."-".$datum_monat_cal."-".$thisday."',".$row_ma['maid'].",'88');");
          }
          echo "Tage für MAID ".$row_ma['maid']." angelegt.<br>";
 

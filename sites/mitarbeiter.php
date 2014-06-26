@@ -289,8 +289,14 @@ else {
 	echo"<a id='showbutton' href='javascript:toggle();'>Liste anzeigen</a>";
 
 //Tabelle erzeugen
-
-	echo"<div id='liste' class='hidelist'>";
+if(isset($_GET['sort']))
+{
+	$nothide = "style='display:block !important;'";
+}
+else{
+	$nothide="";
+	}
+	echo"<div id='liste' ".$nothide." class='hidelist'>";
 	
 	if(isset($_GET['sort']))
 	{
@@ -318,16 +324,16 @@ else {
 
 
  
-	echo"  <table class='table table-striped table-bordered table-condensed'>";
+	echo"  <table id='ntab' class='table table-striped table-bordered table-condensed'>";
 	
-	echo"  <th><a href='?sort=vname'>Name <span class='glyphicon glyphicon-sort'</span></a></th>";
-	echo"  <th><a href='?sort=nname'>Nachname <span class='glyphicon glyphicon-sort'</span></a></th>";
-	echo"  <th><a href='?sort=stez'>Stellenzeichen <span class='glyphicon glyphicon-sort'</span></a></th>";
-	echo"  <th><a href='?sort=sollstd'>Sollstunden <span class='glyphicon glyphicon-sort'</span></a></th>";
-	echo"  <th><a href='?sort=usern'>Username <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=vname#ntab'>Name <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=nname#ntab'>Nachname <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=stez#ntab'>Stellenzeichen <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=sollstd#ntab'>Sollstunden <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=usern#ntab'>Username <span class='glyphicon glyphicon-sort'</span></a></th>";
 	
-	echo"  <th><a href='?sort=rechte'>Admin <span class='glyphicon glyphicon-sort'</span></a></th>";
-	echo"  <th><a href='?sort=bid'>Behörde <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=rechte#ntab'>Admin <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=bid#ntab'>Behörde <span class='glyphicon glyphicon-sort'</span></a></th>";
 	echo"  <th>Löschen</th>";
 	echo"  <th>Ändern</th>";
 

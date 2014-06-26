@@ -50,19 +50,19 @@ for($tage=1;$tage<=$month_num;$tage++){
                 while($myrow = mysqli_fetch_array($result)) {
                          // Wenn Eintrag vorhanden und AID = 3 - KRANK - dann Markierung erzeugen
                          if($myrow['aid']=="88"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fehlt', 'url': 'erfassung2.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fehlt', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="99"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'normal', 'url': 'erfassung2.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'normal', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="1"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'gleittag', 'url': 'erfassung2.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'gleittag', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="2"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'urlaub', 'url': 'erfassung2.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'urlaub', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="3"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'krank', 'url': 'erfassung2.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'krank', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
 
                  }

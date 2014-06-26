@@ -58,7 +58,13 @@ session_start();
 						<ul class="nav">
 							<li>
 						    		<div class="popover-container zentral-login">
-								<a title="" class="login-btn popover-link" href="index.php?do=logout">Abmelden</a>
+								<?php
+                                                                    if(isset($_SESSION['maid'])){
+                                                                         echo "<a title='' class='login-btn popover-link' href='index.php?do=logout'>Abmelden</a>";
+                                                                    }else{
+                                                                         echo "<a title='' class='login-btn popover-link' href='index.php'>Anmelden</a>";
+                                                                    }
+                                                                    ?>
 						    		</div>
 							</li>
 						</ul>	

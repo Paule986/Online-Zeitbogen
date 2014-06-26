@@ -4,7 +4,7 @@
 ///////////////////////////////////////////////////////////////////////////////////
 
 // mysql connect includen
-require('../includes/mysql.php');
+require('includes/mysql.php');
 $timestamp = time();
 if(isset($_GET['monat'])){
          $datum_monat_cal = $_GET['monat'];

@@ -1,8 +1,8 @@
  <?php
 // Seitentitel setzen
-$seitentitel = "Kalender";
+$seitentitel = "Erfassung";
 // Navigation active setzen
-$navsite =3 ;
+$navsite =2 ;
 // zusÃƒÂ¤tzliche Dateien includieren
 $zusatzinclude = "
 <script type='text/javascript' src='../includes/js/jquery.js'></script>

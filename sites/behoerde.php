@@ -39,6 +39,8 @@ require('../includes/mysql.php');
 				<th>Behördenname</th>
 				<th>Bezirk</th>
 				<th>Verantwortlicher</th>
+				<th>Rahmenzeit Anfang</th>
+				<th>Rahmenzeit Ende</th>
 			</tr>
 		 <?php
 			$abfrage = "SELECT art,name,verantwortlich,rahmenzeit_beginn, rahmenzeit_ende FROM behoerde";

@@ -8,9 +8,12 @@ if(isset($_SESSION['maid'])){
    if(isset($_GET['do'])){ $do = $_GET['do'];}else{$do = "";}
    if($do == "logout"){
       session_destroy();
+      echo "<div class='alert alert-success'>Sie wurden abgemeldet.</div>";
+   }else{
+         // Wenn bereits eingeloggt, Logout Link anzeigen
+         echo "<a href='?do=logout'>Logout</a>";
    }
-   // Wenn bereits eingeloggt, Logout Link anzeigen
-   echo "<a href='?do=logout'>Logout</a>";
+
    }else{
 
 

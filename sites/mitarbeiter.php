@@ -160,18 +160,18 @@ $navsite =5 ;
 
   <!-- Formular   -->
   
-  <div style="width: 250px;">
+  <div style="width: 250px;" >
 <form role="form" method="post" name="ajax_form" id="ajax_form">
 
 
 <div   class="form-group">
-    <label for="voname">Vorname</label><input class="form-control" name="vname" id="vname" type="text" value="<?php echo $vname; ?>" /></div>
+    <label for="voname">Vorname</label><input class="form-control" name="vname" id="vname" type="text" value="<?php echo $vname; ?>" required=""/></div>
 <div class="form-group">
-    <label for="nname">Nachname</label><input class="form-control" name="nname" id="nname" type="text" value="<?php echo $nname; ?>"/></div>
+    <label for="nname">Nachname</label><input class="form-control" name="nname" id="nname" type="text" value="<?php echo $nname; ?>"required=""/></div>
 <div class="form-group">
-    <label for="stez">Stellenzeichen</label><input class="form-control" name="stez" id="stelz" type="text" value="<?php echo $stez; ?>"/></div>
+    <label for="stez">Stellenzeichen</label><input class="form-control" name="stez" id="stelz" type="text" value="<?php echo $stez; ?>" required=""/></div>
 <div class="form-group">
-    <label for="sollstd">Sollstunden</label><input class="form-control" name="sollstd" id="sollstd" type="text" value="<?php echo $sollstd; ?>"/></div>
+    <label for="sollstd">Sollstunden</label><input class="form-control" name="sollstd" id="sollstd" type="text" value="<?php echo $sollstd; ?>"required=""/></div>
     
     
 <?php 
@@ -180,15 +180,15 @@ $navsite =5 ;
 
 if ($do != "edit"){
 echo"<div class='form-group'>
-    <label for='usern'>Username</label><input class='form-control' name='usern' id='usern' type='text' value='".$usern."'/></div>
+    <label for='usern'>Username</label><input class='form-control' name='usern' id='usern' type='text' value='".$usern."' required=''/></div>
     
 <div class='form-group'>
-    <label for='passwort'>Passwort</label><input class='form-control' name='passwort' id='passwort' type='text' value='".$passwort."'/></div>";
+    <label for='passwort'>Passwort</label><input class='form-control' name='passwort' id='passwort' type='text' value='".$passwort."' required=''/></div>";
 }
 else {
 	echo 
 	"<form><div class='form-group'>
-    <label for='passwort'>Passwort</label><input class='form-control' name='passwort' id='passwort' type='password' value='".$passwort."'/><button class='btn btn-default' name='savepwd' id='savepwd' type='submit' >Ändern</button></div></form>";
+    <label for='passwort'>Passwort</label><input class='form-control' required='' name='passwort' id='passwort' type='password' value='".$passwort."'/><button class='btn btn-default' name='savepwd' id='savepwd' type='submit' >Ändern</button></div></form>";
 	
 	}
 ?>
@@ -291,19 +291,43 @@ else {
 //Tabelle erzeugen
 
 	echo"<div id='liste' class='hidelist'>";
-	$strSQL = "SELECT * FROM mitarbeiter";
+	
+	if(isset($_GET['sort']))
+	{
+		
+		$sort = $_GET['sort'];
+		if($richtung='DESC')
+	{
+		$richtung = 'ASC';
+	}
+	else
+	{
+		$richtung = 'DESC';	
+	}
+		
+	}
+	else{
+		$sort = 'nname';
+		$richtung = 'ASC';
+	}
+	
+	
+	
+	
+	$strSQL = "SELECT * FROM mitarbeiter ORDER BY ".$sort." ".$richtung;
+
 
  
 	echo"  <table class='table table-striped table-bordered table-condensed'>";
 	
-	echo"  <th>Vorname</th>";
-	echo"  <th>Nachname</th>";
-	echo"  <th>Stellenzeichen</th>";
-	echo"  <th>sollstd</th>";
-	echo"  <th>Username</th>";
+	echo"  <th><a href='?sort=vname'>Name <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=nname'>Nachname <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=stez'>Stellenzeichen <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=sollstd'>Sollstunden <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=usern'>Username <span class='glyphicon glyphicon-sort'</span></a></th>";
 	
-	echo"  <th>Admin</th>";
-	echo"  <th>Behoerde</th>";
+	echo"  <th><a href='?sort=rechte'>Admin <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=bid'>Behörde <span class='glyphicon glyphicon-sort'</span></a></th>";
 	echo"  <th>Löschen</th>";
 	echo"  <th>Ändern</th>";
 

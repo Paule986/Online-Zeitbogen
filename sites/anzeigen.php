@@ -132,8 +132,8 @@ if(!isset($_GET['m'])){
                                                         if(isset($_POST['edit'])&&($_POST['eid']==$row['eid'])){
                                                          // Wenn Bearbeiten-Button geklickt, in dieser Zeile Textfelder erstellen
                                                          // und Daten aus DB laden
-                                                         echo '<tr>';
-                                                         echo '<form class="navbar-form navbar-left" role="search" action="?m='.$monat_now_z.'" method="POST" >';
+                                                         echo '<tr id="row'.$row['eid'].'">';
+                                                         echo '<form class="navbar-form navbar-left" role="search" action="?m='.$monat_now_z.'#row'.$row['eid'].'" method="POST" >';
                                                          echo '<td width="50px">'.$wochentag.", ".$date_format.'</td>';
                                                          echo '<td width="20px"><input type="text" value="'.$beginn_format.'" class="form-control" placeholder="Arbeitsbeginn Bsp.: 06:30" name="arbeitsbeginn" id="arbeitsbeginn"></td>';
                                                          echo '<td width="20px"><input type="text" value="'.$ende_format.'" class="form-control" placeholder="Arbeitsende Bsp.: 16:30" name="arbeitsende" id="arbeitsende"></td>';
@@ -159,14 +159,14 @@ if(!isset($_GET['m'])){
                                                          }else{
                                                          // Wenn nicht Bearbeiten geklickt oder Speichern geklickt, nur Tabelle
                                                          // ohne Textfelder anzeigen
-                                                         echo '<tr>';
+                                                         echo '<tr id="row'.$row['eid'].'">';
                                                          echo '<td width="50px">'.$wochentag.", ".$date_format.'</td>';
                                                          echo '<td width="50px">'.$beginn_format.'</td>';
                                                          echo '<td width="50px">'.$ende_format.'</td>';
                                                          echo '<td width="50px">'.$row['bemerkung'].'</td>';
                                                          echo '<td width="50px">'.$row['bezeichnung'].'</td>';
                                                          echo '<td width="50px">'.($minuten_ist-$minuten_soll).'</td>';
-                                                         echo '<form class="navbar-form navbar-left" role="search" action="" method="POST" >    ';
+                                                         echo '<form class="navbar-form navbar-left" role="search" action="#row'.$row['eid'].'" method="POST" >';    ';
                                                          echo '<input type="hidden" name="eid" value="'.$row['eid'].'">';
                                                          echo '<td width="20px"><button type="submit" name="edit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Bearbeiten</button></td></form>';
                                                          echo '</tr>';

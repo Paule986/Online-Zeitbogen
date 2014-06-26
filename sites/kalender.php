@@ -43,11 +43,14 @@ for($tage=1;$tage<=$month_num;$tage++){
          // Wenn kein Datensatz fÃ¼r den aktuellen Tag --> Markierung fÃ¼r JS erzeugen
          if($anzahl_notes<1){
 
-                         $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'kein Eintrag', 'badgeClass': 'badge-warning', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
+                         //$notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'kein Eintrag', 'badgeClass': 'badge-warning', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
          }else{
 
                 while($myrow = mysqli_fetch_array($result)) {
                          // Wenn Eintrag vorhanden und AID = 3 - KRANK - dann Markierung erzeugen
+                         if($myrow['aid']=="88"){
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'nicht erfasst', 'class': 'fehlt', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                         }
                          if($myrow['aid']=="99"){
                                  $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'erfasst', 'class': 'normal', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }

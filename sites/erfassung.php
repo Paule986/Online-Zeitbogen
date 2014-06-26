@@ -142,7 +142,7 @@ $notiz = "";
                  }else{
                          echo"<h3>Heute erfassen</h2>";
                  } ?>
-         <div style="width:30%;float:left;">
+         <div style="width:25%;float:left;">
          <form class="navbar-form navbar-left" role="search" action="" method="POST" >
          <div class="form-group">
          <div class="input-group">
@@ -174,7 +174,7 @@ $notiz = "";
          </div>
 
 
-<div style="width:30%;float:right;">
+<div style="width:45%;float:right;">
      <script>
 $( document ).ready( function() {
   $(".responsive-calendar").responsiveCalendar({

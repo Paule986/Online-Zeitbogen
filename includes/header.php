@@ -20,6 +20,7 @@ require('../includes/mysql.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title><?php if(isset($seitentitel)){echo $seitentitel;} ?> - Online-Gleitzeitbogen</title>
+    <script type="text/javascript" src="../includes/js/application.js"></script>
     <!-- Zusaetzliche Scripte - individuell geladen -->
     <?php if(isset($zusatzinclude)){ echo $zusatzinclude; }?>
     <!-- Bootstrap-CSS -->
@@ -29,7 +30,6 @@ require('../includes/mysql.php');
     <!-- Scripte - weiß nicht ob das gebraucht wird -->
     <script type="text/javascript" src="../includes/js/bootstrap.js"></script>
     <!-- JS für Logout-Button -->
-    <script type="text/javascript" src="../includes/js/application.js"></script>
   </head>
   <body>
   

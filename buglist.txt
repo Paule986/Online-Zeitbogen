@@ -32,5 +32,8 @@
  
  
  
- 
- Bei neuen Fehlern oder Wünschen bitte strukturiert in diese Datei einfügen.
+!!!!!!!!!!!!!! 
+Bei neuen Fehlern oder Wünschen bitte strukturiert in diese Datei einfügen.
+[NEU]--> wenn ein vermeindlicher Fehler gefunden wurde
+[Feature]--> bei neuen Wünschen, Anpassungen
+[Bug]--> Wenn Programmierer entschieden hat, dass es ein Fehler ist

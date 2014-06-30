@@ -273,7 +273,7 @@ else {
     
 <div class="checkbox"> 
  <label for="checkbox">Admin</label>   
-    <input name="rechte" type="checkbox" <?php if($rechte==1){echo 'value="1" checked';}else echo 'value="0"'; ?>" >
+    <input name="rechte" type="checkbox" <?php if($rechte==1){echo 'value="1" checked';}else echo 'value="0"'; ?> >
 
 </div> 
   

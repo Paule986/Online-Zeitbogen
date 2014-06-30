@@ -44,7 +44,7 @@ for($tage=1;$tage<=$month_num;$tage++){
          // Wenn kein Datensatz fÃƒÂ¼r den aktuellen Tag --> Markierung fÃƒÂ¼r JS erzeugen
          if($anzahl_notes<1){
 
-                         //$notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'kein Eintrag', 'badgeClass': 'badge-warning', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
+                         $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'we', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
          }else{
 
                 while($myrow = mysqli_fetch_array($result)) {
@@ -209,7 +209,7 @@ $( document ).ready( function() {
   </div>
 </div>
 <!-- Responsive calendar - END -->
-<span><a style="color:#FE2E2E";>nicht erfasst </a><a style="color:#B1B3EE";>erfasst </a><a style="color:#5CB85C";>Urlaub </a><a style="color:#EB9F9B";>Krank </a><a style="color:#E8B0EE";>Gleittag</a></span>
+<span><a style="color:#FE2E2E";>nicht erfasst </a><a style="color:#B1B3EE";>erfasst </a><a style="color:#5CB85C";>Urlaub </a><a style="color:#EB9F9B";>Krank </a><a style="color:#E8B0EE";>Gleittag</a><a style="color:#FF9900";>Wochenende</a></span>
 </div>
 <div style="clear:left;"></div>
 <?php

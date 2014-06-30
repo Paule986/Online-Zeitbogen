@@ -118,7 +118,7 @@ $notiz = "";
                  }
                  $link->query($sqledit);
                  // Erfolgreich-Meldung erstellen
-                 $notiz = "<div class='alert alert-success'>Bearbeitung erfolgreich.</div>";
+                 $notiz .= "<div class='alert alert-success'>Bearbeitung erfolgreich.</div>";
         }
   }
 
@@ -134,6 +134,13 @@ $notiz = "";
           $feld_aid = $row['aid'];
           $feld_datum = $row['datum'];
           $feld_eid = $row['eid'];
+          if($row['aid']=="3"){
+           $notiz .= "<div class='alert alert-warning'>Bei einem 'Krank-Tag' wird die Arbeitszeit nicht beachtet.</div>";
+          }
+          if($row['aid']=="2"){
+           $notiz .= "<div class='alert alert-warning'>Bei einem Urlaubstag wird die Arbeitszeit nicht beachtet.</div>";
+          }
+        
         }
   }else if($doo=="neu"){
         if(isset($_GET['datum'])){

@@ -223,7 +223,7 @@ else {
 	echo "<select name='bid' class='form-control'>"; 
 	while($row = mysqli_fetch_array($resultbh)) {
 		
-		$behoerdenname[$row['bid']] = $row['name']; 
+		$behoerdenname[$row['bid']] = $row['art']." / ".$row['name']; 
 		
 		if ($row['bid']==$bid){
 			$selected="SELECTED";
@@ -253,7 +253,7 @@ else {
 	echo "<select name='sid' class='form-control'>"; 
 	while($row = mysqli_fetch_array($resultbh)) {
 		
-		$status[$row['sid]'] = $row['bezeichnung']; 
+		$status[$row['sid']] = $row['bezeichnung']; 
 		
 		if ($row['sid']==$sid){
 			$selected2="SELECTED";

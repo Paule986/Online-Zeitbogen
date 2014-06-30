@@ -94,7 +94,7 @@ $navsite =5 ;
 		 stez='".$_POST['stez']."', 
 		 sollstd='".$_POST['sollstd']."',
 		 rechte='".$_POST['rechte']."',
-		 bid='".$_POST['bid']."'
+		 bid='".$_POST['bid']."',
 		 sid='".$_POST['sid']."'
 		 WHERE maid=".$_GET['maid1'];
 		 
@@ -223,7 +223,7 @@ else {
 	echo "<select name='bid' class='form-control'>"; 
 	while($row = mysqli_fetch_array($resultbh)) {
 		
-		$behoerdenname[$row[bid]] = $row[name]; 
+		$behoerdenname[$row['bid']] = $row['name']; 
 		
 		if ($row['bid']==$bid){
 			$selected="SELECTED";
@@ -233,7 +233,7 @@ else {
 
 			}
 			
-        echo "<option ".$selected." value=".$row[bid].">".$behoerdenname[$row[bid]]."</option>";
+        echo "<option ".$selected." value=".$row['bid'].">".$behoerdenname[$row['bid']]."</option>";
 	 }
  	 echo "</select>";
 ?> 
@@ -253,17 +253,17 @@ else {
 	echo "<select name='sid' class='form-control'>"; 
 	while($row = mysqli_fetch_array($resultbh)) {
 		
-		$status[$row[sid]] = $row[bezeichnung]; 
+		$status[$row['sid]'] = $row['bezeichnung']; 
 		
 		if ($row['sid']==$sid){
-			$selected="SELECTED";
+			$selected2="SELECTED";
 			}
 		else{
-			$selected="";
+			$selected2="";
 
 			}
 			
-        echo "<option ".$selected." value=".$row[sid].">".$status[$row[sid]]."</option>";
+        echo "<option ".$selected2." value=".$row['sid'].">".$status[$row['sid']]."</option>";
 	 }
  	 echo "</select>";
 ?>  
@@ -273,7 +273,7 @@ else {
     
 <div class="checkbox"> 
  <label for="checkbox">Admin</label>   
-    <input name="rechte" type="checkbox" value="<?php if($rechte==1){echo $rechte;}else echo "1"; ?>" >
+    <input name="rechte" type="checkbox" <?php if($rechte==1){echo 'value="1" checked';}else echo 'value="0"'; ?>" >
 
 </div> 
   

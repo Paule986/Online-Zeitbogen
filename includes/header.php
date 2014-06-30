@@ -10,10 +10,14 @@ require('../includes/mysql.php');
   if(!isset($_SESSION['maid'])&&($checkindex!="index.php")){
       echo'<meta http-equiv="refresh" content="0; url=index.php">';
   }
+ if(isset($_GET['do'])){ $do = $_GET['do'];}else{$do = "";}
+   if($do == "logout"){
+      $_SESSION['vname'] = "";
+      $_SESSION['nname'] = "";
+   }
+
 ?>
-<?php
-  $maid = $_SESSION['maid'];
-?>  
+ 
 <!DOCTYPE html>
 <html>
   <head>
@@ -66,11 +70,9 @@ require('../includes/mysql.php');
 						    <div class="popover-container zentral-login">
                                                 <a title="" class="login-btn popover-link" id="zentral-popover-link" href="#" data-original-title="Jetzt einloggen">
                                                 <?php
-									$result2 = $link->query("SELECT vname, nname FROM mitarbeiter WHERE mitarbeiter.maid = '".$maid."' ");
-									while($row2 = mysqli_fetch_object($result2))
-									{
-										echo $row2->vname."&nbsp;".$row2->nname;
-									}
+									if(isset($_SESSION['vname'])){
+                                                                        echo $_SESSION['vname']."&nbsp;".$_SESSION['nname'];
+                                                                        }
 								?>
                                                 </a>
                                             </div>
@@ -80,11 +82,9 @@ require('../includes/mysql.php');
                                                         <p class="text-center">
                                                             <strong>Sie sind angemeldet als <span class="username">
                                                             <?php
-									$result2 = $link->query("SELECT vname, nname FROM mitarbeiter WHERE mitarbeiter.maid = '".$maid."' ");
-									while($row2 = mysqli_fetch_object($result2))
-									{
-										echo $row2->vname."&nbsp;".$row2->nname;
-									}
+									if(isset($_SESSION['vname'])){
+                                                                        echo $_SESSION['vname']."&nbsp;".$_SESSION['nname'];
+                                                                        }
 								?>
                                                             </span></strong>
                                                         </p>

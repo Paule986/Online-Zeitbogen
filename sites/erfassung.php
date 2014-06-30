@@ -3,7 +3,7 @@
 $seitentitel = "Erfassung";
 // Navigation active setzen
 $navsite =2 ;
-// zusÃƒÂ¤tzliche Dateien includieren
+// zusÃƒÆ’Ã‚Â¤tzliche Dateien includieren
 $zusatzinclude = "
 <script type='text/javascript' src='../includes/js/jquery.js'></script>
 <script type='text/javascript' src='../includes/js/responsive-calendar.js'></script>
@@ -13,7 +13,7 @@ $zusatzinclude = "
 require('../includes/header.php'); // header includieren
 require('../includes/mysql.php');  // Mysql Connect Datei einbinden
 $maid = $_SESSION['maid'];         // MAID einlesen
-$timestamp = time();               // Timestamp fÃ¼r Datumsoperationen erstellen
+$timestamp = time();               // Timestamp fÃƒÂ¼r Datumsoperationen erstellen
 
 if(isset($_GET['m'])){
          $datum_monat_cal = $_GET['m'];
@@ -31,7 +31,7 @@ $datum_mon_cal = date("n",$timestamp);
 $datum_year_cal = date("Y",$timestamp);
 // Anzahl von Tagen im Monat berechnen
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
-// String fÃƒÂ¼r Kalender Events erzeugen
+// String fÃƒÆ’Ã‚Â¼r Kalender Events erzeugen
 $notes="";
 // Alle Tage des Monats aufrufen, um abzufragen, ob Eintrag vorhanden
 for($tage=1;$tage<=$month_num;$tage++){
@@ -39,9 +39,9 @@ for($tage=1;$tage<=$month_num;$tage++){
          // Aus Schleifen-Wert Datumsformat erstellen
          $select_datum = "'".$datum_year_cal."-".$datum_monat_cal."-".$tag."'";
          $result = mysqli_query($link, "SELECT eid,aid FROM erfassung WHERE maid = ".$maid." AND datum = ".$select_datum.";");
-         // Anzahl an DatensÃƒÂ¤tzen erfragen
+         // Anzahl an DatensÃƒÆ’Ã‚Â¤tzen erfragen
            $anzahl_notes = mysqli_num_rows($result);
-         // Wenn kein Datensatz fÃƒÂ¼r den aktuellen Tag --> Markierung fÃƒÂ¼r JS erzeugen
+         // Wenn kein Datensatz fÃƒÆ’Ã‚Â¼r den aktuellen Tag --> Markierung fÃƒÆ’Ã‚Â¼r JS erzeugen
          if($anzahl_notes<1){
 
                          $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'we', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
@@ -78,11 +78,11 @@ $notes = substr($notes, 0, -2);
 // "Speichern erfolgreich"-Meldung Variabe definieren
 $notiz = "";
          // Abfragen, ob von Kalender kommend
-         // und ob Eintrag geÃƒÂ¤ndert oder neu erstellt werden soll
+         // und ob Eintrag geÃƒÆ’Ã‚Â¤ndert oder neu erstellt werden soll
         if(isset($_GET['do'])){
                  $doo = $_GET['do'];
          }else{
-                 $doo = "neu";
+                 $doo = "";
          }
          if(isset($_GET['eid'])){
                  $eid = $_GET['eid'];
@@ -105,9 +105,10 @@ $notiz = "";
                  $link->query($sqladd);
                  // Erfolgreich-Meldung erstellen
                  $notiz = "<div class='alert alert-success'>Erfassung erfolgreich.</div>";
-        }else if($doo=="edit"){
-                 // Wenn Eintrag bereits vorhanden, diesen in DB abÃƒÂ¤ndern
-                 $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid.";";
+        //}else if($doo=="edit"){
+          }else{
+                 // Wenn Eintrag bereits vorhanden, diesen in DB abÃƒÆ’Ã‚Â¤ndern
+                 $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$_POST['eid'].";";
                  $link->query($sqledit);
                  // Erfolgreich-Meldung erstellen
                  $notiz = "<div class='alert alert-success'>Bearbeitung erfolgreich.</div>";
@@ -132,6 +133,19 @@ $notiz = "";
         }else{
                  $feld_datum = date("Y-m-d",$timestamp);
         }
+  }else{
+           $sqlheute = "SELECT * FROM erfassung WHERE maid= '".$_SESSION['maid']."' AND datum = '".$datum_now_cal."'";
+           $result_edit = $link->query($sqlheute);
+        // Datensatz in Var $row speichern
+
+        while($row = mysqli_fetch_array($result_edit)){
+          $feld_beginn = substr($row['beginn'],0,-3);
+          $feld_ende =  substr($row['ende'],0,-3);
+          $feld_bemerkung = $row['bemerkung'];
+          $feld_aid = $row['aid'];
+          $feld_datum = $row['datum'];
+          $feld_eid = $row['eid'];
+         }
   }
 
 
@@ -150,6 +164,7 @@ $notiz = "";
          <input type="text" value="<?php if(isset($feld_ende))echo $feld_ende; ?>" class="form-control" placeholder="Arbeitsende Bsp.: 16:30" name="arbeitsende" id="arbeitsende">
          <input type="text" value="<?php if(isset($feld_bemerkung))echo $feld_bemerkung; ?>" class="form-control" placeholder="Bemerkung Bsp.: Homeoffice" name="bemerkung" id="bemerkung">
          <input type="hidden"  name="datum" id="datum" value="<?php if(isset($feld_datum))echo $feld_datum; ?>">
+         <input type="hidden"  name="eid" id="eid" value="<?php if(isset($feld_eid))echo $feld_eid; ?>">
          <select name="arbeitsfrei" id="arbeitsfrei" class="form-control btn-success">
                  <?php
                          $result_liste = $link->query("SELECT * FROM arbeitsfrei ORDER BY aid DESC;");
@@ -182,7 +197,7 @@ $( document ).ready( function() {
     time: '<?php echo $datum_now_cal; ?>',
     startFromSunday: true,
     events: {
-      <?php  echo $notes; // Events aus Kalenderstring einfÃƒÂ¼gen?>
+      <?php  echo $notes; // Events aus Kalenderstring einfÃƒÆ’Ã‚Â¼gen?>
       }
   });
 });
@@ -210,7 +225,7 @@ $( document ).ready( function() {
 </div>
 <!-- Responsive calendar - END -->
 <span><a style="color:#FE2E2E";>nicht erfasst </a><a style="color:#B1B3EE";>erfasst </a><a style="color:#5CB85C";>Urlaub </a><a style="color:#EB9F9B";>Krank </a><a style="color:#E8B0EE";>Gleittag </a><a style="color:#FF9900";>Wochenende</a></span>
-</div> 
+</div>
 <div style="clear:left;"></div>
 <?php
 

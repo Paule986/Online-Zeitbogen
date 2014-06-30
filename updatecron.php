@@ -3,6 +3,7 @@
 ////// Achtung diese Datei trÃ¤gt ohne RÃ¼ckfrage neue DatensÃ¤tze in die DB /////////
 ///////////////////////////////////////////////////////////////////////////////////
 
+die('Datei wird nicht mehr ausgeführt, da nicht mehr notwendig');
 // mysql connect includen
 require('includes/mysql.php');
 $timestamp = time();

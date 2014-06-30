@@ -27,7 +27,7 @@
 -->[Feature] wird demnächst programmiert
 ########################################################################
 - Automatische Anpassung der Stunden, bei Urlaub oder Krank.
--->[Feature] bisher mit updatecron.php gelöst --> wird ggf. bald angepasst
+-->[Feature] bisher mit updatecron.php gelöst --> jetzt nicht mehr notwendig. Wird nun direkt nach der Eingabe angepasst.
 ########################################################################
  
  

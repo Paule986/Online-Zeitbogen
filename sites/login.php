@@ -10,7 +10,7 @@ $usern = $_POST["usern"]; //Variable für username deklarieren und initialisiere
 $passwort = md5($_POST["passwort"]); //Variable für passwort deklarieren initialisieren
 
 
-$result = $link->query("SELECT maid, usern, passwort, rechte, vname, nname FROM mitarbeiter WHERE usern = '$usern' AND passwort = '$passwort' LIMIT 1"); //Werte aus DB holen
+$result = $link->query("SELECT maid, usern, passwort, rechte, vname, nname, sollstd FROM mitarbeiter WHERE usern = '$usern' AND passwort = '$passwort' LIMIT 1"); //Werte aus DB holen
  if($result->num_rows==1){ //Prüfung ob Login korrekt
 // Datensätze in Array $row speichern
     while($row = mysqli_fetch_array($result)){
@@ -19,6 +19,7 @@ $result = $link->query("SELECT maid, usern, passwort, rechte, vname, nname FROM 
     $_SESSION["admin"] = $row['rechte'];
     $_SESSION["vname"] = $row['vname'];
     $_SESSION["nname"] = $row['nname'];
+    $_SESSION["sollstd"] = $row['sollstd'];
     }
     echo "<div align='center'><h2>Login erfolgreich. <br> Sie werden automatisch weitergeleitet</h2></div>"; //Erfolgsmeldung
     echo '<meta http-equiv="refresh" content="0; url=dashboard.php">'; //Weiterleitung zum Dashboard

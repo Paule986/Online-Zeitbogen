@@ -1,0 +1,36 @@
+##############  Liste bekannter Bugs, Feature Wünsche & zukünftige Changes ################
+###########################################################################################
+
+- Überminuten und Minusminuten werden nicht ausgegeben
+-->[Feature] Gern kann ich auch Minuten statt Std anzeigen lassen
+########################################################################
+- Wochenenden werden mit pro Tag -480 Minuten berechnet (man will ja auch ein bisschen frei haben ;-))
+--> [Bug] behoben
+########################################################################
+- Sollte eigentlich eine Sonntagseintragung prinzipiell möglich sein?
+-->[Feature] Hatten wir bisher nicht verneint, darum geht es. Sollte es Gegenstimmen geben, bitte einigen und Hinweis geben.
+########################################################################
+- der Status ist ohne Auswahlmöglichkeit eventuell etwas unglücklich an dieser Stelle, denn darunter   
+   erscheint gleich die Behörde
+--> [Bug] Fehler bekannt, sollte von Emanuel behoben werden
+########################################################################
+- die Meldung, dass der Nutzer angelegt ist, könnte nach oben
+[Designwunsch] Bitte einigen.
+########################################################################
+- Sollarbeitsstunden wurden eingetragen, erscheinen auch in der DB, aber nicht in der Webapplikation
+-->[Bug] liegt an dem Fehler, dass man keinen Status bei der Erfassung angeben kann. Wenn du in der DB per Hand einen Status eingibst (z.B. 2), funktioniert alles und die Stammdaten (welche auch fehlen) sowie die Sollstd werden angezeigt.
+########################################################################
+- Nachträgliche Erfassung über Eingabe und Kalender ist möglich, wird aber erst im Kalender als  erfasst angezeigt, wenn in der Liste unter arbeitsfrei  „nein“ gesetzt wurde. Könnte für Nutzer verwirrent sein, wenn die Bearbeitung als erfolgreich gemeldet wurde, aber der Kalender nicht aktualisiert.
+-->[Feature] gern kümmere ich mich darum, dass der Kalender bereits direkt nach dem Speichern der Änderung neu geladen wird
+########################################################################
+- Ausführen der cronjob.php direkt nach MA anlegen, für den einzelnen MA
+-->[Feature] wird demnächst programmiert
+########################################################################
+- Automatische Anpassung der Stunden, bei Urlaub oder Krank.
+-->[Feature] bisher mit updatecron.php gelöst --> wird ggf. bald angepasst
+########################################################################
+ 
+ 
+ 
+ 
+ Bei neuen Fehlern oder Wünschen bitte strukturiert in diese Datei einfügen.

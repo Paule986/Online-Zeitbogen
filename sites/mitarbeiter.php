@@ -36,7 +36,9 @@ $navsite =5 ;
 	 $usern="";
 	 $rechte="";
 	 $bid="";
+	 $sid="";
 	 $behoerdenname="";
+	 $status="";
  
 
 
@@ -57,6 +59,7 @@ $navsite =5 ;
 		$sollstd=$row1['sollstd'];
 		$rechte=$row1['rechte'];
 		$bid=$row1['bid'];
+		$sid=$row1['sid'];
 		 }
 		 }
 		 }
@@ -92,10 +95,13 @@ $navsite =5 ;
 		 sollstd='".$_POST['sollstd']."',
 		 rechte='".$_POST['rechte']."',
 		 bid='".$_POST['bid']."'
+		 sid='".$_POST['sid']."'
 		 WHERE maid=".$_GET['maid1'];
 		 
 		 mysqli_query($link, $sqlupdate);
 		 
+		
+	
 	
 		 //Fehlerabfang
 		 
@@ -103,7 +109,9 @@ $navsite =5 ;
 			 
     printf("Errormessage: %s\n", mysqli_error($link));
 	}
-	}     
+	
+	}  
+	  
 	//doppelte Usernames Abfangen
 	                                                                                 
 		else{
@@ -123,7 +131,8 @@ $navsite =5 ;
 		usern,
 		passwort,
 		rechte, 
-		bid
+		bid,
+		sid
 		) 
 	    
 		VALUES (
@@ -134,7 +143,8 @@ $navsite =5 ;
 		'".$_POST['usern']."', 
 	    '".md5($_POST['passwort'])."',
 		'".$_POST['rechte']."',
-	    '".$_POST['bid']."');"; 
+		'".$_POST['bid']."',
+	    '".$_POST['sid']."');"; 
 
      mysqli_query($link, $sqlinsert);
 	 
@@ -176,6 +186,7 @@ $navsite =5 ;
     
 <?php 
 
+
 // Edit des Usernamen / Parrwort verhindern
 
 if ($do != "edit"){
@@ -193,18 +204,12 @@ else {
 	}
 ?>
 
-  <!-- Adminauswahl  -->
-    
-<div class="checkbox"> 
- <label for="checkbox">Admin</label>   
-    <input name="rechte" type="checkbox" value="<?php if($rechte==1){echo $rechte;}else echo "1"; ?>" >
 
-</div>
 
  <!-- Behördenfeld erstellen und mit daten füllen  -->    
   
 <div class="form-group">
-    <label for="status">Status</label>
+    <label for="status">Behörde</label>
     
     
 <?php
@@ -233,6 +238,45 @@ else {
  	 echo "</select>";
 ?> 
   
+ <div class="form-group">
+    <label for="status">Status</label>
+    
+    
+<?php
+
+
+ $sqlbh = "SELECT * FROM status";
+ $resultbh = mysqli_query($link, $sqlbh);
+ 
+ //Aufbau der Checkbox
+ 
+	echo "<select name='sid' class='form-control'>"; 
+	while($row = mysqli_fetch_array($resultbh)) {
+		
+		$status[$row[sid]] = $row[bezeichnung]; 
+		
+		if ($row['sid']==$sid){
+			$selected="SELECTED";
+			}
+		else{
+			$selected="";
+
+			}
+			
+        echo "<option ".$selected." value=".$row[sid].">".$status[$row[sid]]."</option>";
+	 }
+ 	 echo "</select>";
+?>  
+ 
+ 
+   <!-- Adminauswahl  -->
+    
+<div class="checkbox"> 
+ <label for="checkbox">Admin</label>   
+    <input name="rechte" type="checkbox" value="<?php if($rechte==1){echo $rechte;}else echo "1"; ?>" >
+
+</div> 
+  
   <!-- Speichern und Neu Button  --> 
 <br>
 <button class="btn btn-default" name="submit" id="submit" type="submit" >Speichern</button>
@@ -240,7 +284,7 @@ else {
 
 </div>  
 </form>
-<form action="index3.php">
+<form action="mitarbeiter.php">
 
 <button class="btn btn-default" name="neu" id="neu" type="submit" >Neu</button>
 
@@ -259,6 +303,7 @@ else {
   
  <?php
 	echo $notiz;
+	
 
  
  //Delete Funktion
@@ -283,7 +328,7 @@ else {
 
 
  }
- 
+
 // Write Query
 
 	echo"<a id='showbutton' href='javascript:toggle();'>Liste anzeigen</a>";

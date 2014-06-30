@@ -107,8 +107,15 @@ $notiz = "";
                  $notiz = "<div class='alert alert-success'>Erfassung erfolgreich.</div>";
         //}else if($doo=="edit"){
           }else{
+                 if(($_POST['arbeitsfrei']=="2")||($_POST['arbeitsfrei']=="3")){
+                         $sollstunden = $_SESSION['sollstd'];
+                         $aende = 7 + $sollstunden/5;
+                         $sqledit = "UPDATE erfassung set beginn = '07:00:00', ende = '".$aende.":00:00', aid = '".$aid_neu."'  WHERE eid = ".$_POST['eid'].";";
+
+                 }else{
                  // Wenn Eintrag bereits vorhanden, diesen in DB abÃƒÆ’Ã‚Â¤ndern
                  $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$_POST['eid'].";";
+                 }
                  $link->query($sqledit);
                  // Erfolgreich-Meldung erstellen
                  $notiz = "<div class='alert alert-success'>Bearbeitung erfolgreich.</div>";
@@ -126,6 +133,7 @@ $notiz = "";
           $feld_bemerkung = $row['bemerkung'];
           $feld_aid = $row['aid'];
           $feld_datum = $row['datum'];
+          $feld_eid = $row['eid'];
         }
   }else if($doo=="neu"){
         if(isset($_GET['datum'])){
@@ -135,6 +143,7 @@ $notiz = "";
         }
   }else{
            $sqlheute = "SELECT * FROM erfassung WHERE maid= '".$_SESSION['maid']."' AND datum = '".$datum_now_cal."'";
+
            $result_edit = $link->query($sqlheute);
         // Datensatz in Var $row speichern
 

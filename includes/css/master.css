@@ -2810,6 +2810,10 @@ body .mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded{background
   color: #090D1A;
 }
 
+.day.we {
+  background-color: #FF9900;
+  color: #090D1A;
+}
 /*klasse für ausblenden der Mitarbeiterliste
 
 -----------------------------------------------------*/

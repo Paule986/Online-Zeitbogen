@@ -5,7 +5,7 @@
 -->[Feature] Gern kann ich auch Minuten statt Std anzeigen lassen
 ########################################################################
 - Wochenenden werden mit pro Tag -480 Minuten berechnet (man will ja auch ein bisschen frei haben ;-))
---> [Bug] behoben
+--> [Bug] behoben (cronjob.php angepasst --> DB Erfassungen leeren und cronjob neu ausführen)
 ########################################################################
 - Sollte eigentlich eine Sonntagseintragung prinzipiell möglich sein?
 -->[Feature] Hatten wir bisher nicht verneint, darum geht es. Sollte es Gegenstimmen geben, bitte einigen und Hinweis geben.

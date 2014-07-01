@@ -29,7 +29,8 @@
 - Automatische Anpassung der Stunden, bei Urlaub oder Krank.
 -->[Feature] bisher mit updatecron.php gelöst --> jetzt nicht mehr notwendig. Wird nun direkt nach der Eingabe angepasst.
 ########################################################################
- 
+- Auf dem Dashboard ist der Link zur Druckversion nicht richtig positioniert
+######################################################################## 
  
  
 !!!!!!!!!!!!!! 

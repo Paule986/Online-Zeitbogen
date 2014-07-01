@@ -198,8 +198,8 @@ echo"<div class='form-group'>
 }
 else {
 	echo 
-	"<form><div class='form-group'>
-    <label for='passwort'>Passwort</label><input class='form-control' required='' name='passwort' id='passwort' type='password' value='".$passwort."'/><button class='btn btn-default' name='savepwd' id='savepwd' type='submit' >Ändern</button></div></form>";
+	"<form action='mitarbeiter.php'><div class='form-group'>
+    <label for='passwort'>Passwort</label><input class='form-control' name='passwort' id='passwort' type='password' value='".$passwort."'/><button class='btn btn-default' name='savepwd' id='savepwd' type='submit' >Ändern</button></div>";
 	
 	}
 ?>
@@ -273,7 +273,7 @@ else {
     
 <div class="checkbox"> 
  <label for="checkbox">Admin</label>   
-    <input name="rechte" type="checkbox" <?php if($rechte==1){echo 'value="1" checked';}else echo 'value="0"'; ?> >
+    <input name="rechte" type="checkbox" value="1" <?php if($rechte==1){echo ' checked';} ?> >
 
 </div> 
   
@@ -283,6 +283,7 @@ else {
 
 
 </div>  
+
 </form>
 <form action="mitarbeiter.php">
 

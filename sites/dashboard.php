@@ -42,7 +42,7 @@ $monat_now_t = $monate[date("n",$timestamp)];
                                                  echo "<a>".$row_ma['bezeichnung']."</a>";
                                                  $soll_std = $row_ma['sollstd'];
                                                  echo "<h2>Rahmenzeit</h2>";
-                                                 echo "<a>Von ".substr($row_ma['rahmenzeit_beginn'],0,-3)." bis ".substr($row_ma['rahmenzeit_ende'],0,-3);
+                                                 echo "<a>Von ".substr($row_ma['rahmenzeit_beginn'],0,-3)." bis ".substr($row_ma['rahmenzeit_ende'],0,-3)."</a>";
                                         }
 
 

@@ -3,9 +3,11 @@
 <!-- Header, Footer und Menu müssen im selben Verzeichnis wie template.php liegen -->
 
 <!-- Beginn: Inkludieren von Header und Menue -->
-	<?php 
-		$seitentitel = "Seitentitel";
-		require ('../includes/header.php');
+	<?php 		
+		$seitentitel = "Template";
+		// Navigation active setzen
+		$navsite =1 ;
+		require('../includes/header.php');
 		require('../includes/mysql.php');
 	?>
 <!-- Ende: Inkludieren von Header und Menue -->

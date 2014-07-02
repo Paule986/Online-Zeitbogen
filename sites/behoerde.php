@@ -58,8 +58,6 @@ require('../includes/mysql.php');
 		?>
 		 </table>
 	</div> 
-  </body>
-</html>
 <?php
 	require('../includes/footer.php');
 ?>

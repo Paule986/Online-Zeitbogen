@@ -79,10 +79,10 @@ $monat_now_t = $monate[date("n",$timestamp)];
 
 
 echo "<table><tr><td>Geleistete Arbeitsstunden</td><td>".(round($saldo/60,1))." (".(round($saldo,0))." Min)</td></tr><tr><td>Soll-Arbeitsstunden</td><td>".($soll_std*4)." (".($soll_std*4*60)." Min)</td></tr><tr><td>Zeit-Saldo</td><td>".(round($saldo/60-($soll_std*4),1))." (".(round(($saldo-($soll_std*4*60)),0))." Min)</td></tr><tr><td>Urlaubstage</td><td>".$urlaub_max."</td></tr><tr><td>erfasste Urlaubstage</td><td>".$urlaub_ist."</td></tr><tr><td>Krank-Tage</td><td>".$krank."</td></tr></table>";
-
-
-
-
-require('../includes/footer.php');
                                 ?>
                                 </div>
+<!-- Beginn: Inkludieren von Footer -->
+<?php 
+require('../includes/footer.php'); 
+?>
+<!-- Ende: Inkludieren von Footer -->

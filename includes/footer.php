@@ -1,4 +1,3 @@
-	<!-- Beginn: Footer -->
           <div class="row">
             <div class="span12">
               <div class="html5-footer content-footer" role="contentinfo">
@@ -16,7 +15,6 @@
               </div>
 	    </div>
           </div>
-         <!-- Ende: Footer -->
         </div>
       </div>
   </body>

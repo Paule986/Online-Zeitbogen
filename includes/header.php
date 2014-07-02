@@ -1,21 +1,21 @@
 <?php
-session_start();
-// Datenbank-Connect für personifizierten Logout
-require('../includes/mysql.php');
-// Provisorische maid
-// $_SESSION['maid'] = "112";
-  // akteulle Seite aus URL laden
-  $checkindex = substr($_SERVER['PHP_SELF'],-9);
-  // Um Endlosschleife bei Weiterleitung zu verhindern, nur weiterleiten, wenn nicht bereits auf index.php
-  if(!isset($_SESSION['maid'])&&($checkindex!="index.php")){
-      echo'<meta http-equiv="refresh" content="0; url=index.php">';
-  }
- if(isset($_GET['do'])){ $do = $_GET['do'];}else{$do = "";}
-   if($do == "logout"){
-      $_SESSION['vname'] = "";
-      $_SESSION['nname'] = "";
-   }
+	session_start();
 
+	// Datenbank-Connect für personifizierten Logout
+	require('../includes/mysql.php');
+
+	// akteulle Seite aus URL laden
+	$checkindex = substr($_SERVER['PHP_SELF'],-9);
+	
+	// Um Endlosschleife bei Weiterleitung zu verhindern, nur weiterleiten, wenn nicht bereits auf index.php
+	if(!isset($_SESSION['maid'])&&($checkindex!="index.php")){
+		echo'<meta http-equiv="refresh" content="0; url=index.php">';
+	}
+	if(isset($_GET['do'])){ $do = $_GET['do'];}else{$do = "";}
+	if($do == "logout"){
+		$_SESSION['vname'] = "";
+		$_SESSION['nname'] = "";
+	}
 ?>
  
 <!DOCTYPE html>
@@ -24,19 +24,23 @@ require('../includes/mysql.php');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title><?php if(isset($seitentitel)){echo $seitentitel;} ?> - Online-Gleitzeitbogen</title>
+    
+    <!-- JS für Logout-Button -->
     <script type="text/javascript" src="../includes/js/application.js"></script>
+    
     <!-- Zusaetzliche Scripte - individuell geladen -->
     <?php if(isset($zusatzinclude)){ echo $zusatzinclude; }?>
-    <!-- Bootstrap-CSS -->
+    
+    <!-- CSS-Vorlagen -->
     <link href="../includes/css/bootstrap.css" rel="stylesheet">
     <link href="../includes/css/master.css" rel="stylesheet">
     <link href="../includes/css/signin.css" rel="stylesheet">
-    <!-- Scripte - weiß nicht ob das gebraucht wird -->
+    
+    <!-- Scripte - Bootstrap -->
     <script type="text/javascript" src="../includes/js/bootstrap.js"></script>
-    <!-- JS für Logout-Button -->
+    
   </head>
-  <body>
-  
+  <body>  
     <!-- Beginn: Header -->
       <div class="container-wrapper container-portal-header">
         <div class="container">
@@ -51,8 +55,7 @@ require('../includes/mysql.php');
           </div>
         </div>
       </div>     
-    <!-- Ende: Header -->
-    
+    <!-- Ende: Header -->   
       <div class="container-wrapper container-content">
 		<div class="container">
 		 <!-- Beginn: Institution -->
@@ -98,7 +101,8 @@ require('../includes/mysql.php');
 				</div>
 			</div>
 		 <!-- Ende: Institution -->
-		 
+<!-- Beginn: Inkludieren von Menu -->
 		<?php
 		require('../includes/menue.php');
 		?>
+<!-- Ende: Inkludieren von Menu -->

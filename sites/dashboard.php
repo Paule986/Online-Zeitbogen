@@ -77,7 +77,7 @@ $monat_now_t = $monate[date("n",$timestamp)];
                                          $result_urlaub = $link->query("SELECT eid FROM erfassung WHERE maid = '".$maid."' AND aid ='2' AND datum LIKE '".$datum_interval_anfang."%' ");
                                          $urlaub_ist = $result_urlaub->num_rows;
                                          $result_urlaub_max = $link->query("SELECT tage from urlaub WHERE maid='".$maid."'");
-                                         $urlaub_tage = mysqli_query($link, $result_urlaub_max);
+                                         $urlaub_tage = $result_urlaub_max->num_rows;
 
 echo "<table><tr><td>Geleistete Arbeitsstunden</td><td>".(round($saldo/60,1))." (".(round($saldo,0))." Min)</td></tr><tr><td>Soll-Arbeitsstunden</td><td>".($soll_std*4)." (".($soll_std*4*60)." Min)</td></tr><tr><td>Zeit-Saldo</td><td>".(round($saldo/60-($soll_std*4),1))." (".(round(($saldo-($soll_std*4*60)),0))." Min)</td></tr><tr><td>Urlaubstage</td><td>".$urlaub_tage."</td></tr><tr><td>erfasste Urlaubstage</td><td>".$urlaub_ist."</td></tr><tr><td>Krank-Tage</td><td>".$krank."</td></tr></table>";
                                 ?>

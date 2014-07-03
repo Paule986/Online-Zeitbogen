@@ -33,6 +33,7 @@ $navsite =5 ;
 	 $nname="";
 	 $stez="";
 	 $sollstd="";
+	 $urlbtage="";
 	 $usern="";
 	 $rechte="";
 	 $bid="";
@@ -57,6 +58,7 @@ $navsite =5 ;
 		$nname=$row1['nname']; 
 		$stez=$row1['stez'];
 		$sollstd=$row1['sollstd'];
+		$urlbtage=$row1['urlbtage'];
 		$rechte=$row1['rechte'];
 		$bid=$row1['bid'];
 		$sid=$row1['sid'];
@@ -93,6 +95,7 @@ $navsite =5 ;
 		 nname= '".$_POST['nname']."', 
 		 stez='".$_POST['stez']."', 
 		 sollstd='".$_POST['sollstd']."',
+		 urlbtage='".$_POST['urlbtage']."',
 		 rechte='".$_POST['rechte']."',
 		 bid='".$_POST['bid']."',
 		 sid='".$_POST['sid']."'
@@ -128,6 +131,7 @@ $navsite =5 ;
 		nname, 
 		stez, 
 		sollstd,
+		urlbtage,
 		usern,
 		passwort,
 		rechte, 
@@ -140,6 +144,7 @@ $navsite =5 ;
 		'".$_POST['nname']."', 
 		'".$_POST['stez']."', 
 	    '".$_POST['sollstd']."',
+	    '".$_POST['urlbtage']."',
 		'".$_POST['usern']."', 
 	    '".md5($_POST['passwort'])."',
 		'".$_POST['rechte']."',
@@ -182,7 +187,8 @@ $navsite =5 ;
     <label for="stez">Stellenzeichen</label><input class="form-control" name="stez" id="stelz" type="text" value="<?php echo $stez; ?>" required=""/></div>
 <div class="form-group">
     <label for="sollstd">Sollstunden</label><input class="form-control" name="sollstd" id="sollstd" type="text" value="<?php echo $sollstd; ?>"required=""/></div>
-    
+<div class="form-group">
+    <label for="urlbtage">Urlaubstage</label><input class="form-control" name="urlbtage" id="urlbtage" type="text" value="<?php echo $urlbtage; ?>"required=""/></div>	    
     
 <?php 
 
@@ -376,6 +382,7 @@ else{
 	echo"  <th><a href='?sort=nname#ntab'>Nachname <span class='glyphicon glyphicon-sort'</span></a></th>";
 	echo"  <th><a href='?sort=stez#ntab'>Stellenzeichen <span class='glyphicon glyphicon-sort'</span></a></th>";
 	echo"  <th><a href='?sort=sollstd#ntab'>Sollstunden <span class='glyphicon glyphicon-sort'</span></a></th>";
+	echo"  <th><a href='?sort=urlbtage#ntab'>Urlaubstage <span class='glyphicon glyphicon-sort'</span></a></th>";
 	echo"  <th><a href='?sort=usern#ntab'>Username <span class='glyphicon glyphicon-sort'</span></a></th>";
 	
 	echo"  <th><a href='?sort=rechte#ntab'>Admin <span class='glyphicon glyphicon-sort'</span></a></th>";
@@ -405,6 +412,7 @@ else{
 	.$row['nname']."</td><td>"
 	.$row['stez']."</td><td>"
 	.$row['sollstd']."</td><td>"
+	.$row['urlbtage']."</td><td>"
 	.$row['usern']."</td><td>"
 	.$adminok."</td><td>"
 	.$behoerdenname[$row['bid']]."</td>

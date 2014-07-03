@@ -86,7 +86,7 @@ if(!isset($_GET['m'])){
 		                        			$result_tage= "SELECT urlbtage from mitarbeiter WHERE maid = '".$maid."'";
 			                			$tage_ist = mysqli_query($link, $result_tage);
 			        				 while($row_tage=mysqli_fetch_array($tage_ist)){
-			                        			 $tage = $row_tage['tage'];
+			                        			 $tage = $row_tage['urlbtage'];
 								}
 							if ($summe > $tage){
 			                			echo '<html><head><title>Warnung</title>

@@ -81,47 +81,45 @@ if(!isset($_GET['m'])){
                                                 $auswahl= 2;
                                                 if($_POST['arbeitsfrei'] == $auswahl){     
                                                                 $result_urlaub = $link->query("SELECT eid FROM erfassung WHERE maid = '".$maid."' AND aid ='2'");
-			                $urlaub_ist = $result_urlaub->num_rows;
-			                $summe = $urlaub_ist + 1;																		
-		                                $result_tage= "SELECT urlbtage from mitarbeiter WHERE maid = '".$maid."'";
-			                $tage_ist = mysqli_query($link, $result_tage);
-			                while($row_tage=mysqli_fetch_array($tage_ist)){
-			                                $tage = $row_tage['tage'];
-				}
-				if ($summe > $tage){
-			                	echo '<html><head><title>Warnung</title>
-			                	<script language="javascript" type="text/javascript"> 
-					alert("Urlaubstage aufgebraucht!");
-					</script></head><body></body></html>';
-				}
-				else{
-			                                // Variablen filtern, um mysql injections zu verhindern.
-			                	if(isset($_POST['arbeitsbeginn'])){$beginn_neu = mysqli_real_escape_string($link,$_POST['arbeitsbeginn']); }else $beginn_neu ="";
-			                	if(isset($_POST['arbeitsende'])){$ende_neu = mysqli_real_escape_string($link,$_POST['arbeitsende']); }else $ende_neu ="";
-			                	if(isset($_POST['bemerkung'])){$bemerkung_neu = mysqli_real_escape_string($link,$_POST['bemerkung']); }else $bemerkung_neu ="";
-			                                if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="99";
-					if(isset($_POST['eid'])){$eid_neu = mysqli_real_escape_string($link,$_POST['eid']); }else $eid_neu ="";
-					// Ã„nderungen in DB speichern
-				                $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid_neu.";";
-					$link->query($sqledit);
-				}
-			}
-			else{
-				                // Variablen filtern, um mysql injections zu verhindern.
-					if(isset($_POST['arbeitsbeginn'])){$beginn_neu = mysqli_real_escape_string($link,$_POST['arbeitsbeginn']); }else $beginn_neu ="";
-					if(isset($_POST['arbeitsende'])){$ende_neu = mysqli_real_escape_string($link,$_POST['arbeitsende']); }else $ende_neu ="";
-				                if(isset($_POST['bemerkung'])){$bemerkung_neu = mysqli_real_escape_string($link,$_POST['bemerkung']); }else $bemerkung_neu ="";
-					if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="99";
-					if(isset($_POST['eid'])){$eid_neu = mysqli_real_escape_string($link,$_POST['eid']); }else $eid_neu ="";
-					// Ã„nderungen in DB speichern
-					$sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid_neu.";";
-					$link->query($sqledit);
-			}
-		}                
-
-                                                   
-
-                                        while($row_soll = mysqli_fetch_array($result_soll)){
+			                			$urlaub_ist = $result_urlaub->num_rows;
+			        				$summe = $urlaub_ist + 1;																		
+		                        			$result_tage= "SELECT urlbtage from mitarbeiter WHERE maid = '".$maid."'";
+			                			$tage_ist = mysqli_query($link, $result_tage);
+			        				 while($row_tage=mysqli_fetch_array($tage_ist)){
+			                        			 $tage = $row_tage['tage'];
+								}
+							if ($summe > $tage){
+			                			echo '<html><head><title>Warnung</title>
+			                			<script language="javascript" type="text/javascript"> 
+								alert("Urlaubstage aufgebraucht!");
+								</script></head><body></body></html>';
+							}
+							else{
+			                        		// Variablen filtern, um mysql injections zu verhindern.
+			                			if(isset($_POST['arbeitsbeginn'])){$beginn_neu = mysqli_real_escape_string($link,$_POST['arbeitsbeginn']); }else $beginn_neu ="";
+			                			if(isset($_POST['arbeitsende'])){$ende_neu = mysqli_real_escape_string($link,$_POST['arbeitsende']); }else $ende_neu ="";
+			                			if(isset($_POST['bemerkung'])){$bemerkung_neu = mysqli_real_escape_string($link,$_POST['bemerkung']); }else $bemerkung_neu ="";
+			                			if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="99";
+								if(isset($_POST['eid'])){$eid_neu = mysqli_real_escape_string($link,$_POST['eid']); }else $eid_neu ="";
+								// Ã„nderungen in DB speichern
+				                		$sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid_neu.";";
+								$link->query($sqledit);
+							}
+						}
+						else{
+				                	// Variablen filtern, um mysql injections zu verhindern.
+							if(isset($_POST['arbeitsbeginn'])){$beginn_neu = mysqli_real_escape_string($link,$_POST['arbeitsbeginn']); }else $beginn_neu ="";
+							if(isset($_POST['arbeitsende'])){$ende_neu = mysqli_real_escape_string($link,$_POST['arbeitsende']); }else $ende_neu ="";
+				        		if(isset($_POST['bemerkung'])){$bemerkung_neu = mysqli_real_escape_string($link,$_POST['bemerkung']); }else $bemerkung_neu ="";
+							if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="99";
+							if(isset($_POST['eid'])){$eid_neu = mysqli_real_escape_string($link,$_POST['eid']); }else $eid_neu ="";
+							// Ã„nderungen in DB speichern
+							$sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid_neu.";";
+							$link->query($sqledit);
+						}
+                                        }
+							          
+			          while($row_soll = mysqli_fetch_array($result_soll)){
                                                  // Sollstunden aus DB in Minuten / Tag berechnen
                                                  $minuten_soll =($row_soll['sollstd'])*60/5;
                                         }

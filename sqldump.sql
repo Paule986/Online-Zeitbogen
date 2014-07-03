@@ -162,6 +162,7 @@ CREATE TABLE IF NOT EXISTS `mitarbeiter` (
   `usern` varchar(20) NOT NULL,
   `passwort` varchar(32) DEFAULT NULL,
   `rechte` int(11) NOT NULL,
+  `urlbtage` int(3) DEFAULT 30,
   PRIMARY KEY (`maid`),
   KEY `sid` (`sid`),
   KEY `bid` (`bid`)
@@ -171,11 +172,11 @@ CREATE TABLE IF NOT EXISTS `mitarbeiter` (
 -- Daten für Tabelle `mitarbeiter`
 --
 
-INSERT INTO `mitarbeiter` (`maid`, `vname`, `nname`, `stez`, `sollstd`, `bid`, `sid`, `usern`, `passwort`, `rechte`) VALUES
-(2, 'Hans', 'Honka', 'IA25', 40, 1, 1, 'Honki', '', 0),
-(3, 'Karl', 'Käfer', 'IVA2', 39, 1, 1, 'Kaeferkarl', NULL, 0),
-(112, 'Sheldon', 'Cooper', 'IA25', 40, 1, 1, 'Shelly', '81dc9bdb52d04dc20036dbd8313ed055', 1),
-(113, 'Maxi', 'Muster', 'P0815', 40, 1, 1, 'maxim', '81dc9bdb52d04dc20036dbd8313ed055', 1);
+INSERT INTO `mitarbeiter` (`maid`, `vname`, `nname`, `stez`, `sollstd`, `bid`, `sid`, `usern`, `passwort`, `rechte`, `urlbtage`) VALUES
+(2, 'Hans', 'Honka', 'IA25', 40, 1, 1, 'Honki', '', 0, 30),
+(3, 'Karl', 'Käfer', 'IVA2', 39, 1, 1, 'Kaeferkarl', NULL, 0, 30),
+(112, 'Sheldon', 'Cooper', 'IA25', 40, 1, 1, 'Shelly', '81dc9bdb52d04dc20036dbd8313ed055', 1, 30),
+(113, 'Maxi', 'Muster', 'P0815', 40, 1, 1, 'maxim', '81dc9bdb52d04dc20036dbd8313ed055', 1, 30);
 
 -- --------------------------------------------------------
 
@@ -197,25 +198,3 @@ INSERT INTO `status` (`sid`, `bezeichnung`) VALUES
 (1, 'Beamter'),
 (2, 'Angestellter'),
 (3, 'Azubi');
-
--- --------------------------------------------------------
-
---
--- Tabellenstruktur für Tabelle `urlaub`
---
-
-CREATE TABLE IF NOT EXISTS `urlaub` (
-  `maid` int(11) NOT NULL AUTO_INCREMENT,
-  `tage` int(3) DEFAULT 30,
-  PRIMARY KEY (`maid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=114 ;
-
---
--- Daten für Tabelle `urlaub`
---
-
-INSERT INTO `urlaub` (`maid`, `tage`) VALUES
-(2, '30'),
-(3, '30'),
-(112, '30'),
-(113, '30');

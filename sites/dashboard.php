@@ -7,7 +7,7 @@ require('../includes/header.php');
 require('../includes/mysql.php');
 
 $soll_std = "";
-$urlaub_max = "";
+
 
 $timestamp = time();
 $datum_now = date("Y-m-d",$timestamp);
@@ -76,9 +76,10 @@ $monat_now_t = $monate[date("n",$timestamp)];
                                          $krank = $result_krank->num_rows;
                                          $result_urlaub = $link->query("SELECT eid FROM erfassung WHERE maid = '".$maid."' AND aid ='2' AND datum LIKE '".$datum_interval_anfang."%' ");
                                          $urlaub_ist = $result_urlaub->num_rows;
+                                         $urlaub_max = "SELECT tage from urlaub WHERE maid='".$maid."'";
+                                         $urlaub_tage = mysqli_query($link, $urlaub_max);
 
-
-echo "<table><tr><td>Geleistete Arbeitsstunden</td><td>".(round($saldo/60,1))." (".(round($saldo,0))." Min)</td></tr><tr><td>Soll-Arbeitsstunden</td><td>".($soll_std*4)." (".($soll_std*4*60)." Min)</td></tr><tr><td>Zeit-Saldo</td><td>".(round($saldo/60-($soll_std*4),1))." (".(round(($saldo-($soll_std*4*60)),0))." Min)</td></tr><tr><td>Urlaubstage</td><td>".$urlaub_max."</td></tr><tr><td>erfasste Urlaubstage</td><td>".$urlaub_ist."</td></tr><tr><td>Krank-Tage</td><td>".$krank."</td></tr></table>";
+echo "<table><tr><td>Geleistete Arbeitsstunden</td><td>".(round($saldo/60,1))." (".(round($saldo,0))." Min)</td></tr><tr><td>Soll-Arbeitsstunden</td><td>".($soll_std*4)." (".($soll_std*4*60)." Min)</td></tr><tr><td>Zeit-Saldo</td><td>".(round($saldo/60-($soll_std*4),1))." (".(round(($saldo-($soll_std*4*60)),0))." Min)</td></tr><tr><td>Urlaubstage</td><td>".$urlaub_tage."</td></tr><tr><td>erfasste Urlaubstage</td><td>".$urlaub_ist."</td></tr><tr><td>Krank-Tage</td><td>".$krank."</td></tr></table>";
                                 ?>
                                 </div>
 <!-- Beginn: Inkludieren von Footer -->

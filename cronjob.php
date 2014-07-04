@@ -1,6 +1,6 @@
 <?php
 ///////////////////////////////////////////////////////////////////////////////////
-////// Achtung diese Datei trägt ohne Rückfrage neue Datensätze in die DB /////////
+////// Achtung diese Datei trÃ¤gt ohne RÃ¼ckfrage neue DatensÃ¤tze in die DB /////////
 ///////////////////////////////////////////////////////////////////////////////////
 
 // mysql connect includen
@@ -25,7 +25,12 @@ while($row_ma = mysqli_fetch_array($result_ma)){
          }else{
          $thisday=$dayinmonth;
          }
+         $timestamp_now = mktime(8,31,0,$datum_monat_cal,$thisday,$datum_year_cal);
+         $wochentag = date("w",$timestamp_now);
+         if(($wochentag!=0)&&($wochentag!=6)){
          $sqladd = $link->query("INSERT INTO erfassung (datum,maid,aid) VALUES('".$datum_year_cal."-".$datum_monat_cal."-".$thisday."',".$row_ma['maid'].",'88');");
+
+         }
          }
          echo "Tage für MAID ".$row_ma['maid']." angelegt.<br>";
 

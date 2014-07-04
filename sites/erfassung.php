@@ -33,41 +33,7 @@ $datum_year_cal = date("Y",$timestamp);
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
 // String fÃƒÆ’Ã‚Â¼r Kalender Events erzeugen
 $notes="";
-// Alle Tage des Monats aufrufen, um abzufragen, ob Eintrag vorhanden
-for($tage=1;$tage<=$month_num;$tage++){
-         if($tage<10){$tag ="0".$tage;}else{$tag = $tage;}
-         // Aus Schleifen-Wert Datumsformat erstellen
-         $select_datum = "'".$datum_year_cal."-".$datum_monat_cal."-".$tag."'";
-         $result = mysqli_query($link, "SELECT eid,aid FROM erfassung WHERE maid = ".$maid." AND datum = ".$select_datum.";");
-         // Anzahl an DatensÃƒÆ’Ã‚Â¤tzen erfragen
-           $anzahl_notes = mysqli_num_rows($result);
-         // Wenn kein Datensatz fÃƒÆ’Ã‚Â¼r den aktuellen Tag --> Markierung fÃƒÆ’Ã‚Â¼r JS erzeugen
-         if($anzahl_notes<1){
 
-                         $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'we', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
-         }else{
-
-                while($myrow = mysqli_fetch_array($result)) {
-                         // Wenn Eintrag vorhanden und AID = 3 - KRANK - dann Markierung erzeugen
-                         if($myrow['aid']=="88"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fehlt', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
-                         }
-                         if($myrow['aid']=="99"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'normal', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
-                         }
-                         if($myrow['aid']=="1"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'gleittag', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
-                         }
-                         if($myrow['aid']=="2"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'urlaub', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
-                         }
-                         if($myrow['aid']=="3"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'krank', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
-                         }
-
-                 }
-         }
-}
 
 // das Komma vom letzten Event im Kalenderstring entfernen
 $notes = substr($notes, 0, -2);
@@ -164,7 +130,41 @@ $notiz = "";
          }
   }
 
+// Alle Tage des Monats aufrufen, um abzufragen, ob Eintrag vorhanden
+for($tage=1;$tage<=$month_num;$tage++){
+         if($tage<10){$tag ="0".$tage;}else{$tag = $tage;}
+         // Aus Schleifen-Wert Datumsformat erstellen
+         $select_datum = "'".$datum_year_cal."-".$datum_monat_cal."-".$tag."'";
+         $result = mysqli_query($link, "SELECT eid,aid FROM erfassung WHERE maid = ".$maid." AND datum = ".$select_datum.";");
+         // Anzahl an DatensÃƒÆ’Ã‚Â¤tzen erfragen
+           $anzahl_notes = mysqli_num_rows($result);
+         // Wenn kein Datensatz fÃƒÆ’Ã‚Â¼r den aktuellen Tag --> Markierung fÃƒÆ’Ã‚Â¼r JS erzeugen
+         if($anzahl_notes<1){
 
+                         $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'we', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
+         }else{
+
+                while($myrow = mysqli_fetch_array($result)) {
+                         // Wenn Eintrag vorhanden und AID = 3 - KRANK - dann Markierung erzeugen
+                         if($myrow['aid']=="88"){
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fehlt', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                         }
+                         if($myrow['aid']=="99"){
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'normal', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                         }
+                         if($myrow['aid']=="1"){
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'gleittag', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                         }
+                         if($myrow['aid']=="2"){
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'urlaub', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                         }
+                         if($myrow['aid']=="3"){
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'krank', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                         }
+
+                 }
+         }
+}
                  if(isset($_GET['datum'])){
                          echo"<h3>".$_GET['datum']." erfassen</h2>";
                  }else if( (isset($_GET['eid'])) ){

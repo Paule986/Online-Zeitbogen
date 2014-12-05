@@ -43,7 +43,7 @@ for($tage=1;$tage<=$month_num;$tage++){
          // Wenn kein Datensatz fÃ¼r den aktuellen Tag --> Markierung fÃ¼r JS erzeugen
          if($anzahl_notes<1){
 
-                         $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'Wochenende', 'class' : 'we', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
+                         $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'nicht erfasst', 'class' : 'fehlt', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
          }else{
 
                 while($myrow = mysqli_fetch_array($result)) {

@@ -3,6 +3,13 @@
 $seitentitel = "Behörden";
 // Navigation active setzen
 $navsite =6 ;
+
+// zusätzliche Dateien includieren
+
+	$zusatzinclude = "
+	<link rel='stylesheet' href='../includes/css/bootstrap-theme.min.css'>
+	";
+
 //Header inkludieren
 require('../includes/header.php');
 

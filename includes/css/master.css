@@ -1805,7 +1805,7 @@ body .mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded{background
 .poll .pollbar{position:relative;top:17px;font-weight:bold;margin-bottom:.2em;color:#253276;background-color:#ececec;border:1px solid #c6c6c6;-webkit-box-shadow:2px 2px 1px #ddd;-moz-box-shadow:2px 2px 1px #ddd;box-shadow:2px 2px 1px #ddd}.poll .pollbar>div{max-width:94%;background-color:#31448a;margin-right:5px}
 .poll .pollanswerbar{height:45px;margin-bottom:.5em;position:relative}.poll .pollanswerbar:last-child{margin-bottom:0}
 .poll .pollanswer{font-weight:bold;left:0;position:absolute;top:0}
-.popover-container{position: absolute;height:auto;width:85px;right:50px;top:-60px;bottom:10px}.popover-container .event-popover{position:relative;display:inline;cursor:pointer}.popover-container .event-popover .popover-title{padding:0;border:medium none}
+.popover-container{position: absolute;height:auto;width:auti;right:3%;top:-60px;bottom:10px}.popover-container .event-popover{position:relative;display:inline;cursor:pointer}.popover-container .event-popover .popover-title{padding:0;border:medium none}
 .popover-container .popover a{display:inline}
 .sbahn,.ubahn,.tram,.bus,.bahn,.faehre{background-repeat:no-repeat;padding-left:19px;background-position:0 2px}
 .sbahn{background-image:url("https://service.berlin.de/_img/pictogramme/char_sbahn.gif")}

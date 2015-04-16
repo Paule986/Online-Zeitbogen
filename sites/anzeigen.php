@@ -17,7 +17,7 @@ $datum_now = date("Y-m-d",$timestamp);  // Datum formatieren
 // Monatsnamen für die Anzeige festlegen
 $monate = array(1=>"Januar",
                 2=>"Februar",
-                3=>"M&auml;rz",
+                3=>"März",
                 4=>"April",
                 5=>"Mai",
                 6=>"Juni",
@@ -30,7 +30,7 @@ $monate = array(1=>"Januar",
 // Aktuellen Monat raussuchen
 $monat_now_t = $monate[date("n",$timestamp)];
 
-// Testen, ob bereits Monat Ã¼ber URL Ã¼bergeben
+// Testen, ob bereits Monat über URL übergeben
 if(!isset($_GET['m'])){
          //Keine Ãœbergabe --> aktuelles Datum nutzen
          $monat_now_t = $monate[date("n",$timestamp)];
@@ -51,7 +51,7 @@ if(!isset($_GET['m'])){
                 <table class="table table-striped table-bordered">
                         <thead>
                                 <tr>
-                                        <th width="50px">Datum</th><th width="50px">Anfang</th><th width="50px">Ende</th><th width="50px">Bemerkung</th><th width="50px">Arbeitsfrei</th><th width="50px">Saldo</th><th width="20px">Bearbeiten</th>
+                                        <th width="50px">Datum</th><th width="50px">Anfang</th><th width="50px">Ende</th><th width="50px">Bemerkung</th><th width="50px">Status</th><th width="50px">Saldo</th><th width="20px">Bearbeiten</th>
                                 </tr>
                         </thead>
 

@@ -1,6 +1,6 @@
 <?php
 
-$seitentitel = "&Uuml;bersicht";
+$seitentitel = "Übersicht";
 // Navigation active setzen
 $navsite =1 ;
 require('../includes/header.php');
@@ -13,10 +13,10 @@ $timestamp = time();
 $datum_now = date("Y-m-d",$timestamp);
 $maid = $_SESSION['maid'];
 
-// Monatsnamen f¸r die Anzeige festlegen
+// Monatsnamen für die Anzeige festlegen
 $monate = array(1=>"Januar",
                 2=>"Februar",
-                3=>"M&auml;rz",
+                3=>"März",
                 4=>"April",
                 5=>"Mai",
                 6=>"Juni",
@@ -33,23 +33,23 @@ $monat_now_t = $monate[date("n",$timestamp)];
          $result_ma = $link->query("SELECT mitarbeiter.vname, mitarbeiter.nname, mitarbeiter.stez, mitarbeiter.sollstd, behoerde.art, behoerde.name, behoerde.rahmenzeit_beginn, behoerde.rahmenzeit_ende, status.bezeichnung FROM mitarbeiter, behoerde, status WHERE mitarbeiter.maid = '".$maid."' AND mitarbeiter.bid=behoerde.bid AND mitarbeiter.sid=status.sid");
                                         while($row_ma = mysqli_fetch_array($result_ma)){
                                                  echo "<h2>Stammdaten</h2>";
-                                                 echo "<a>".$row_ma['vname']."&nbsp;".$row_ma['nname']."</a>";
+                                                 echo "<div>".$row_ma['vname']."&nbsp;".$row_ma['nname']."</div>";
                                                  echo"<br>";
-                                                 echo "<a>".$row_ma['stez']."</a>";
+                                                 echo "<div>".$row_ma['stez']."</div>";
                                                  echo"<br>";
-                                                 echo "<a>".$row_ma['art']."&nbsp;/&nbsp;".$row_ma['name']."</a>";
+                                                 echo "<div>".$row_ma['art']."&nbsp;/&nbsp;".$row_ma['name']."</div>";
                                                  echo"<br>";
-                                                 echo "<a>".$row_ma['bezeichnung']."</a>";
+                                                 echo "<div>".$row_ma['bezeichnung']."</div>";
                                                  $soll_std = $row_ma['sollstd'];
                                                  echo "<h2>Rahmenzeit</h2>";
-                                                 echo "<a>Von ".substr($row_ma['rahmenzeit_beginn'],0,-3)." bis ".substr($row_ma['rahmenzeit_ende'],0,-3)."</a>";
+                                                 echo "<div>Von ".substr($row_ma['rahmenzeit_beginn'],0,-3)." bis ".substr($row_ma['rahmenzeit_ende'],0,-3)."</div>";
                                         }
 
 
 ?>
     <div style="text-indent: 3em">
     <hr size="1" noshade>
-    <h2>Kurz&uuml;bersicht</h2>
+    <h2>Kurzübersicht</h2>
     <h3> <?php echo $monat_now_t; ?> </h3>
     </div>
 
@@ -63,7 +63,7 @@ $monat_now_t = $monate[date("n",$timestamp)];
                                         // Interval Anfang erstellen
                                         $datum_interval_anfang = date("Y-m",$timestamp);
                                         $datum_interval_ende = date("Y-m",$timestamp)."-31";
-                                        // Befehl ausf¸hren - Daten von MA anzeigen
+                                        // Befehl ausführen - Daten von MA anzeigen
                                                  $saldo=0;
                                         $result_saldo = $link->query("SELECT * FROM erfassung WHERE maid = '".$maid."' AND aid ='99' AND datum LIKE '".$datum_interval_anfang."%' ");
                                                   while($row_sts = mysqli_fetch_array($result_saldo)){

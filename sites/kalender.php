@@ -30,7 +30,7 @@ $datum_mon_cal = date("n",$timestamp);
 $datum_year_cal = date("Y",$timestamp);
 // Anzahl von Tagen im Monat berechnen
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
-// String fÃ¼r Kalender Events erzeugen
+// String für Kalender Events erzeugen
 $notes="";
 // Alle Tage des Monats aufrufen, um abzufragen, ob Eintrag vorhanden
 for($tage=1;$tage<=$month_num;$tage++){
@@ -38,9 +38,9 @@ for($tage=1;$tage<=$month_num;$tage++){
          // Aus Schleifen-Wert Datumsformat erstellen
          $select_datum = "'".$datum_year_cal."-".$datum_monat_cal."-".$tag."'";
          $result = mysqli_query($link, "SELECT eid,aid FROM erfassung WHERE maid = ".$maid." AND datum = ".$select_datum.";");
-         // Anzahl an DatensÃ¤tzen erfragen
+         // Anzahl an Datensätzen erfragen
            $anzahl_notes = mysqli_num_rows($result);
-         // Wenn kein Datensatz fÃ¼r den aktuellen Tag --> Markierung fÃ¼r JS erzeugen
+         // Wenn kein Datensatz für den aktuellen Tag --> Markierung für JS erzeugen
          if($anzahl_notes<1){
 
                          $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'nicht erfasst', 'class' : 'fehlt', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
@@ -55,13 +55,13 @@ for($tage=1;$tage<=$month_num;$tage++){
                                  $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'erfasst', 'class': 'normal', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="1"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'GLEITTAG', 'class': 'gleittag', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'Gleittag', 'class': 'gleittag', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="2"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'URL', 'class': 'urlaub', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'Urlaub', 'class': 'urlaub', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="3"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'KRANK', 'class': 'krank', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'krank', 'class': 'krank', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
 
                  }
@@ -86,7 +86,7 @@ $( document ).ready( function() {
 </script>
 
 <!-- Responsive calendar - START -->
-<div class="responsive-calendar"  data-translate-months="Januar,Februar,MÃ¤rz,April,Mai,Juni,Juli,August,September,Oktober,Novemer,Dezember" >
+<div class="responsive-calendar"  data-translate-months="Januar,Februar,März,April,Mai,Juni,Juli,August,September,Oktober,Novemer,Dezember" >
   <div class="controls">
       <a class="pull-left" href="?m=<?php echo($datum_monat_cal-1); ?>"><div class="btn"><span class="glyphicon glyphicon-backward"></span></div></a>
       <h4><span data-head-year></span> <span data-head-month></span></h4>

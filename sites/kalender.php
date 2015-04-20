@@ -77,7 +77,6 @@ $( document ).ready( function() {
   $(".responsive-calendar").responsiveCalendar({
       translateMonths:["Januar","Februar","MÃ¤rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],
     time: '<?php echo $datum_now_cal; ?>',
-    startFromSunday: true,
     events: {
       <?php  echo $notes; // Events aus Kalenderstring einfÃ¼gen?>
       }
@@ -93,13 +92,13 @@ $( document ).ready( function() {
       <a class="pull-right" href="?m=<?php echo($datum_monat_cal+1); ?>"><div class="btn"><span class="glyphicon glyphicon-forward"></span></div></a>
   </div><hr/>
   <div class="day-headers">
-    <div class="day header">So</div>
     <div class="day header">Mo</div>
     <div class="day header">Di</div>
     <div class="day header">Mi</div>
     <div class="day header">Do</div>
     <div class="day header">Fr</div>
     <div class="day header">Sa</div>
+    <div class="day header">So</div>
   </div>
   <div class="days" data-group="days">
     <!-- the place where days will be generated -->

@@ -63,6 +63,9 @@ for($tage=1;$tage<=$month_num;$tage++){
                          if($myrow['aid']=="3"){
                                  $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'krank', 'class': 'krank', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
+                         if($myrow['aid']=="4"){
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'Fortbildung', 'class': 'fortbildung', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                         }
 
                  }
          }

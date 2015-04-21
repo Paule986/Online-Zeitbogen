@@ -37,7 +37,6 @@ switch($navsite){
                           <li><a href="#">Hilfe</a></li>
                         </ul>
                       </div>
-                      <div class="beberlin"><a href="" class="bb-logo">beBerlin</a></div>
                     </div>
                   </div>
                   <!-- /template end: navi-top -->

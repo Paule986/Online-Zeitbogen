@@ -40,22 +40,7 @@
     <script type="text/javascript" src="../includes/js/bootstrap.js"></script>
     
   </head>
-  <body>  
-    <!-- Beginn: Header -->
-      <div class="container-wrapper container-portal-header">
-        <div class="container">
-          <div class="row" role="banner">
-              <div class="html5-header portal-header">
-                <div class="html5-figure main-image"> 
-                 <a href="#" title="Link f&uml;hrt zur Startseite von Berlin.de">
-                    <img class="portal-logo hide-mobile" src="../includes/images/berlin_de.png" alt="Bild zeigt: Berlin.de Logo" title="Link f&uuml;hrt zur Startseite von Berlin.de">
-                 </a> 
-                </div>
-              </div>
-          </div>
-        </div>
-      </div>     
-    <!-- Ende: Header -->   
+  <body>    
       <div class="container-wrapper container-content">
 		<div class="container">
 		 <!-- Beginn: Institution -->

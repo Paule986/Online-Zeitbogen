@@ -1,4 +1,4 @@
- <?php
+<?php
 // Seitentitel setzen
 $seitentitel = "Erfassung";
 // Navigation active setzen
@@ -14,7 +14,6 @@ require('../includes/header.php'); // header includieren
 require('../includes/mysql.php');  // Mysql Connect Datei einbinden
 $maid = $_SESSION['maid'];         // MAID einlesen
 $timestamp = time();               // Timestamp fÃƒÂ¼r Datumsoperationen erstellen
-
 if(isset($_GET['m'])){
          $datum_monat_cal = $_GET['m'];
          if($datum_monat_cal<=9){
@@ -33,12 +32,9 @@ $datum_year_cal = date("Y",$timestamp);
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
 // String fÃƒÆ’Ã‚Â¼r Kalender Events erzeugen
 $notes="";
-
-
 // das Komma vom letzten Event im Kalenderstring entfernen
 $notes = substr($notes, 0, -2);
 // JS zum einbetten des Kalenders
-
 ////////////////////////////////////////////
 ////////////////////////////////////////////
 // "Speichern erfolgreich"-Meldung Variabe definieren
@@ -53,8 +49,6 @@ $notiz = "";
          if(isset($_GET['eid'])){
                  $eid = $_GET['eid'];
          }
-
-
   if(isset($_POST['submitneu'])){
   // Wenn Erfassen geklickt, dann daten aufbereiten und DB Arbeit leisten
          // Variablen filtern, um mysql injections zu verhindern.
@@ -63,8 +57,6 @@ $notiz = "";
         if(isset($_POST['bemerkung'])){$bemerkung_neu = mysqli_real_escape_string($link,$_POST['bemerkung']); }else $bemerkung_neu ="";
         if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="NULL";
         if(isset($_POST['datum'])){$datum_neu = mysqli_real_escape_string($link,$_POST['datum']); }else $datum_neu ="";
-
-
         if($doo=="neu"){
                  // Wenn neuer Eintrag, dann in DB schreiben
                  $sqladd = "INSERT INTO erfassung (datum,beginn,ende,maid,bemerkung,aid) VALUES('".$datum_neu."','".$beginn_neu.":00','".$ende_neu.":00',".$maid.",'".$bemerkung_neu."','".$aid_neu."');";
@@ -77,7 +69,6 @@ $notiz = "";
                          $sollstunden = $_SESSION['sollstd'];
                          $aende = 7 + $sollstunden/5;
                          $sqledit = "UPDATE erfassung set beginn = '07:00:00', ende = '".$aende.":00:00', aid = '".$aid_neu."'  WHERE eid = ".$_POST['eid'].";";
-
                  }else{
                  // Wenn Eintrag bereits vorhanden, diesen in DB abÃƒÆ’Ã‚Â¤ndern
                  $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$_POST['eid'].";";
@@ -87,12 +78,18 @@ $notiz = "";
                  $notiz .= "<div class='alert alert-success'>Bearbeitung erfolgreich.</div>";
         }
   }
-
+  
+  if(isset($_POST['submitdelete'])){
+                 // Wenn Button "Eintrag löschen" gedrückt, lösche den Datensatz
+                 $sqldelete = "DELETE FROM erfassung WHERE eid = ".$_POST['eid'].";";              
+                 $link->query($sqldelete);
+				             // Lade Seite neu, damit Scripte nicht mehr auf gelöschte Daten zugreifen
+				             echo ("<script>window.location.href=\"erfassung.php\"</script>");
+  }
+  
   if($doo=="edit"){
-
          $result_edit = $link->query("SELECT * FROM erfassung WHERE eid = '".$_GET['eid']."'");
         // Datensatz in Var $row speichern
-
         while($row = mysqli_fetch_array($result_edit)){
           $feld_beginn = substr($row['beginn'],0,-3);
           $feld_ende =  substr($row['ende'],0,-3);
@@ -116,10 +113,8 @@ $notiz = "";
         }
   }else{
            $sqlheute = "SELECT * FROM erfassung WHERE maid= '".$_SESSION['maid']."' AND datum = '".$datum_now_cal."'";
-
            $result_edit = $link->query($sqlheute);
         // Datensatz in Var $row speichern
-
         while($row = mysqli_fetch_array($result_edit)){
           $feld_beginn = substr($row['beginn'],0,-3);
           $feld_ende =  substr($row['ende'],0,-3);
@@ -129,7 +124,6 @@ $notiz = "";
           $feld_eid = $row['eid'];
          }
   }
-
 // Alle Tage des Monats aufrufen, um abzufragen, ob Eintrag vorhanden
 for($tage=1;$tage<=$month_num;$tage++){
          if($tage<10){$tag ="0".$tage;}else{$tag = $tage;}
@@ -140,10 +134,8 @@ for($tage=1;$tage<=$month_num;$tage++){
            $anzahl_notes = mysqli_num_rows($result);
          // Wenn kein Datensatz fÃƒÆ’Ã‚Â¼r den aktuellen Tag --> Markierung fÃƒÆ’Ã‚Â¼r JS erzeugen
          if($anzahl_notes<1){
-
                          $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fehlt', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
          }else{
-
                 while($myrow = mysqli_fetch_array($result)) {
                          // Wenn Eintrag vorhanden und AID = 3 - KRANK - dann Markierung erzeugen
                          if($myrow['aid']=="88"){
@@ -164,16 +156,15 @@ for($tage=1;$tage<=$month_num;$tage++){
                          if($myrow['aid']=="4"){
                                  $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'Fortbildung', 'class': 'fortbildung', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
-
                  }
          }
 }
                  if(isset($_GET['datum'])){
-                         echo"<h3>".$_GET['datum']." erfassen</h2>";
+                         echo"<h3>".$_GET['datum']." erfassen</h3>";
                  }else if( (isset($_GET['eid'])) ){
-                         echo"<h3>".$feld_datum." anpassen</h2>";
+                         echo"<h3>".$feld_datum." anpassen</h3>";
                  }else{
-                         echo"<h3>Heute erfassen</h2>";
+                         echo"<h3>Heute erfassen</h3>";
                  } ?>
          <div style="width:25%;float:left;">
          <form class="navbar-form navbar-left" role="search" action="" method="POST" >
@@ -197,11 +188,11 @@ for($tage=1;$tage<=$month_num;$tage++){
                                  $liste .= "<option ".$selected." value = '".$row['aid']."'>".$row['bezeichnung']."</option>\n";
                          }
                          echo $liste;
-
                  ?>
          </select>
          </div>
          <button type="submit" name="submitneu" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span> Erfassen</button>
+		       <button type="submit" name="submitdelete" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span> Eintrag löschen</button>
          <?php echo $notiz;  ?>
          </form>
          </div>
@@ -246,7 +237,5 @@ $( document ).ready( function() {
 </div>
 <div style="clear:left;"></div>
 <?php
-
 require('../includes/footer.php');
-
 ?>

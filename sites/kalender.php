@@ -78,10 +78,10 @@ $notes = substr($notes, 0, -2);
      <script>
 $( document ).ready( function() {
   $(".responsive-calendar").responsiveCalendar({
-      translateMonths:["Januar","Februar","MÃ¤rz","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],
+      translateMonths:["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],
     time: '<?php echo $datum_now_cal; ?>',
     events: {
-      <?php  echo $notes; // Events aus Kalenderstring einfÃ¼gen?>
+      <?php  echo $notes; // Events aus Kalenderstring einfügen?>
       }
   });
 });

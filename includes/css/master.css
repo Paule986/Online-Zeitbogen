@@ -1284,7 +1284,7 @@ a.extern:after{content:"";padding-right:11px;background-image:url(images/link_ex
 .content-header .section-logo .text{margin:0 0 10px 0;padding:10px 0 0 0;float:none}
 .content-header .section-logo .institution{font-size:155%;line-height:1.2em;color:#4c4c4c;display:block}.content-header .section-logo .institution:after{display:block;content:""}
 .content-header .section-logo .title{font-weight:bold;color:#000;font-size:155%;line-height:1.2em}
-.content-header .section-logo.senatsverwaltung,.content-header .section-logo.without-logo{border-left:7px solid #253276;padding-left:7px}
+.content-header .section-logo.senatsverwaltung,.content-header .section-logo.without-logo{border-left:7px solid #B5050E;padding-left:7px}
 .content-header .section-logo.without-logo{float:left}
 .content-header .search{float:right;text-align:right;width:100%;margin-bottom:0;position:relative}.content-header .search input[type='search']{width:53%;padding:6px 4px;margin-top:0;margin-bottom:0}
 .content-header .search .gloabl-search-input,.content-header .search input{width:53%;padding:6px 4px;margin-top:0;margin-bottom:0}

@@ -2785,32 +2785,37 @@ body .mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded{background
 /*  Klassen für Kalenderansicht
 -------------------------------------------------*/
 .day.krank {
-  background-color: #EB9F9B;
+  background-color: #E2BDA0;
   color: #090D1A;
 }
 
 .day.gleittag {
-  background-color: #E8B0EE;
+  background-color: #ADCBEA;
   color: #090D1A;
 }
 
 .day.urlaub {
-  background-color: #5CB85C;
+  background-color: #9296CB;
   color: #090D1A;
 }
 
 .day.normal {
-  background-color: #B1B3EE;
-  color: #090D1A;
+	background-color: #00CC66;
+	color: #090D1A;
 }
 
 .day.fehlt {
-  background-color: #FE2E2E;
+  background-color: #F9836F;
   color: #090D1A;
 }
 
 .day.we {
-  background-color: #FF9900;
+  background-color: #AAB2B1;
+  color: #090D1A;
+}
+
+.day.fortbildung {
+  background-color: #FDD703;
   color: #090D1A;
 }
 /*klasse für ausblenden der Mitarbeiterliste

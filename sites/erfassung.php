@@ -154,7 +154,7 @@ for($tage=1;$tage<=$month_num;$tage++){
                                  $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'krank', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="4"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'Fortbildung', 'class': 'fortbildung', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fortbildung', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
                          }
                  }
          }
@@ -233,8 +233,7 @@ $( document ).ready( function() {
   </div>
 </div>
 <!-- Responsive calendar - END -->
-<span><a style="color:#FE2E2E";>nicht erfasst </a><a style="color:#B1B3EE";>erfasst </a><a style="color:#5CB85C";>Urlaub </a><a style="color:#EB9F9B";>Krank </a><a style="color:#E8B0EE";>Gleittag </a><a style="color:#FF9900";>Wochenende</a></span>
-</div>
+<div align="center"><span><a style="color:#F9836F";>nicht erfasst </a><a style="color:#00CC66";>erfasst </a><a style="color:#9296CB";>Urlaub </a><a style="color:#E2BDA0";>Krank </a><a style="color:#ADCBEA";>Gleittag </a><a style="color:#AAB2B1";>Wochenende </a><a style="color:#FDD703";>Fortbildung</a></span></div>
 <div style="clear:left;"></div>
 <?php
 require('../includes/footer.php');

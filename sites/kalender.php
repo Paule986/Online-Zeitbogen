@@ -108,7 +108,7 @@ $( document ).ready( function() {
   </div>
 </div>
 <!-- Responsive calendar - END -->
-<div align="center"><span><a style="color:#FE2E2E";>nicht erfasst </a><a style="color:#B1B3EE";>erfasst </a><a style="color:#5CB85C";>Urlaub </a><a style="color:#EB9F9B";>Krank </a><a style="color:#E8B0EE";>Gleittag </a><a style="color:#FF9900";>Wochenende</a></span></div>
+<div align="center"><span><a style="color:#F9836F";>nicht erfasst </a><a style="color:#00CC66";>erfasst </a><a style="color:#9296CB";>Urlaub </a><a style="color:#E2BDA0";>Krank </a><a style="color:#ADCBEA";>Gleittag </a><a style="color:#AAB2B1";>Wochenende </a><a style="color:#FDD703";>Fortbildung</a></span></div>
 <?php
 
 require('../includes/footer.php');

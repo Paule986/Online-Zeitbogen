@@ -26,14 +26,13 @@
     <title><?php if(isset($seitentitel)){echo $seitentitel;} ?> - Online-Gleitzeitbogen</title>
     
     <!-- JS für Logout-Button -->
-    <script type="text/javascript" src="../includes/js/application.js"></script>
+  	<script type="text/javascript" src="../includes/js/application.js"></script>
     
     <!-- Zusaetzliche Scripte - individuell geladen -->
     <?php if(isset($zusatzinclude)){ echo $zusatzinclude; }?>
     
     <!-- CSS-Vorlagen -->
     <link href="../includes/css/bootstrap.css" rel="stylesheet">
-    <link href="../includes/css/bootstrap-tour.min.css" rel="stylesheet">
     <link href="../includes/css/master.css" rel="stylesheet">
     <link href="../includes/css/signin.css" rel="stylesheet">
     

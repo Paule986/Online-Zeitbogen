@@ -17,5 +17,7 @@
           </div>
         </div>
       </div>
+          <script type="text/javascript" src="../includes/js/bootstrap-tour.min.js"></script>
+    <script type="text/javascript" src="../includes/js/script.js"></script>
   </body>
 </html>

@@ -32,7 +32,7 @@ $monat_now_t = $monate[date("n",$timestamp)];
 
          $result_ma = $link->query("SELECT mitarbeiter.vname, mitarbeiter.nname, mitarbeiter.stez, mitarbeiter.sollstd, behoerde.art, behoerde.name, behoerde.rahmenzeit_beginn, behoerde.rahmenzeit_ende, status.bezeichnung FROM mitarbeiter, behoerde, status WHERE mitarbeiter.maid = '".$maid."' AND mitarbeiter.bid=behoerde.bid AND mitarbeiter.sid=status.sid");
                                         while($row_ma = mysqli_fetch_array($result_ma)){
-                                                 echo "<h2>Stammdaten</h2>";
+                                                 echo "<h2><div id='2'>Stammdaten</div></h2>";
                                                  echo "<div>".$row_ma['vname']."&nbsp;".$row_ma['nname']."</div>";
                                                  echo"<br>";
                                                  echo "<div>".$row_ma['stez']."</div>";
@@ -49,7 +49,7 @@ $monat_now_t = $monate[date("n",$timestamp)];
 ?>
     <div style="text-indent: 3em">
     <hr size="1" noshade>
-    <h2>Kurzübersicht</h2>
+    <h2><div id="3">Kurzübersicht</div></h2>
     <h3> <?php echo $monat_now_t; ?> </h3>
     </div>
 

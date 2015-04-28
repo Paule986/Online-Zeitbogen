@@ -33,12 +33,12 @@
     
     <!-- CSS-Vorlagen -->
     <link href="../includes/css/bootstrap.css" rel="stylesheet">
+    <link href="../includes/css/bootstrap-tour.min.css" rel="stylesheet">
     <link href="../includes/css/master.css" rel="stylesheet">
     <link href="../includes/css/signin.css" rel="stylesheet">
     
     <!-- Scripte - Bootstrap -->
     <script type="text/javascript" src="../includes/js/bootstrap.js"></script>
-    
   </head>
   <body>    
       <div class="container-wrapper container-content">

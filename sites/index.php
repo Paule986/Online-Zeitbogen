@@ -20,7 +20,7 @@ if(isset($_SESSION['maid'])){
    echo'
    <form class="form-signin" role="form" action="login.php" method="post">
       <h2 class="form-signin-heading">Bitte melden Sie sich an</h2>
-        <input class="form-control" name="usern" placeholder="Benutzername"
+        <input id="1" class="form-control" name="usern" placeholder="Benutzername"
                 required=""
                 autofocus=""
                 type="text">

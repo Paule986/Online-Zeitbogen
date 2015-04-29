@@ -31,10 +31,10 @@ $datum_year_cal = date("Y",$timestamp);
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
 
 // Monatsnamen für die Anzeige festlegen
-$monate = array(01=>"Januar",
-                02=>"Februar",
+$monate = array(1=>"Januar",
+                2=>"Februar",
                 3=>"März",
-                04=>"April",
+                4=>"April",
                 5=>"Mai",
                 6=>"Juni",
                 7=>"Juli",

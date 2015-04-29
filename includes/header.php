@@ -27,6 +27,8 @@
     
     <!-- JS für Logout-Button -->
   	<script type="text/javascript" src="../includes/js/application.js"></script>
+    <script type='text/javascript' src='../includes/js/jquery.js'></script>
+    <script type='text/javascript' src='../includes/js/bootstrap-tour.min.js'></script>
     
     <!-- Zusaetzliche Scripte - individuell geladen -->
     <?php if(isset($zusatzinclude)){ echo $zusatzinclude; }?>
@@ -35,6 +37,7 @@
     <link href="../includes/css/bootstrap.css" rel="stylesheet">
     <link href="../includes/css/master.css" rel="stylesheet">
     <link href="../includes/css/signin.css" rel="stylesheet">
+    <link href="../includes/css/bootstrap-tour.min.css" rel="stylesheet">
     
     <!-- Scripte - Bootstrap -->
     <script type="text/javascript" src="../includes/js/bootstrap.js"></script>

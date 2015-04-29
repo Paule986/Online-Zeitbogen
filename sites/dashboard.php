@@ -3,6 +3,7 @@
 $seitentitel = "Übersicht";
 // Navigation active setzen
 $navsite =1 ;
+
 require('../includes/header.php');
 require('../includes/mysql.php');
 
@@ -32,7 +33,7 @@ $monat_now_t = $monate[date("n",$timestamp)];
 
          $result_ma = $link->query("SELECT mitarbeiter.vname, mitarbeiter.nname, mitarbeiter.stez, mitarbeiter.sollstd, behoerde.art, behoerde.name, behoerde.rahmenzeit_beginn, behoerde.rahmenzeit_ende, status.bezeichnung FROM mitarbeiter, behoerde, status WHERE mitarbeiter.maid = '".$maid."' AND mitarbeiter.bid=behoerde.bid AND mitarbeiter.sid=status.sid");
                                         while($row_ma = mysqli_fetch_array($result_ma)){
-                                                 echo "<h2>Stammdaten</h2>";
+                                                 echo "<div class='jumbotron'><div id='2'><h2>Stammdaten</h2></div>";
                                                  echo "<div>".$row_ma['vname']."&nbsp;".$row_ma['nname']."</div>";
                                                  echo"<br>";
                                                  echo "<div>".$row_ma['stez']."</div>";
@@ -42,14 +43,14 @@ $monat_now_t = $monate[date("n",$timestamp)];
                                                  echo "<div>".$row_ma['bezeichnung']."</div>";
                                                  $soll_std = $row_ma['sollstd'];
                                                  echo "<h2>Rahmenzeit</h2>";
-                                                 echo "<div>Von ".substr($row_ma['rahmenzeit_beginn'],0,-3)." bis ".substr($row_ma['rahmenzeit_ende'],0,-3)."</div>";
+                                                 echo "<div>Von ".substr($row_ma['rahmenzeit_beginn'],0,-3)." bis ".substr($row_ma['rahmenzeit_ende'],0,-3)."</div></div>";
                                         }
 
 
 ?>
     <div style="text-indent: 3em">
     <hr size="1" noshade>
-    <h2><div>Kurzübersicht</div></h2>
+    <div id="3"><h2>Kurzübersicht</h2></div>
     <h3> <?php echo $monat_now_t; ?> </h3>
     </div>
 

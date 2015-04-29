@@ -3,9 +3,8 @@
 $seitentitel = "Erfassung";
 // Navigation active setzen
 $navsite =2 ;
-// zusÃƒÆ’Ã‚Â¤tzliche Dateien includieren
+// zusätzliche Dateien includieren
 $zusatzinclude = "
-<script type='text/javascript' src='../includes/js/jquery.js'></script>
 <script type='text/javascript' src='../includes/js/responsive-calendar.js'></script>
 <link rel='stylesheet' href='../includes/css/responsive-calendar.css'>
 <link rel='stylesheet' href='../includes/css/bootstrap-theme.min.css'>
@@ -13,7 +12,7 @@ $zusatzinclude = "
 require('../includes/header.php'); // header includieren
 require('../includes/mysql.php');  // Mysql Connect Datei einbinden
 $maid = $_SESSION['maid'];         // MAID einlesen
-$timestamp = time();               // Timestamp fÃƒÂ¼r Datumsoperationen erstellen
+$timestamp = time();               // Timestamp für Datumsoperationen erstellen
 if(isset($_GET['m'])){
          $datum_monat_cal = $_GET['m'];
          if($datum_monat_cal<=9){
@@ -30,7 +29,7 @@ $datum_mon_cal = date("n",$timestamp);
 $datum_year_cal = date("Y",$timestamp);
 // Anzahl von Tagen im Monat berechnen
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
-// String fÃƒÆ’Ã‚Â¼r Kalender Events erzeugen
+// String für Kalender Events erzeugen
 $notes="";
 // das Komma vom letzten Event im Kalenderstring entfernen
 $notes = substr($notes, 0, -2);
@@ -40,7 +39,7 @@ $notes = substr($notes, 0, -2);
 // "Speichern erfolgreich"-Meldung Variabe definieren
 $notiz = "";
          // Abfragen, ob von Kalender kommend
-         // und ob Eintrag geÃƒÆ’Ã‚Â¤ndert oder neu erstellt werden soll
+         // und ob Eintrag geändert oder neu erstellt werden soll
         if(isset($_GET['do'])){
                  $doo = $_GET['do'];
          }else{
@@ -70,7 +69,7 @@ $notiz = "";
                          $aende = 7 + $sollstunden/5;
                          $sqledit = "UPDATE erfassung set beginn = '07:00:00', ende = '".$aende.":00:00', aid = '".$aid_neu."'  WHERE eid = ".$_POST['eid'].";";
                  }else{
-                 // Wenn Eintrag bereits vorhanden, diesen in DB abÃƒÆ’Ã‚Â¤ndern
+                 // Wenn Eintrag bereits vorhanden, diesen in DB abändern
                  $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$_POST['eid'].";";
                  }
                  $link->query($sqledit);
@@ -132,7 +131,7 @@ for($tage=1;$tage<=$month_num;$tage++){
          $result = mysqli_query($link, "SELECT eid,aid FROM erfassung WHERE maid = ".$maid." AND datum = ".$select_datum.";");
          // Anzahl an DatensÃƒÆ’Ã‚Â¤tzen erfragen
            $anzahl_notes = mysqli_num_rows($result);
-         // Wenn kein Datensatz fÃƒÆ’Ã‚Â¼r den aktuellen Tag --> Markierung fÃƒÆ’Ã‚Â¼r JS erzeugen
+         // Wenn kein Datensatz für den aktuellen Tag --> Markierung für JS erzeugen
          if($anzahl_notes<1){
                          $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fehlt', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
          }else{
@@ -169,6 +168,7 @@ for($tage=1;$tage<=$month_num;$tage++){
          <div style="width:25%;float:left;">
          <form class="navbar-form navbar-left" role="search" action="" method="POST" >
          <div class="form-group">
+         <div id="4">
          <div class="input-group">
          <input autofocus="" type="text" value="<?php if(isset($feld_beginn))echo $feld_beginn; ?>" class="form-control btn-kurz" placeholder="Arbeitsbeginn Bsp.: 06:30" name="arbeitsbeginn" id="arbeitsbeginn">
          <input type="text" value="<?php if(isset($feld_ende))echo $feld_ende; ?>" class="form-control" placeholder="Arbeitsende Bsp.: 16:30" name="arbeitsende" id="arbeitsende">
@@ -190,9 +190,9 @@ for($tage=1;$tage<=$month_num;$tage++){
                          echo $liste;
                  ?>
          </select>
-         </div>
-         <button type="submit" name="submitneu" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span> Erfassen</button>
-		       <button type="submit" name="submitdelete" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span> Eintrag löschen</button>
+         </div></div>
+         <button id="6" type="submit" name="submitneu" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span> Erfassen</button>
+		       <button id="7" type="submit" name="submitdelete" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span> Eintrag löschen</button>
          <?php echo $notiz;  ?>
          </form>
          </div>
@@ -206,7 +206,7 @@ $( document ).ready( function() {
       translateMonths:["Januar","Februar","März","April","Mai","Juni","Juli","August","September","Oktober","November","Dezember"],
     time: '<?php echo $datum_now_cal; ?>',
     events: {
-      <?php  echo $notes; // Events aus Kalenderstring einfÃƒÆ’Ã‚Â¼gen?>
+      <?php  echo $notes; // Events aus Kalenderstring einfügen?>
       }
   });
 });
@@ -228,8 +228,10 @@ $( document ).ready( function() {
     <div class="day header">Sa</div>
     <div class="day header">So</div>
   </div>
+  <div id="5">
   <div class="days" data-group="days">
     <!-- the place where days will be generated -->
+  </div>
   </div>
 </div>
 <!-- Responsive calendar - END -->

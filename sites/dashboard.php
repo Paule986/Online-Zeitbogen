@@ -1,19 +1,13 @@
 <?php
-
 $seitentitel = "Übersicht";
 // Navigation active setzen
 $navsite =1 ;
-
 require('../includes/header.php');
 require('../includes/mysql.php');
-
 $soll_std = "";
-
-
 $timestamp = time();
 $datum_now = date("Y-m-d",$timestamp);
 $maid = $_SESSION['maid'];
-
 if(isset($_GET['m'])){
          $datum_monat_cal = $_GET['m'];
          if($datum_monat_cal<=9){
@@ -30,7 +24,6 @@ $datum_mon_cal = date("n",$timestamp);
 $datum_year_cal = date("Y",$timestamp);
 // Anzahl von Tagen im Monat berechnen
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
-
 // Monatsnamen für die Anzeige festlegen
 $monate = array(1=>"Januar",
                 2=>"Februar",
@@ -46,8 +39,6 @@ $monate = array(1=>"Januar",
                 12=>"Dezember");
 // Aktuellen Monat raussuchen
 $monat_now_t = $monate[date("n",$timestamp)];
-
-
          $result_ma = $link->query("SELECT mitarbeiter.vname, mitarbeiter.nname, mitarbeiter.stez, mitarbeiter.sollstd, behoerde.art, behoerde.name, behoerde.rahmenzeit_beginn, behoerde.rahmenzeit_ende, status.bezeichnung FROM mitarbeiter, behoerde, status WHERE mitarbeiter.maid = '".$maid."' AND mitarbeiter.bid=behoerde.bid AND mitarbeiter.sid=status.sid");
                                         while($row_ma = mysqli_fetch_array($result_ma)){
                                                  echo "<div class='jumbotron'><div id='2'><h2>Stammdaten</h2></div>";
@@ -62,28 +53,20 @@ $monat_now_t = $monate[date("n",$timestamp)];
                                                  echo "<h2>Rahmenzeit</h2>";
                                                  echo "<div>Von ".substr($row_ma['rahmenzeit_beginn'],0,-3)." bis ".substr($row_ma['rahmenzeit_ende'],0,-3)."</div></div>";
                                         }
-
-
 ?>
 
 
 
     <div style="text-indent: 3em">
     <hr size="1" noshade>
-<<<<<<< HEAD
     <div id="3"><h2>Kurzübersicht</h2></div>
-    <h3> <?php echo $monat_now_t; ?> </h3>
-=======
-    <h2><div>Kurzübersicht</div></h2>
 	<a class="pull-left" href="?m=<?php echo($datum_monat_cal-1); ?>"><div class="btn"><span class="glyphicon glyphicon-backward"></span></div></a>
 	<div style="float: left; width: 100px; margin-left: 39px;"><h3> <?php echo $datum_monat_cal; ?> </h3></div>
 	<a class="pull-left" href="?m=<?php echo($datum_monat_cal+1); ?>"><div class="btn"><span class="glyphicon glyphicon-forward"></span></div></a>
->>>>>>> origin/V0.3
     </div>
 
                                 <div style="text-indent: 2em">
                                 <?php
-
                                         // heutiges Datum ermitteln
                                         $datum_now = date("Ymd",$timestamp);
                                         $datum_now_y = date("Y",$timestamp);
@@ -110,7 +93,6 @@ $monat_now_t = $monate[date("n",$timestamp)];
 			 $urlaub_tage = $row_tage['urlbtage'];
 		         }		 
                                          
-
 echo "<table><tr><td><div>Geleistete Arbeitsstunden</td><td>".(round($saldo/60,1))." (".(round($saldo,0))." Min)</td></tr><tr><td>Soll-Arbeitsstunden</td><td>".($soll_std*4)." (".($soll_std*4*60)." Min)</td></tr><tr><td>Zeit-Saldo</td><td>".(round($saldo/60-($soll_std*4),1))." (".(round(($saldo-($soll_std*4*60)),0))." Min)</td></tr><tr><td>Urlaubstage</td><td>".$urlaub_tage."</td></tr><tr><td>erfasste Urlaubstage</td><td>".$urlaub_ist."</td></tr><tr><td>Krank-Tage</td><td>".$krank."</td></tr></table>";
                                 ?>
                                 </div>

@@ -10,7 +10,7 @@ var tour = new Tour({
   {
     element: "#2",
     title: "Startseite",
-    content: "Sie sich nun auf der Startseite mit Ihren Stammdaten, der Rahmenzeit und einer Kurzübersicht über den aktuellen Monat",
+    content: "Sie befinden sich nun auf der Startseite mit Ihren Stammdaten, der Rahmenzeit und einer Kurzübersicht über den aktuellen Monat.",
 	placement: "top"
   },
    {

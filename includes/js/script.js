@@ -61,5 +61,5 @@ var tour = new Tour({
 tour.init();
 
 // Start the tour
-tour.start();
-tour.restart()
+tour.start()
+

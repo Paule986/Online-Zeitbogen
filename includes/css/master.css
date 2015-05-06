@@ -2818,6 +2818,33 @@ body .mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded{background
   background-color: #FDD703;
   color: #090D1A;
 }
+
+.day.sun{
+  background-color: #CCCCCC;
+  color: #090D1A;
+}
+.day.sat{
+  background-color: #CCCCCC;
+  color: #090D1A;
+}
+
+.day.sun.future{
+  background-color: #AACCCC;
+ color: #090D1A;
+}
+.day.sat.future{
+  background-color: #CCAACC;
+  color: #090D1A;
+}
+
+.day.sun.not-current{
+  background-color: #FFFFFF;
+  color: #090D1A;
+}
+.day.sat.not-current{
+  background-color: #FFFFFF;
+  color: #090D1A;
+}
 /*klasse für ausblenden der Mitarbeiterliste
 
 -----------------------------------------------------*/

@@ -5,14 +5,9 @@
 
 // mysql connect includen
 require('includes/mysql.php');
-$timestamp = time();
-if(isset($_GET['monat'])){
-         $datum_monat_cal = $_GET['monat'];
-}else{
-         $datum_monat_cal = date("n",$timestamp);
-}
+$datum_monat_cal = "3";
 echo "Einträge für Monat ".$datum_monat_cal." werden angelegt.<br><br>";
-$datum_year_cal = date("Y",$timestamp);
+$datum_year_cal = "2015";
 // Anzahl von Tagen im Monat berechnen
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
 
@@ -28,9 +23,7 @@ while($row_ma = mysqli_fetch_array($result_ma)){
          $timestamp_now = mktime(8,31,0,$datum_monat_cal,$thisday,$datum_year_cal);
          $wochentag = date("w",$timestamp_now);
          if(($wochentag!=0)&&($wochentag!=6)){
-         $sqladd = $link->query("INSERT INTO erfassung (datum,maid,aid) VALUES('".$datum_year_cal."-".$datum_monat_cal."-".$thisday."',".$row_ma['maid'].",'88');");
-
-		 }else{
+        }else{
 			 $sqladd = $link->query("INSERT INTO erfassung (datum,maid,aid) VALUES('".$datum_year_cal."-".$datum_monat_cal."-".$thisday."',".$row_ma['maid'].",'5');");
 			 
 		 }

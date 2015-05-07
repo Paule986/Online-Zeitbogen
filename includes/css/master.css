@@ -2819,43 +2819,9 @@ body .mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded{background
   color: #090D1A;
 }
 
-.day.sun{
+.day.wochenende {
   background-color: #CCCCCC;
   color: #090D1A;
-}
-.day.sat{
-  background-color: #CCCCCC;
-  color: #090D1A;
-}
-
-.day.sat .badge{
-	background-color: #CCCCCC;
-	color: #CCCCCC;
-	text-shadow: 0 0px 0 rgba(0,0,0,0);
-}
-
-.day.sun .badge{
-	background-color: #CCCCCC;
-	color: #CCCCCC;
-	text-shadow: 0 0px 0 rgba(0,0,0,0);
-}
-
-.day.sun.future{
-  	background-color: #CCCCCC;
- 	color: #CCCCCC;
-}
-.day.sat.future{
-  	background-color: #CCCCCC;
-  	color: #CCCCCC;
-}
-
-.day.sun.not-current{
-  	background-color: #FFFFFF;
-  	color: #090D1A;
-}
-.day.sat.not-current{
-  	background-color: #FFFFFF;
-  	color: #090D1A;
 }
 
 /*klasse für ausblenden der Mitarbeiterliste

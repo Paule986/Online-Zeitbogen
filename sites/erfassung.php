@@ -181,7 +181,8 @@ for($tage=1;$tage<=$month_num;$tage++){
                  }else if( (isset($_GET['eid'])) ){
                          echo"<h3>".$feld_datum." anpassen</h3>";
                  }else{
-                         echo"<h3>Heute erfassen</h3>";
+					 	$feld_datum = date("Y-m-d",$timestamp);
+                        echo"<h3>Heute erfassen</h3>";
                  } ?>
          <div style="width:25%;float:left;">
          <form class="navbar-form navbar-left" role="search" action="" method="POST" >

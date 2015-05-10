@@ -5,9 +5,9 @@
 
 // mysql connect includen
 require('includes/mysql.php');
-$datum_monat_cal = "2";
+$datum_monat_cal = "11";
 echo "Einträge für Monat ".$datum_monat_cal." werden angelegt.<br><br>";
-$datum_year_cal = "2015";
+$datum_year_cal = "2014";
 // Anzahl von Tagen im Monat berechnen
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
 

@@ -13,20 +13,35 @@ require('../includes/header.php'); // header includieren
 require('../includes/mysql.php');  // Mysql Connect Datei einbinden
 $maid = $_SESSION['maid'];         // MAID einlesen
 $timestamp = time();               // Timestamp für Datumsoperationen erstellen
-if(isset($_GET['m'])){
-         $datum_monat_cal = $_GET['m'];
-         if($datum_monat_cal<=9){
-                 $datum_monat_cal = "0".$datum_monat_cal;
-         }
-         $datum_now_cal_y = date("Y",$timestamp);
-         $datum_now_cal_d = date("d",$timestamp);
-         $datum_now_cal = $datum_now_cal_y."-".$datum_monat_cal."-".$datum_now_cal_d;
+if((isset($_GET['m']))&&(isset($_GET['y']))){
+    $datum_monat_cal = $_GET['m'];
+    $datum_jahr_cal = $_GET['y'];
+
+
+    if($datum_monat_cal<1){
+        $datum_monat_cal = 12;
+        $datum_now_cal_y = $datum_jahr_cal-1;
+    }elseif($datum_monat_cal>12){
+        $datum_monat_cal = $datum_monat_cal-12;
+        $datum_now_cal_y = $datum_jahr_cal+1;
+
+    }else{
+        $datum_now_cal_y = $datum_jahr_cal;
+    }
+    if($datum_monat_cal<=9){
+        $datum_monat_cal = "0".$datum_monat_cal;
+    }
+    $datum_now_cal_d = date("d", $timestamp);
+    $datum_now_cal = $datum_now_cal_y."-".$datum_monat_cal."-".$datum_now_cal_d;
+
+
 }else{
-         $datum_monat_cal = date("m",$timestamp);
-         $datum_now_cal = date("Y-m-d",$timestamp);
+    $datum_monat_cal = date("m",$timestamp);
+    $datum_now_cal_y = date("Y", $timestamp);
+    $datum_now_cal = date("Y-m-d",$timestamp);
 }
 $datum_mon_cal = date("n",$timestamp);
-$datum_year_cal = date("Y",$timestamp);
+$datum_year_cal = $datum_now_cal_y;
 // Anzahl von Tagen im Monat berechnen
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
 // String für Kalender Events erzeugen
@@ -218,9 +233,9 @@ $( document ).ready( function() {
 <!-- Responsive calendar - START -->
 <div class="responsive-calendar"  >
   <div class="controls">
-      <a class="pull-left" href="?m=<?php echo($datum_monat_cal-1); ?>"><div class="btn"><span class="glyphicon glyphicon-backward"></span></div></a>
+      <a class="pull-left" href="?m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>"><div class="btn"><span class="glyphicon glyphicon-backward"></span></div></a>
       <h4><span data-head-year></span> <span data-head-month></span></h4>
-      <a class="pull-right" href="?m=<?php echo($datum_monat_cal+1); ?>"><div class="btn"><span class="glyphicon glyphicon-forward"></span></div></a>
+      <a class="pull-right" href="?m=<?php echo($datum_monat_cal+1); ?>&y=<?php echo($datum_now_cal_y); ?>"><div class="btn"><span class="glyphicon glyphicon-forward"></span></div></a>
   </div><hr/>
   <div class="day-headers">
     <div class="day header">Mo</div>

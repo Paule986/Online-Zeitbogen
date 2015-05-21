@@ -255,6 +255,7 @@ $( document ).ready( function() {
 </div>
 <!-- Responsive calendar - END -->
 <div align="center"><span><a style="color:#F9836F";>nicht erfasst </a><a style="color:#00CC66";>erfasst </a><a style="color:#9296CB";>Urlaub </a><a style="color:#E2BDA0";>Krank </a><a style="color:#ADCBEA";>Gleittag </a><a style="color:#AAB2B1";>Wochenende </a><a style="color:#FDD703";>Fortbildung</a></span></div>
+</div>
 <div style="clear:left;"></div>
 <?php
 require('../includes/footer.php');

@@ -8,22 +8,38 @@ $soll_std = "";
 $timestamp = time();
 $datum_now = date("Y-m-d",$timestamp);
 $maid = $_SESSION['maid'];
-if(isset($_GET['m'])){
-         $datum_monat_cal = $_GET['m'];
-         if($datum_monat_cal<=9){
-                 $datum_monat_cal = "0".$datum_monat_cal;
-         }
-         $datum_now_cal_y = date("Y",$timestamp);
-         $datum_now_cal_d = date("d",$timestamp);
-         $datum_now_cal = $datum_now_cal_y."-".$datum_monat_cal."-".$datum_now_cal_d;
+if((isset($_GET['m']))&&(isset($_GET['y']))){
+    $datum_monat_cal = $_GET['m'];
+    $datum_jahr_cal = $_GET['y'];
+
+
+    if($datum_monat_cal<1){
+        $datum_monat_cal = 12;
+        $datum_now_cal_y = $datum_jahr_cal-1;
+    }elseif($datum_monat_cal>12){
+        $datum_monat_cal = $datum_monat_cal-12;
+        $datum_now_cal_y = $datum_jahr_cal+1;
+
+    }else{
+        $datum_now_cal_y = $datum_jahr_cal;
+    }
+    if($datum_monat_cal<=9){
+        $datum_monat_cal = "0".$datum_monat_cal;
+    }
+    $datum_now_cal_d = date("d", $timestamp);
+    $datum_now_cal = $datum_now_cal_y."-".$datum_monat_cal."-".$datum_now_cal_d;
+
+
 }else{
-         $datum_monat_cal = date("m",$timestamp);
-         $datum_now_cal = date("Y-m-d",$timestamp);
+    $datum_monat_cal = date("m",$timestamp);
+    $datum_now_cal_y = date("Y", $timestamp);
+    $datum_now_cal = date("Y-m-d",$timestamp);
 }
 $datum_mon_cal = date("n",$timestamp);
-$datum_year_cal = date("Y",$timestamp);
+$datum_year_cal = $datum_now_cal_y;
 // Anzahl von Tagen im Monat berechnen
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
+
 // Monatsnamen für die Anzeige festlegen
 $monate = array(1=>"Januar",
                 2=>"Februar",
@@ -39,6 +55,7 @@ $monate = array(1=>"Januar",
                 12=>"Dezember");
 // Aktuellen Monat raussuchen
 $monat_now_t = $monate[date("n",$timestamp)];
+
          $result_ma = $link->query("SELECT mitarbeiter.vname, mitarbeiter.nname, mitarbeiter.stez, mitarbeiter.sollstd, behoerde.art, behoerde.name, behoerde.rahmenzeit_beginn, behoerde.rahmenzeit_ende, status.bezeichnung FROM mitarbeiter, behoerde, status WHERE mitarbeiter.maid = '".$maid."' AND mitarbeiter.bid=behoerde.bid AND mitarbeiter.sid=status.sid");
                                         while($row_ma = mysqli_fetch_array($result_ma)){
                                                  echo "<div class='jumbotron'><div id='2'><h2>Stammdaten</h2></div>";
@@ -60,9 +77,9 @@ $monat_now_t = $monate[date("n",$timestamp)];
     <div style="text-indent: 3em">
     <hr size="1" noshade>
     <div id="3"><h2>Kurzübersicht</h2></div>
-	<a class="pull-left" href="?m=<?php echo($datum_monat_cal-1); ?>"><div class="btn"><span class="glyphicon glyphicon-backward"></span></div></a>
-	<div style="float: left; width: 100px; margin-left: 39px;"><h3> <?php echo $datum_monat_cal; ?> </h3></div>
-	<a class="pull-left" href="?m=<?php echo($datum_monat_cal+1); ?>"><div class="btn"><span class="glyphicon glyphicon-forward"></span></div></a>
+	<a class="pull-left" href="?m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>"><div class="btn"><span class="glyphicon glyphicon-backward"></span></div></a>
+	<div style="float: left; width: 120px; margin-left: 39px;"><h3> <?php echo($datum_monat_cal); ?> / <?php echo $datum_now_cal_y; ?> </h3></div>
+	<a class="pull-left" href="?m=<?php echo($datum_monat_cal+1); ?>&y=<?php echo($datum_now_cal_y); ?>"><div class="btn"><span class="glyphicon glyphicon-forward"></span></div></a>
     </div>
 
                                 <div style="text-indent: 2em">
@@ -72,8 +89,8 @@ $monat_now_t = $monate[date("n",$timestamp)];
                                         $datum_now_y = date("Y",$timestamp);
                                         $datum_now_m = date("m",$timestamp);
                                         // Interval Anfang erstellen
-                                        $datum_interval_anfang = date("Y-$datum_monat_cal",$timestamp);
-                                        $datum_interval_ende = date("Y-$datum_monat_cal",$timestamp)."-31";
+                                        $datum_interval_anfang = date("$datum_now_cal_y-$datum_monat_cal",$timestamp);
+                                        $datum_interval_ende = date("$datum_now_cal_y-$datum_monat_cal",$timestamp)."-31";
                                         // Befehl ausführen - Daten von MA anzeigen
                                                  $saldo=0;
                                         $result_saldo = $link->query("SELECT * FROM erfassung WHERE maid = '".$maid."' AND aid ='99' AND datum LIKE '".$datum_interval_anfang."%' ");

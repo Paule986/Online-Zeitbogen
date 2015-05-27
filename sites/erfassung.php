@@ -73,12 +73,13 @@ $notiz = "";
          // Variablen filtern, um mysql injections zu verhindern.
         if(isset($_POST['arbeitsbeginn'])){$beginn_neu = mysqli_real_escape_string($link,$_POST['arbeitsbeginn']); }else $beginn_neu ="";
         if(isset($_POST['arbeitsende'])){$ende_neu = mysqli_real_escape_string($link,$_POST['arbeitsende']); }else $ende_neu ="";
+        if(isset($_POST['pause'])){$pause_neu = mysqli_real_escape_string($link,$_POST['pause']); }else $pause_neu ="";
         if(isset($_POST['bemerkung'])){$bemerkung_neu = mysqli_real_escape_string($link,$_POST['bemerkung']); }else $bemerkung_neu ="";
         if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="NULL";
         if(isset($_POST['datum'])){$datum_neu = mysqli_real_escape_string($link,$_POST['datum']); }else $datum_neu ="";
         if($doo=="neu"){
                  // Wenn neuer Eintrag, dann in DB schreiben
-                 $sqladd = "INSERT INTO erfassung (datum,beginn,ende,maid,bemerkung,aid) VALUES('".$datum_neu."','".$beginn_neu.":00','".$ende_neu.":00',".$maid.",'".$bemerkung_neu."','".$aid_neu."');";
+                 $sqladd = "INSERT INTO erfassung (datum,beginn,ende,pause,maid,bemerkung,aid) VALUES('".$datum_neu."','".$beginn_neu.":00','".$ende_neu.":00','".$pause_neu."',".$maid.",'".$bemerkung_neu."','".$aid_neu."');";
                  $link->query($sqladd);
                  // Erfolgreich-Meldung erstellen
                  $notiz = "<div class='alert alert-success'>Erfassung erfolgreich.</div>";
@@ -90,7 +91,7 @@ $notiz = "";
                          $sqledit = "UPDATE erfassung set beginn = '07:00:00', ende = '".$aende.":00:00', aid = '".$aid_neu."'  WHERE eid = ".$_POST['eid'].";";
                  }else{
                  // Wenn Eintrag bereits vorhanden, diesen in DB abändern
-                 $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$_POST['eid'].";";
+                $sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00',pause= '".$pause_neu."', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$_POST['eid'].";";
                  }
                  $link->query($sqledit);
                  // Erfolgreich-Meldung erstellen
@@ -112,6 +113,7 @@ $notiz = "";
         while($row = mysqli_fetch_array($result_edit)){
           $feld_beginn = substr($row['beginn'],0,-3);
           $feld_ende =  substr($row['ende'],0,-3);
+          $feld_pause = $row['pause'];
           $feld_bemerkung = $row['bemerkung'];
           $feld_aid = $row['aid'];
           $feld_datum = $row['datum'];
@@ -137,6 +139,7 @@ $notiz = "";
         while($row = mysqli_fetch_array($result_edit)){
           $feld_beginn = substr($row['beginn'],0,-3);
           $feld_ende =  substr($row['ende'],0,-3);
+          $feld_pause = $row['pause'];
           $feld_bemerkung = $row['bemerkung'];
           $feld_aid = $row['aid'];
           $feld_datum = $row['datum'];
@@ -196,6 +199,7 @@ for($tage=1;$tage<=$month_num;$tage++){
          <div class="input-group">
          <input autofocus="" type="text" value="<?php if(isset($feld_beginn))echo $feld_beginn; ?>" class="form-control btn-kurz" placeholder="Arbeitsbeginn Bsp.: 06:30" name="arbeitsbeginn" id="arbeitsbeginn">
          <input type="text" value="<?php if(isset($feld_ende))echo $feld_ende; ?>" class="form-control" placeholder="Arbeitsende Bsp.: 16:30" name="arbeitsende" id="arbeitsende">
+         <input type="text" value="<?php if(isset($feld_pause))echo $feld_pause; ?>" class="form-control" placeholder="Pause: Angabe in Minuten" name="pause" id="pause">
          <input type="text" value="<?php if(isset($feld_bemerkung))echo $feld_bemerkung; ?>" class="form-control" placeholder="Bemerkung Bsp.: Homeoffice" name="bemerkung" id="bemerkung">
          <input type="hidden"  name="datum" id="datum" value="<?php if(isset($feld_datum))echo $feld_datum; ?>">
          <input type="hidden"  name="eid" id="eid" value="<?php if(isset($feld_eid))echo $feld_eid; ?>">

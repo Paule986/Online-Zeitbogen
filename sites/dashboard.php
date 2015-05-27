@@ -80,11 +80,11 @@ $monat_now_t = $monate[$datum_monat_cal];
                                 <?php
                                         // heutiges Datum ermitteln
                                         $datum_now = date("Ymd",$timestamp);
-                                        $datum_now_y = date("Y",$timestamp);
-                                        $datum_now_m = date("m",$timestamp);
+                                        $datum_now_y = $datum_now_cal_y;
+                                        $datum_now_m = $datum_monat_cal;
                                         // Interval Anfang erstellen
-                                        $datum_interval_anfang = date("$datum_now_cal_y-$datum_monat_cal",$timestamp);
-                                        $datum_interval_ende = date("$datum_now_cal_y-$datum_monat_cal",$timestamp)."-31";
+                                        $datum_interval_anfang = date("$datum_now_y-$datum_now_m",$timestamp);
+                                        $datum_interval_ende = date("$datum_now_y-$datum_now_m",$timestamp)."-31";
                                         // Befehl ausführen - Daten von MA anzeigen
                                                  $saldo=0;
                                         $result_saldo = $link->query("SELECT * FROM erfassung WHERE maid = '".$maid."' AND aid ='99' AND datum LIKE '".$datum_interval_anfang."%' ");

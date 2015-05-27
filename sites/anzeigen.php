@@ -14,39 +14,57 @@ $maid = $_SESSION['maid'];           // MAID einlesen
 $timestamp = time();                 // Timestamp erstellen
 $datum_now = date("Y-m-d",$timestamp);  // Datum formatieren
 
-// Monatsnamen für die Anzeige festlegen
-$monate = array(1=>"Januar",
-                2=>"Februar",
-                3=>"März",
-                4=>"April",
-                5=>"Mai",
-                6=>"Juni",
-                7=>"Juli",
-                8=>"August",
-                9=>"September",
-                10=>"Oktober",
-                11=>"November",
-                12=>"Dezember");
-// Aktuellen Monat raussuchen
-$monat_now_t = $monate[date("n",$timestamp)];
+if((isset($_GET['m']))&&(isset($_GET['y']))){
+    $datum_monat_cal = $_GET['m'];
+    $datum_jahr_cal = $_GET['y'];
 
-// Testen, ob bereits Monat über URL übergeben
-if(!isset($_GET['m'])){
-         //Keine Ãœbergabe --> aktuelles Datum nutzen
-         $monat_now_t = $monate[date("n",$timestamp)];
-         $monat_now_z =date("n",$timestamp);
-         $GLOBALS["now_m"] = $monat_now_z;
+
+    if($datum_monat_cal<1){
+        $datum_monat_cal = 12;
+        $datum_now_cal_y = $datum_jahr_cal-1;
+    }elseif($datum_monat_cal>12){
+        $datum_monat_cal = $datum_monat_cal-12;
+        $datum_now_cal_y = $datum_jahr_cal+1;
+
+    }else{
+        $datum_now_cal_y = $datum_jahr_cal;
+    }
+    if($datum_monat_cal<=9){
+        $datum_monat_cal = "0".$datum_monat_cal;
+    }
+    $datum_now_cal_d = date("d", $timestamp);
+    $datum_now_cal = $datum_now_cal_y."-".$datum_monat_cal."-".$datum_now_cal_d;
+
+
 }else{
-         // Monat aus der URL nutzen
-         $monat_now_t = $monate[$_GET['m']];
-         $monat_now_z =$_GET['m'];
-         $GLOBALS["now_m"] = $monat_now_z;
+    $datum_monat_cal = date("m",$timestamp);
+    $datum_now_cal_y = date("Y", $timestamp);
+    $datum_now_cal = date("Y-m-d",$timestamp);
 }
+$datum_mon_cal = date("n",$timestamp);
+$datum_year_cal = $datum_now_cal_y;
+// Anzahl von Tagen im Monat berechnen
+$month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
 
+// Monatsnamen für die Anzeige festlegen
+$monate = array('01'=>"Januar",
+                '02'=>"Februar",
+                '03'=>"März",
+                '04'=>"April",
+                '05'=>"Mai",
+                '06'=>"Juni",
+                '07'=>"Juli",
+                '08'=>"August",
+                '09'=>"September",
+                '10'=>"Oktober",
+                '11'=>"November",
+                '12'=>"Dezember");
+// Aktuellen Monat raussuchen
+$monat_now_t = $monate[$datum_monat_cal];
 ?>
 
 
-    <h3><a href="?maid=<?php echo($maid); ?>&m=<?php echo($monat_now_z-1); ?>"><span class="glyphicon glyphicon-backward"></span></a>  <?php echo $monat_now_t; ?>  <a href="?maid=<?php echo($maid); ?>&m=<?php echo $monat_now_z+1; ?>"><span class="glyphicon glyphicon-forward"></span></a></h3>
+    <h3><a href="?maid=<?php echo($maid); ?>&m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-backward"></span></a>  <?php echo $monat_now_t; ?> <?php echo $datum_now_cal_y; ?>  <a href="?maid=<?php echo($maid); ?>&m=<?php echo $datum_monat_cal+1; ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-forward"></span></a></h3>
 
                 <table class="table table-striped table-bordered">
                         <thead>
@@ -62,11 +80,8 @@ if(!isset($_GET['m'])){
                                         // heutiges Datum ermitteln
                                         $timestamp = time();
                                         $datum_now = date("Ymd",$timestamp);
-                                        $datum_now_y = date("Y",$timestamp);
-                                        $datum_now_m = $GLOBALS["now_m"];
-                                        if($datum_now_m <10){
-                                                 $datum_now_m = "0".$datum_now_m;
-                                        }
+                                        $datum_now_y = $datum_now_cal_y;
+                                        $datum_now_m = $datum_monat_cal;
                                         // Interval Anfang erstellen
                                         $datum_interval_anfang = $datum_now_y."".$datum_now_m."01";
                                         $datum_interval_ende = $datum_now_y."".$datum_now_m."31";
@@ -162,7 +177,7 @@ if(!isset($_GET['m'])){
                                                          // Wenn Bearbeiten-Button geklickt, in dieser Zeile Textfelder erstellen
                                                          // und Daten aus DB laden
                                                          echo '<tr id="row'.$row['eid'].'">';
-                                                         echo '<form class="navbar-form navbar-left" role="search" action="?m='.$monat_now_z.'#row'.$row['eid'].'" method="POST" >';
+                                                         echo '<form class="navbar-form navbar-left" role="search" action="?m='.$datum_monat_cal.'#row'.$row['eid'].'" method="POST" >';
                                                          echo '<td width="50px">'.$wochentag.", ".$date_format.'</td>';
                                                          echo '<td width="20px"><input type="text" value="'.$beginn_format.'" class="form-control" placeholder="Arbeitsbeginn Bsp.: 06:30" name="arbeitsbeginn" id="arbeitsbeginn"></td>';
                                                          echo '<td width="20px"><input type="text" value="'.$ende_format.'" class="form-control" placeholder="Arbeitsende Bsp.: 16:30" name="arbeitsende" id="arbeitsende"></td>';

@@ -64,7 +64,7 @@ $monat_now_t = $monate[$datum_monat_cal];
 ?>
 
 
-    <h3><a href="?maid=<?php echo($maid); ?>&m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-backward"></span></a>  <?php echo $monat_now_t; ?> <?php echo $datum_now_cal_y; ?>  <a href="?maid=<?php echo($maid); ?>&m=<?php echo $datum_monat_cal+1; ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-forward"></span></a></h3>
+    <h3><a href="?maid=<?php echo($maid); ?>&m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-backward"></span></a>  <?php echo $datum_now_cal_y; ?> <?php echo($monat_now_t); ?>  <a href="?maid=<?php echo($maid); ?>&m=<?php echo $datum_monat_cal+1; ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-forward"></span></a></h3>
 
                 <table class="table table-striped table-bordered">
                         <thead>

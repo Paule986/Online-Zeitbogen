@@ -16,18 +16,22 @@ $timestamp = time();               // Timestamp für Datumsoperationen erstellen
 if((isset($_GET['m']))&&(isset($_GET['y']))){
     $datum_monat_cal = $_GET['m'];
     $datum_jahr_cal = $_GET['y'];
+	$datum_monat_showcal = $_GET['m'];
 
 
     if($datum_monat_cal<1){
         $datum_monat_cal = 12;
+		$datum_monat_showcal = 12;
         $datum_now_cal_y = $datum_jahr_cal-1;
     }elseif($datum_monat_cal>12){
         $datum_monat_cal = $datum_monat_cal-12;
+		$datum_monat_showcal = $datum_monat_showcal-12;
         $datum_now_cal_y = $datum_jahr_cal+1;
 
     }else{
         $datum_now_cal_y = $datum_jahr_cal;
     }
+	
     if($datum_monat_cal<=9){
         $datum_monat_cal = "0".$datum_monat_cal;
     }
@@ -37,6 +41,7 @@ if((isset($_GET['m']))&&(isset($_GET['y']))){
 
 }else{
     $datum_monat_cal = date("m",$timestamp);
+	$datum_monat_showcal = date("m",$timestamp);
     $datum_now_cal_y = date("Y", $timestamp);
     $datum_now_cal = date("Y-m-d",$timestamp);
 }
@@ -148,30 +153,30 @@ for($tage=1;$tage<=$month_num;$tage++){
            $anzahl_notes = mysqli_num_rows($result);
          // Wenn kein Datensatz für den aktuellen Tag --> Markierung für JS erzeugen
          if($anzahl_notes<1){
-                         $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fehlt', 'url': 'erfassung.php?maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
+                         $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fehlt', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
          }else{
                 while($myrow = mysqli_fetch_array($result)) {
                          // Wenn Eintrag vorhanden und AID = 3 - KRANK - dann Markierung erzeugen
                          if($myrow['aid']=="88"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fehlt', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fehlt', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="99"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'normal', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'normal', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="1"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'gleittag', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'gleittag', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="2"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'urlaub', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'urlaub', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="3"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'krank', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'krank', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&do=edit&eid=".$myrow['eid']."'},\n";
                          }
                          if($myrow['aid']=="4"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fortbildung', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'fortbildung', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&do=edit&eid=".$myrow['eid']."'},\n";
                          }
 						 if($myrow['aid']=="5"){
-                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'wochenende', 'url': 'erfassung.php?do=edit&eid=".$myrow['eid']."'},\n";
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'class': 'wochenende', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&do=edit&eid=".$myrow['eid']."'},\n";
                          }
                  }
          }

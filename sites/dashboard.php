@@ -41,20 +41,20 @@ $datum_year_cal = $datum_now_cal_y;
 $month_num = cal_days_in_month(CAL_GREGORIAN, $datum_monat_cal, $datum_year_cal);
 
 // Monatsnamen für die Anzeige festlegen
-$monate = array(1=>"Januar",
-                2=>"Februar",
-                3=>"März",
-                4=>"April",
-                5=>"Mai",
-                6=>"Juni",
-                7=>"Juli",
-                8=>"August",
-                9=>"September",
-                10=>"Oktober",
-                11=>"November",
-                12=>"Dezember");
+$monate = array('01'=>"Januar",
+                '02'=>"Februar",
+                '03'=>"März",
+                '04'=>"April",
+                '05'=>"Mai",
+                '06'=>"Juni",
+                '07'=>"Juli",
+                '08'=>"August",
+                '09'=>"September",
+                '10'=>"Oktober",
+                '11'=>"November",
+                '12'=>"Dezember");
 // Aktuellen Monat raussuchen
-$monat_now_t = $monate[date("n",$timestamp)];
+$monat_now_t = $monate[$datum_monat_cal];
 
          $result_ma = $link->query("SELECT mitarbeiter.vname, mitarbeiter.nname, mitarbeiter.stez, mitarbeiter.sollstd, behoerde.art, behoerde.name, behoerde.rahmenzeit_beginn, behoerde.rahmenzeit_ende, status.bezeichnung FROM mitarbeiter, behoerde, status WHERE mitarbeiter.maid = '".$maid."' AND mitarbeiter.bid=behoerde.bid AND mitarbeiter.sid=status.sid");
                                         while($row_ma = mysqli_fetch_array($result_ma)){
@@ -72,15 +72,9 @@ $monat_now_t = $monate[date("n",$timestamp)];
                                         }
 ?>
 
-
-
-    <div style="text-indent: 3em">
-    <hr size="1" noshade>
-    <div id="3"><h2>Kurzübersicht</h2></div>
-	<a class="pull-left" href="?m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>"><div class="btn"><span class="glyphicon glyphicon-backward"></span></div></a>
-	<div style="float: left; width: 120px; margin-left: 39px;"><h3> <?php echo($datum_monat_cal); ?> / <?php echo $datum_now_cal_y; ?> </h3></div>
-	<a class="pull-left" href="?m=<?php echo($datum_monat_cal+1); ?>&y=<?php echo($datum_now_cal_y); ?>"><div class="btn"><span class="glyphicon glyphicon-forward"></span></div></a>
-    </div>
+    <div style="text-indent: 3em;"><h2>Kurzübersicht</h2></div>
+	
+	<div style="margin-left: 3em; padding-bottom: 15px;"><h3 id="Datumsanker"><a href="?m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>#Datumsanker"><span class="glyphicon glyphicon-backward"></span></a> <?php echo($monat_now_t); ?> <?php echo $datum_now_cal_y; ?> <a href="?m=<?php echo($datum_monat_cal+1); ?>&y=<?php echo($datum_now_cal_y); ?>#Datumsanker"><span class="glyphicon glyphicon-forward"></span></a></h3></div>
 
                                 <div style="text-indent: 2em">
                                 <?php
@@ -110,7 +104,7 @@ $monat_now_t = $monate[date("n",$timestamp)];
 			 $urlaub_tage = $row_tage['urlbtage'];
 		         }		 
                                          
-echo "<table><tr><td><div>Geleistete Arbeitsstunden</td><td>".(round($saldo/60,1))." (".(round($saldo,0))." Min)</td></tr><tr><td>Soll-Arbeitsstunden</td><td>".($soll_std*4)." (".($soll_std*4*60)." Min)</td></tr><tr><td>Zeit-Saldo</td><td>".(round($saldo/60-($soll_std*4),1))." (".(round(($saldo-($soll_std*4*60)),0))." Min)</td></tr><tr><td>Urlaubstage</td><td>".$urlaub_tage."</td></tr><tr><td>erfasste Urlaubstage</td><td>".$urlaub_ist."</td></tr><tr><td>Krank-Tage</td><td>".$krank."</td></tr></table>";
+echo "<table><tr><td>Geleistete Arbeitsstunden</td><td>".(round($saldo/60,1))." (".(round($saldo,0))." Min)</td></tr><tr><td>Soll-Arbeitsstunden</td><td>".($soll_std*4)." (".($soll_std*4*60)." Min)</td></tr><tr><td>Zeit-Saldo</td><td>".(round($saldo/60-($soll_std*4),1))." (".(round(($saldo-($soll_std*4*60)),0))." Min)</td></tr><tr><td>Urlaubstage</td><td>".$urlaub_tage."</td></tr><tr><td>erfasste Urlaubstage</td><td>".$urlaub_ist."</td></tr><tr><td>Krank-Tage</td><td>".$krank."</td></tr></table>";
                                 ?>
                                 </div>
 <!-- Beginn: Inkludieren von Footer -->

@@ -17,18 +17,22 @@ $datum_now = date("Y-m-d",$timestamp);  // Datum formatieren
 if((isset($_GET['m']))&&(isset($_GET['y']))){
     $datum_monat_cal = $_GET['m'];
     $datum_jahr_cal = $_GET['y'];
+	$datum_monat_showcal = $_GET['m'];
 
 
     if($datum_monat_cal<1){
         $datum_monat_cal = 12;
+		$datum_monat_showcal = 12;
         $datum_now_cal_y = $datum_jahr_cal-1;
     }elseif($datum_monat_cal>12){
         $datum_monat_cal = $datum_monat_cal-12;
+		$datum_monat_showcal = $datum_monat_showcal-12;
         $datum_now_cal_y = $datum_jahr_cal+1;
 
     }else{
         $datum_now_cal_y = $datum_jahr_cal;
     }
+	
     if($datum_monat_cal<=9){
         $datum_monat_cal = "0".$datum_monat_cal;
     }
@@ -38,6 +42,7 @@ if((isset($_GET['m']))&&(isset($_GET['y']))){
 
 }else{
     $datum_monat_cal = date("m",$timestamp);
+	$datum_monat_showcal = date("m",$timestamp);
     $datum_now_cal_y = date("Y", $timestamp);
     $datum_now_cal = date("Y-m-d",$timestamp);
 }
@@ -64,7 +69,7 @@ $monat_now_t = $monate[$datum_monat_cal];
 ?>
 
 
-    <h3><a href="?maid=<?php echo($maid); ?>&m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-backward"></span></a>  <?php echo $datum_now_cal_y; ?> <?php echo($monat_now_t); ?>  <a href="?maid=<?php echo($maid); ?>&m=<?php echo $datum_monat_cal+1; ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-forward"></span></a></h3>
+    <h3><a href="?maid=<?php echo($maid); ?>&m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-backward"></span></a>  <?php echo $datum_now_cal_y; ?> <?php echo $monat_now_t; ?>  <a href="?maid=<?php echo($maid); ?>&m=<?php echo $datum_monat_cal+1; ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-forward"></span></a></h3>
 
                 <table class="table table-striped table-bordered">
                         <thead>
@@ -177,7 +182,7 @@ $monat_now_t = $monate[$datum_monat_cal];
 														$sqldelete = "DELETE FROM erfassung WHERE eid = ".$_POST['eid'].";";              
 														$link->query($sqldelete);
 														// Lade Seite neu, damit Scripte nicht mehr auf gelöschte Daten zugreifen
-														echo ("<script>window.location.href=\"anzeigen.php\"</script>");
+														echo ("<script>window.location.href=\"anzeigen.php?maid=".$maid."&m=".$datum_monat_showcal."&y=".$datum_now_cal_y."\"</script>");
 														}
 														 
                                                         if(isset($_POST['edit'])&&($_POST['eid']==$row['eid'])){

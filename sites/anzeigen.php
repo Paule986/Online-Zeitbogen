@@ -118,11 +118,12 @@ $monat_now_t = $monate[$datum_monat_cal];
 			                        		// Variablen filtern, um mysql injections zu verhindern.
 			                			if(isset($_POST['arbeitsbeginn'])){$beginn_neu = mysqli_real_escape_string($link,$_POST['arbeitsbeginn']); }else $beginn_neu ="";
 			                			if(isset($_POST['arbeitsende'])){$ende_neu = mysqli_real_escape_string($link,$_POST['arbeitsende']); }else $ende_neu ="";
+			                			if(isset($_POST['pause'])){$pause_neu = mysqli_real_escape_string($link,$_POST['pause']); }else $pause_neu ="";
 			                			if(isset($_POST['bemerkung'])){$bemerkung_neu = mysqli_real_escape_string($link,$_POST['bemerkung']); }else $bemerkung_neu ="";
 			                			if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="99";
 								if(isset($_POST['eid'])){$eid_neu = mysqli_real_escape_string($link,$_POST['eid']); }else $eid_neu ="";
 								// Ã„nderungen in DB speichern
-				                		$sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid_neu.";";
+				                		$sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00',pause = '".$pause_neu."', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid_neu.";";
 								$link->query($sqledit);
 							}
 						}
@@ -130,11 +131,12 @@ $monat_now_t = $monate[$datum_monat_cal];
 				                	// Variablen filtern, um mysql injections zu verhindern.
 							if(isset($_POST['arbeitsbeginn'])){$beginn_neu = mysqli_real_escape_string($link,$_POST['arbeitsbeginn']); }else $beginn_neu ="";
 							if(isset($_POST['arbeitsende'])){$ende_neu = mysqli_real_escape_string($link,$_POST['arbeitsende']); }else $ende_neu ="";
+				        		if(isset($_POST['pause'])){$pause_neu = mysqli_real_escape_string($link,$_POST['pause']); }else $pause_neu ="";
 				        		if(isset($_POST['bemerkung'])){$bemerkung_neu = mysqli_real_escape_string($link,$_POST['bemerkung']); }else $bemerkung_neu ="";
 							if(isset($_POST['arbeitsfrei'])){$aid_neu = mysqli_real_escape_string($link,$_POST['arbeitsfrei']); }else $aid_neu ="99";
 							if(isset($_POST['eid'])){$eid_neu = mysqli_real_escape_string($link,$_POST['eid']); }else $eid_neu ="";
 							// Ã„nderungen in DB speichern
-							$sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid_neu.";";
+							$sqledit = "UPDATE erfassung SET beginn = '".$beginn_neu.":00', ende = '".$ende_neu.":00',pause = '".$pause_neu."', bemerkung = '".$bemerkung_neu."', aid = '".$aid_neu."' WHERE eid = ".$eid_neu.";";
 							$link->query($sqledit);
 						}
                                         }
@@ -144,8 +146,8 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                  $minuten_soll =($row_soll['sollstd'])*60/5;
                                         }
                                         // ErfassungsdatensÃ¤tze des eingetsellten Monats von MA anzeigen
-                                        $result = $link->query("SELECT erfassung.beginn, erfassung.ende, erfassung.datum, erfassung.bemerkung, erfassung.eid, erfassung.aid, arbeitsfrei.bezeichnung FROM erfassung, arbeitsfrei WHERE erfassung.maid = '".$maid."' AND erfassung.aid = arbeitsfrei.aid AND DATE(erfassung.datum) BETWEEN ".$datum_interval_anfang." AND ".$datum_interval_ende." ORDER BY datum");
-                                        // Testen, ob DatensÃ¤tze vorhanden
+                                       $result = $link->query("SELECT erfassung.beginn, erfassung.ende, erfassung.datum,erfassung.pause, erfassung.bemerkung, erfassung.eid, erfassung.aid, arbeitsfrei.bezeichnung FROM erfassung, arbeitsfrei WHERE erfassung.maid = '".$maid."' AND erfassung.aid = arbeitsfrei.aid AND DATE(erfassung.datum) BETWEEN ".$datum_interval_anfang." AND ".$datum_interval_ende." ORDER BY datum");
+                   			// Testen, ob DatensÃ¤tze vorhanden
                                         if($result->num_rows>0){
                                                  // DatensÃ¤tze in Array $row speichern
                                                  while($row = mysqli_fetch_array($result)){
@@ -153,6 +155,7 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          /// Datumsobjekt fÃ¼r Beginn & Ende erstellen
                                                          $date_beginn = date_create($row['beginn']);
                                                          $date_ende = date_create($row['ende']);
+                                                         $pause= $row['pause'];
                                                          /// Differenz zwischen Beginn & Ende berechnen
                                                          $interval = date_diff($date_beginn, $date_ende);
                                                          /// Berechnungen und Formatierungen vom Intervall
@@ -193,6 +196,7 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          echo '<td width="50px">'.$wochentag.", ".$date_format.'</td>';
                                                          echo '<td width="20px"><input type="text" value="'.$beginn_format.'" class="form-control" placeholder="Arbeitsbeginn Bsp.: 06:30" name="arbeitsbeginn" id="arbeitsbeginn"></td>';
                                                          echo '<td width="20px"><input type="text" value="'.$ende_format.'" class="form-control" placeholder="Arbeitsende Bsp.: 16:30" name="arbeitsende" id="arbeitsende"></td>';
+                                                         echo '<td width="20px"><input type="text" value="'.$pause.'" class="form-control" placeholder="in Minuten" name="pause" id="pause"></td>';
                                                          echo '<td width="50px"><input type="text" value="'.$row['bemerkung'].'" class="form-control" placeholder="Bemerkung Bsp.: Homeoffice" name="bemerkung" id="bemerkung"></td>';
                                                          echo '<td width="20px"><select name="arbeitsfrei" id="arbeitsfrei" class="form-control">';
                                                          // SELECT Feld mit Arbeitsfrei Varianten aus DB fÃ¼llen
@@ -208,7 +212,7 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          }
                                                          echo $liste;
                                                          echo '</select></td>';
-                                                         echo '<td width="50px">( '.($minuten_ist-$minuten_soll).' )</td>';
+                                                         echo '<td width="50px">( '.($minuten_ist-$minuten_soll-$pause).' )</td>';
                                                          echo '<input type="hidden" name="eid" value="'.$_POST['eid'].'">';
                                                          echo '<td width="20px"><button type="submit" name="save" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span>&nbsp;Speichern</button></td></form>';
                                                          echo '</tr>';
@@ -219,9 +223,10 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          echo '<td width="50px">'.$wochentag.", ".$date_format.'</td>';
                                                          echo '<td width="50px">'.$beginn_format.'</td>';
                                                          echo '<td width="50px">'.$ende_format.'</td>';
+                                                         echo '<td width="50px">'.$pause.'</td>';
                                                          echo '<td width="50px">'.$row['bemerkung'].'</td>';
                                                          echo '<td width="50px">'.$row['bezeichnung'].'</td>';
-                                                         echo '<td width="50px">'.($minuten_ist-$minuten_soll).'</td>';
+                                                         echo '<td width="50px">'.($minuten_ist-$minuten_soll-$pause).'</td>';
                                                          echo '<form class="navbar-form navbar-left" role="search" action="#row'.$row['eid'].'" method="POST" >';
                                                          echo '<input type="hidden" name="eid" value="'.$row['eid'].'">';
                                                          echo '<td width="20px"><button type="submit" name="edit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</button> <button type="submit" name="delete" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-minus"></span>&nbsp;Delete</button></td></form>';

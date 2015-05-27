@@ -94,6 +94,7 @@ CREATE TABLE IF NOT EXISTS `erfassung` (
   `datum` date DEFAULT NULL,
   `beginn` time DEFAULT NULL,
   `ende` time DEFAULT NULL,
+  `pause` int(11) DEFAULT NULL,
   `maneintrag` int(11) DEFAULT NULL,
   `bemerkung` varchar(50) DEFAULT NULL,
   `aid` int(11) DEFAULT NULL COMMENT 'Arbeitsfrei ID',

@@ -74,7 +74,7 @@ $monat_now_t = $monate[$datum_monat_cal];
                 <table class="table table-striped table-bordered">
                         <thead>
                                 <tr>
-                                        <th width="50px">Datum</th><th width="50px">Anfang</th><th width="50px">Ende</th><th width="50px">Bemerkung</th><th width="50px">Status</th><th width="50px">Saldo</th><th width="20px">Bearbeiten</th>
+                                        <th width="50px">Datum</th><th width="50px">Anfang</th><th width="50px">Ende</th><th width="50px"><th width="50px">Pause</th>Bemerkung</th><th width="50px">Status</th><th width="50px">Saldo</th><th width="20px">Bearbeiten</th>
                                 </tr>
                         </thead>
 

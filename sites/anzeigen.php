@@ -189,7 +189,7 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          // Wenn Bearbeiten-Button geklickt, in dieser Zeile Textfelder erstellen
                                                          // und Daten aus DB laden
                                                          echo '<tr id="row'.$row['eid'].'">';
-                                                         echo '<form class="navbar-form navbar-left" role="search" action="?m='.$datum_monat_cal.'#row'.$row['eid'].'" method="POST" >';
+                                                         echo '<form class="navbar-form navbar-left" role="search" action="?m='.$datum_monat_showcal.'&y='.$datum_now_cal_y.'#row'.$row['eid'].'" method="POST" >';
                                                          echo '<td width="50px">'.$wochentag.", ".$date_format.'</td>';
                                                          echo '<td width="20px"><input type="text" value="'.$beginn_format.'" class="form-control" placeholder="Arbeitsbeginn Bsp.: 06:30" name="arbeitsbeginn" id="arbeitsbeginn"></td>';
                                                          echo '<td width="20px"><input type="text" value="'.$ende_format.'" class="form-control" placeholder="Arbeitsende Bsp.: 16:30" name="arbeitsende" id="arbeitsende"></td>';

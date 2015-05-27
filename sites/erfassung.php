@@ -210,8 +210,8 @@ for($tage=1;$tage<=$month_num;$tage++){
                  ?>
          </select>
          </div></div>
-         <button id="6" type="submit" name="submitneu" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span> Erfassen</button>
-		       <button id="7" type="submit" name="submitdelete" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span> Eintrag löschen</button>
+         <button id="6" type="submit" name="submitneu" class="btn btn-default navbar-btn" style="width: 110px;"><span class="glyphicon glyphicon-ok"></span> Erfassen</button>
+		 <button id="7" type="submit" name="submitdelete" class="btn btn-default navbar-btn" style="width: 110px;"><span class="glyphicon glyphicon-minus"></span> Löschen</button>
          <?php echo $notiz;  ?>
          </form>
          </div>

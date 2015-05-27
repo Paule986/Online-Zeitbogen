@@ -172,7 +172,14 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          $wochentag = $tag[date_format($date, 'w')];
                                                          // Daten aus DB in Tabelle anzeigen
 
-
+														if(isset($_POST['delete'])){
+														// Wenn Button "Eintrag löschen" gedrückt, lösche den Datensatz
+														$sqldelete = "DELETE FROM erfassung WHERE eid = ".$_POST['eid'].";";              
+														$link->query($sqldelete);
+														// Lade Seite neu, damit Scripte nicht mehr auf gelöschte Daten zugreifen
+														echo ("<script>window.location.href=\"anzeigen.php\"</script>");
+														}
+														 
                                                         if(isset($_POST['edit'])&&($_POST['eid']==$row['eid'])){
                                                          // Wenn Bearbeiten-Button geklickt, in dieser Zeile Textfelder erstellen
                                                          // und Daten aus DB laden
@@ -212,7 +219,7 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          echo '<td width="50px">'.($minuten_ist-$minuten_soll).'</td>';
                                                          echo '<form class="navbar-form navbar-left" role="search" action="#row'.$row['eid'].'" method="POST" >';
                                                          echo '<input type="hidden" name="eid" value="'.$row['eid'].'">';
-                                                         echo '<td width="20px"><button type="submit" name="edit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Bearbeiten</button></td></form>';
+                                                         echo '<td width="20px"><button type="submit" name="edit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</button> <button type="submit" name="delete" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-minus"></span>&nbsp;Delete</button></td></form>';
                                                          echo '</tr>';
                                                          }
 

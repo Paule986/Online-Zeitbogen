@@ -28,7 +28,7 @@ switch($navsite){
                         <span class="icon-bar"></span> </button>
                       <div class="nav-collapse mainnav-collapse collapse">
                         <ul class="nav level1">
-                          <li <?php echo $nav1; ?>><a href="../sites/dashboard.php">Startseite</a></li>
+                          <li <?php echo $nav1; ?>><a href="../sites/dashboard.php">Übersicht</a></li>
                           <li <?php echo $nav2; ?>><a href="../sites/erfassung.php">Eingabe</a></li>
                           <li <?php echo $nav3; ?>><a href="../sites/kalender.php">Kalender</a></li>
                           <li <?php echo $nav4; ?>><a href="../sites/anzeigen.php">Liste</a></li>

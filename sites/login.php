@@ -22,7 +22,7 @@ $result = $link->query("SELECT maid, usern, passwort, rechte, vname, nname, soll
     $_SESSION["sollstd"] = $row['sollstd'];
     }
     echo "<div align='center'><h2>Login erfolgreich. <br> Sie werden automatisch weitergeleitet</h2></div>"; //Erfolgsmeldung
-    echo '<meta http-equiv="refresh" content="0; url=dashboard.php">'; //Weiterleitung zum Dashboard
+    echo '<meta http-equiv="refresh" content="0; url=erfassung.php">'; //Weiterleitung zur Erfassung
     }
 else
     {

@@ -103,7 +103,7 @@ $notiz = "";
                  $sqldelete = "DELETE FROM erfassung WHERE eid = ".$_POST['eid'].";";              
                  $link->query($sqldelete);
 				             // Lade Seite neu, damit Scripte nicht mehr auf gelöschte Daten zugreifen
-				             echo ("<script>window.location.href=\"erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y.\"</script>");
+				             echo ("<script>window.location.href=\"erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."\"</script>");
   }
   
   if($doo=="edit"){

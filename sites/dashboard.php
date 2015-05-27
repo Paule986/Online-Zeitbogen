@@ -74,7 +74,7 @@ $monat_now_t = $monate[$datum_monat_cal];
 
     <div id="3" style="text-indent: 3em;"><h2>Kurzübersicht</h2></div>
 	
-	<div style="margin-left: 3em; padding-bottom: 15px;"><h3 id="Datumsanker"><a href="?m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>#Datumsanker"><span class="glyphicon glyphicon-backward"></span></a> <?php echo($monat_now_t); ?> <?php echo $datum_now_cal_y; ?> <a href="?m=<?php echo($datum_monat_cal+1); ?>&y=<?php echo($datum_now_cal_y); ?>#Datumsanker"><span class="glyphicon glyphicon-forward"></span></a></h3></div>
+	<div style="margin-left: 3em; padding-bottom: 15px;"><h3 id="Datumsanker"><a href="?m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>#Datumsanker"><span class="glyphicon glyphicon-backward"></span></a> <?php echo $datum_now_cal_y; ?> <?php echo($monat_now_t); ?> <a href="?m=<?php echo($datum_monat_cal+1); ?>&y=<?php echo($datum_now_cal_y); ?>#Datumsanker"><span class="glyphicon glyphicon-forward"></span></a></h3></div>
 
                                 <div style="text-indent: 2em">
                                 <?php

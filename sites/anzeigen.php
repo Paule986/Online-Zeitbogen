@@ -74,7 +74,7 @@ $monat_now_t = $monate[$datum_monat_cal];
                 <table class="table table-striped table-bordered">
                         <thead>
                                 <tr>
-                                        <th width="50px">Datum</th><th width="50px">Anfang</th><th width="50px">Ende</th><th width="50px"><th width="50px">Pause</th>Bemerkung</th><th width="50px">Status</th><th width="50px">Saldo</th><th width="20px">Bearbeiten</th>
+                                        <th width="50px">Datum</th><th width="50px">Anfang</th><th width="50px">Ende</th><th width="50px">Pause</th><th width="50px">Bemerkung</th><th width="50px">Status</th><th width="50px">Saldo</th><th width="20px">Bearbeiten</th>
                                 </tr>
                         </thead>
 
@@ -229,7 +229,7 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          echo '<td width="50px">'.($minuten_ist-$minuten_soll-$pause).'</td>';
                                                          echo '<form class="navbar-form navbar-left" role="search" action="#row'.$row['eid'].'" method="POST" >';
                                                          echo '<input type="hidden" name="eid" value="'.$row['eid'].'">';
-                                                         echo '<td width="20px"><button type="submit" name="edit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</button> <button type="submit" name="delete" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-minus"></span>&nbsp;Delete</button></td></form>';
+                                                         echo '<td width="20px"><button type="submit" name="edit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-pencil"></span></button> <button type="submit" name="delete" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-minus"></span></button></td></form>';
                                                          echo '</tr>';
                                                          }
 

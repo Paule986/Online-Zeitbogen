@@ -37,7 +37,7 @@ switch($navsite){
                           <li><a href="#">Hilfe</a>
                           	<ul>
                                             <li class=""><a href="#" onclick="tour.restart()">Seiten-Tour</a></li>
-                                            <li class=""><a href="#">Tutorial-Video</a></li>
+                                            <li class=""><a href="../sites/video.php">Tutorial-Video</a></li>
                             </ul>
                           </li>
                         </ul>

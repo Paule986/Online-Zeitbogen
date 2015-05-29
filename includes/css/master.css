@@ -2824,11 +2824,26 @@ body .mejs-container .mejs-controls .mejs-time-rail .mejs-time-loaded{background
   color: #090D1A;
 }
 
-/*klasse für ausblenden der Mitarbeiterliste
-
------------------------------------------------------*/
+/*Klasse für Ausblenden der Mitarbeiterliste*/
 
 .hidelist {
 	display:none !important;
 	
 	}
+
+/*klasse für Tutorial-Video*/
+
+.responsive-video {
+	position:relative;
+	padding-bottom:56.25%;
+	padding-top:15px;
+	height:0;
+	overflow:hidden;
+}
+.responsive-video iframe {
+	position:absolute;
+	top:0;
+	left:0;
+	width:80%;
+	height:80%;
+}

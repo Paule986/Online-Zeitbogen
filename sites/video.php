@@ -13,7 +13,12 @@
 <!-- Ende: Inkludieren von Header und Menue -->
 
 <!-- Seiteninhalt -->
-	        
+	<div class="responsive-video">
+    
+		<iframe width="560" height="315" src="http://www.youtube.com/embed/kh29_SERH0Y" frameborder="0" allowfullscreen>
+        </iframe>
+        
+	</div>          
 <!-- Seiteninhalt -->
 
 <!-- Beginn: Inkludieren von Footer -->

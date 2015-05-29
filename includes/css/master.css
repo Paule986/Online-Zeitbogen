@@ -225,7 +225,7 @@ h2 small{font-size:16.25px}
 h3 small{font-size:13px}
 h4 small{font-size:13px}
 .page-header{padding-bottom:-0.3075em;margin:1.385em 0 2.0775em;border-bottom:1px solid #ececec}
-ul,ol{padding:0;margin:0 0 .6925em 25px}
+ul,ol{padding:0;margin:0}
 ul ul,ul ol,ol ol,ol ul{margin-bottom:0}
 li{line-height:1.385em}
 ul.unstyled,ol.unstyled{margin-left:0;list-style:none}
@@ -1310,16 +1310,16 @@ a.extern:after{content:"";padding-right:11px;background-image:url(images/link_ex
 .content-navi-top.smallfontsize{font-size:14px;}.content-navi-top.smallfontsize .nav ul li{font-size:14px;}
 .content-navi-top .nav.level1>li{border:1px solid transparent}.content-navi-top .nav.level1>li.active{border:1px solid #B5050E}
 .content-navi-top .nav{display:block;float:left;left:0;margin:0 10px 0 0;position:relative;z-index:1;width:720px;}.content-navi-top .nav li{height:auto;display:block;float:left;margin-right:5px;position:relative}.content-navi-top .nav li a{color:#000;display:block;float:none;text-decoration:none;padding:4px 9px 10px}
-.content-navi-top .nav li.active,.content-navi-top .nav li:hover,.content-navi-top .nav li.hover{background-color:#B5050E;color:#fff}.content-navi-top .nav li.active a,.content-navi-top .nav li:hover a,.content-navi-top .nav li.hover a{color:#fff;background:none;font-weight:normal;text-shadow:0 0 0 transparent;box-shadow:0 0 0 transparent}
+.content-navi-top .nav li.active,.content-navi-top .nav li:hover,.content-navi-top .nav li.hover{background-color:#BC1C24;color:#fff}.content-navi-top .nav li.active a,.content-navi-top .nav li:hover a,.content-navi-top .nav li.hover a{color:#fff;background:none;font-weight:normal;text-shadow:0 0 0 transparent;box-shadow:0 0 0 transparent}
 .content-navi-top .nav>li.has-submenu:hover,.content-navi-top .nav>li.has-submenu.hover{height:auto}
-.content-navi-top .nav>li.has-submenu ul a:focus{background-color:#31448a;color:#fff}
-.content-navi-top .nav>li.has-submenu.active>a:focus,.content-navi-top .nav>li.has-submenu.hover>a:focus,.content-navi-top .nav>li.has-submenu a:focus{background-color:#31448a;color:#fff}
-.content-navi-top .nav ul{width:100%;min-width:220px;visibility:hidden;position:absolute;top:100%;left:-1px;z-index:1;background-color:#253276;border:1px solid #253276;border-bottom:0 solid #253276}.content-navi-top .nav ul li{font-size:.875em;border-bottom:1px solid #31448a;float:none;height:auto;margin:0;position:relative}.content-navi-top .nav ul li a{display:block;color:#fff;padding:10px}
+.content-navi-top .nav>li.has-submenu ul a:focus{background-color:#BC1C24;color:#fff}
+.content-navi-top .nav>li.has-submenu.active>a:focus,.content-navi-top .nav>li.has-submenu.hover>a:focus,.content-navi-top .nav>li.has-submenu a:focus{background-color:#BC1C24;color:#fff}
+.content-navi-top .nav ul{width:100%;min-width:200px;visibility:hidden;position:absolute;top:100%;left:-1px;z-index:1;background-color:#B5050E;border:1px solid #BC1C24;border-bottom:0 solid #BC1C24}.content-navi-top .nav ul li{font-size:.875em;border-bottom:1px solid #BC1C24;float:none;height:auto;margin:0;position:relative}.content-navi-top .nav ul li a{display:block;color:#fff;padding:10px}
 .content-navi-top .nav ul li.arrow{background-image:url("images/arrow_white_tiny.png");background-position:95% center;background-repeat:no-repeat}
-.content-navi-top .nav ul li:hover,.content-navi-top .nav ul li.hover{background-color:#31448a}
+.content-navi-top .nav ul li:hover,.content-navi-top .nav ul li.hover{background-color:#BC1C24}
 .content-navi-top .nav ul li.active{background-color:#162c60}.content-navi-top .nav ul li.active a{color:#fff;padding:9px;border:1px solid #162c60}
 .content-navi-top .nav ul ul{left:100%;top:0}
-.content-navi-top .nav li:hover>ul{visibility:visible}
+.content-navi-top .nav li:hover>ul{visibility:visible;}
 .content-navi-wrapper{height:63px;position:static;background-image:url(../images/bg-amplitude-red.png);background-repeat:no-repeat;background-position:left bottom;margin-bottom:0;padding-bottom:21px}.content-navi-wrapper .content-navi-top{position:relative;margin-bottom:0;padding-bottom:0;background-image:none;height:auto}
 .column-left{min-height:20px;}
 .content-navigation-left.navbar{list-style-type:none;margin:0 0 20px 0;border:1px solid #e4e4e4;background:#ececec}.content-navigation-left.navbar ul{display:block;margin:0;width:100%;padding:0;background-color:#ececec}.content-navigation-left.navbar ul.nav li{float:none;display:block;text-shadow:0 0 0 transparent;box-shadow:0 0 0 transparent;word-wrap:break-word}.content-navigation-left.navbar ul.nav li>a{font-weight:normal;margin:0;padding:9px 0 9px 8px;color:#272727;background-color:#ececec;display:block;text-shadow:0 0 0 transparent;box-shadow:0 0 0 transparent}

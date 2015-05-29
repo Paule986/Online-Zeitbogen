@@ -34,7 +34,12 @@ switch($navsite){
                           <li <?php echo $nav4; ?>><a href="../sites/anzeigen.php">Liste</a></li>
                           <li <?php echo $nav5; ?>><a href="../sites/mitarbeiter.php">Mitarbeiter</a></li>
                           <li <?php echo $nav6; ?>><a href="../sites/behoerde.php">Behörden</a></li>
-                          <li><a href="#" onclick="tour.restart()">Hilfe</a></li>
+                          <li><a href="#">Hilfe</a>
+                          	<ul>
+                                            <li class=""><a href="#" onclick="tour.restart()">Seiten-Tour</a></li>
+                                            <li class=""><a href="#">Tutorial-Video</a></li>
+                            </ul>
+                          </li>
                         </ul>
                       </div>
                     </div>

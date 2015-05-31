@@ -42,7 +42,7 @@ if((isset($_GET['m']))&&(isset($_GET['y']))){
 
 }else{
     $datum_monat_cal = date("m",$timestamp);
-	$datum_monat_showcal = date("m",$timestamp);
+	$datum_monat_showcal = date("n",$timestamp);
     $datum_now_cal_y = date("Y", $timestamp);
     $datum_now_cal = date("Y-m-d",$timestamp);
 }

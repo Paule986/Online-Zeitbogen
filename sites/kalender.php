@@ -40,7 +40,7 @@ if((isset($_GET['m']))&&(isset($_GET['y']))){
 
 }else{
     $datum_monat_cal = date("m",$timestamp);
-	$datum_monat_showcal = date("m",$timestamp);
+	$datum_monat_showcal = date("n",$timestamp);
     $datum_now_cal_y = date("Y", $timestamp);
     $datum_now_cal = date("Y-m-d",$timestamp);
 }
@@ -55,7 +55,8 @@ for($tage=1;$tage<=$month_num;$tage++){
          if($tage<10){$tag ="0".$tage;}else{$tag = $tage;}
          // Aus Schleifen-Wert Datumsformat erstellen
          $select_datum = "'".$datum_year_cal."-".$datum_monat_cal."-".$tag."'";
-         $result = mysqli_query($link, "SELECT eid,aid FROM erfassung WHERE maid = ".$maid." AND datum = ".$select_datum.";");
+         $result = mysqli_query($link, "SELECT eid,aid FROM erfassung WHERE maid = ".$maid." AND datum = ".$select_datum.""
+                 . "UNION SELECT fid, fid FROM feiertage WHERE datum= ".$select_datum.";");
          // Anzahl an Datensätzen erfragen
            $anzahl_notes = mysqli_num_rows($result);
          // Wenn kein Datensatz für den aktuellen Tag --> Markierung für JS erzeugen
@@ -84,8 +85,12 @@ for($tage=1;$tage<=$month_num;$tage++){
                          if($myrow['aid']=="4"){
                                  $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'Fortbildung', 'class': 'fortbildung', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&do=edit&eid=".$myrow['eid']."'},\n";
                          }
-						 if($myrow['aid']=="5"){
+                         if($myrow['aid']=="5"){
                                  $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'Wochenende', 'class': 'wochenende', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&do=edit&eid=".$myrow['eid']."'},\n";
+                         }
+                         //Feiertag:                         
+                         if($myrow['aid']==$myrow['eid']){
+                                 $notes .="'".$datum_year_cal."-".$datum_monat_cal."-".$tag."': {'number': 'Feiertag', 'class': 'wochenende', 'url': 'erfassung.php?m=".$datum_monat_showcal."&y=".$datum_now_cal_y."&maid=".$maid."&do=neu&datum=".$datum_year_cal."-".$datum_monat_cal."-".$tag."'},\n";
                          }
 
                  }

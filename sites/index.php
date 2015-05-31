@@ -28,7 +28,7 @@ if(isset($_SESSION['maid'])){
                 required=""
                 type="password">
         <label class="checkbox"> 
-        <input value="remember-me" type="checkbox">
+        <input value="remember-me" type="checkbox" checked>
                 Anmeldung speichern </label> 
         <button class="btn btn-lg btn-primary btn-block"
                 type="submit">Anmelden</button>

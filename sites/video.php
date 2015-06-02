@@ -6,7 +6,7 @@
 	<?php 		
 		$seitentitel = "Template";
 		// Navigation active setzen
-		$navsite =1 ;
+		$navsite =7 ;
 		require('../includes/header.php');
 		require('../includes/mysql.php');
 	?>

@@ -6,6 +6,7 @@ $nav3 = "";
 $nav4 = "";
 $nav5 = "";
 $nav6 = "";
+$nav7 = "";
 switch($navsite){
                         case 1: $nav1 = 'class="active"'; break;
                         case 2: $nav2 = 'class="active"'; break;
@@ -13,6 +14,7 @@ switch($navsite){
                         case 4: $nav4 = 'class="active"'; break;
                         case 5: $nav5 = 'class="active"'; break;
                         case 6: $nav6 = 'class="active"'; break;
+						case 7: $nav7 = 'class="active"'; break;
                         }
 
 ?>
@@ -34,7 +36,7 @@ switch($navsite){
                           <li <?php echo $nav4; ?>><a href="../sites/anzeigen.php">Liste</a></li>
                           <li <?php echo $nav5; ?>><a href="../sites/mitarbeiter.php">Mitarbeiter</a></li>
                           <li <?php echo $nav6; ?>><a href="../sites/behoerde.php">Behörden</a></li>
-                          <li><a href="#">Hilfe</a>
+                          <li <?php echo $nav7; ?>><a href="#">Hilfe</a>
                           	<ul>
                                             <li class=""><a href="#" onclick="tour.restart()">Seiten-Tour</a></li>
                                             <li class=""><a href="../sites/video.php">Tutorial-Video</a></li>

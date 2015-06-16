@@ -156,6 +156,8 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          $date_beginn = date_create($row['beginn']);
                                                          $date_ende = date_create($row['ende']);
                                                          $pause= $row['pause'];
+                                                        ///Holen der aid für den jeweiligen Tag
+                                                         $aid_test= $row['aid'];
                                                          /// Differenz zwischen Beginn & Ende berechnen
                                                          $interval = date_diff($date_beginn, $date_ende);
                                                          /// Berechnungen und Formatierungen vom Intervall
@@ -212,7 +214,21 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          }
                                                          echo $liste;
                                                          echo '</select></td>';
-                                                         echo '<td width="50px">( '.($minuten_ist-$minuten_soll-$pause).' )</td>';
+                                                         if ($aid_test == 1){
+								echo '<td width="50px">'.(0).'</td>';
+							 }
+							 else if ($aid_test == 2){
+								echo '<td width="50px">'.(0).'</td>';
+							 }
+							 else if ($aid_test == 3){
+							 	echo '<td width="50px">'.(0).'</td>';
+							 }
+							 else if ($aid_test == 88){
+							 	echo '<td width="50px">'.(0).'</td>';
+							 }	
+							else {	
+							 	echo '<td width="50px">'.($minuten_ist-$minuten_soll-$pause).'</td>';
+							 }
                                                          echo '<input type="hidden" name="eid" value="'.$_POST['eid'].'">';
                                                          echo '<td width="20px"><button type="submit" name="save" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span>&nbsp;Speichern</button></td></form>';
                                                          echo '</tr>';
@@ -226,7 +242,21 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          echo '<td width="50px">'.$pause.'</td>';
                                                          echo '<td width="50px">'.$row['bemerkung'].'</td>';
                                                          echo '<td width="50px">'.$row['bezeichnung'].'</td>';
-                                                         echo '<td width="50px">'.($minuten_ist-$minuten_soll-$pause).'</td>';
+                                                         if ($aid_test == 1){
+								echo '<td width="50px">'.(0).'</td>';
+							 }
+							 else if ($aid_test == 2){
+								echo '<td width="50px">'.(0).'</td>';
+							 }
+							 else if ($aid_test == 3){
+							 	 echo '<td width="50px">'.(0).'</td>';
+							 }
+							 else if ($aid_test == 88){
+								 echo '<td width="50px">'.(0).'</td>';
+							 }	
+							 else {	
+							 	 echo '<td width="50px">'.($minuten_ist-$minuten_soll-$pause).'</td>';
+							 }
                                                          echo '<form class="navbar-form navbar-left" role="search" action="#row'.$row['eid'].'" method="POST" >';
                                                          echo '<input type="hidden" name="eid" value="'.$row['eid'].'">';
                                                          echo '<td width="20px"><button type="submit" name="edit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-pencil"></span></button> <button type="submit" name="delete" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-minus"></span></button></td></form>';

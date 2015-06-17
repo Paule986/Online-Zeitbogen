@@ -70,7 +70,46 @@ $monat_now_t = $monate[$datum_monat_cal];
 
 
     <h3><a href="?maid=<?php echo($maid); ?>&m=<?php echo($datum_monat_cal-1); ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-backward"></span></a>  <?php echo ($datum_now_cal_y); ?> <?php echo ($monat_now_t); ?>  <a href="?maid=<?php echo($maid); ?>&m=<?php echo $datum_monat_cal+1; ?>&y=<?php echo($datum_now_cal_y); ?>"><span class="glyphicon glyphicon-forward"></span></a></h3>
-
+	<?php
+	 // heutiges Datum ermitteln
+          $datum_now = date("Ymd",$timestamp);
+          $datum_now_y = $datum_now_cal_y;
+          $datum_now_m = $datum_monat_cal;
+          // Interval Anfang erstellen
+          $datum_interval_anfang = date("$datum_now_y-$datum_now_m",$timestamp);
+          $datum_interval_ende = date("$datum_now_y-$datum_now_m",$timestamp)."-31";
+          // Befehl ausführen - Daten von MA anzeigen
+          $saldo=0;
+          $result_saldo = $link->query("SELECT * FROM erfassung WHERE maid = '".$maid."' AND aid ='99' AND datum LIKE '".$datum_interval_anfang."%' ");
+          while($row_sts = mysqli_fetch_array($result_saldo)){
+          	$datetime1 = strtotime("1/1/1980 ".$row_sts['beginn']);
+          	$datetime2 = strtotime("1/1/1980 ".$row_sts['ende']);
+        	$saldo=$saldo +($datetime2-$datetime1)/60;
+          }
+          ////Zur Anzeige der Urlaubstage des Gesamten Jahres
+	  $jahr_now= date("Y");
+	  $result_urlaub = $link->query("SELECT eid FROM erfassung WHERE maid = '".$maid."' AND aid ='2' AND datum LIKE '".$jahr_now."%' ");
+          $urlaub_ist = $result_urlaub->num_rows;
+	 ////Saldo Berechnung
+	 $saldo = round($saldo,1);
+         $result_krank = $link->query("SELECT eid FROM erfassung WHERE maid = '".$maid."' AND aid ='3' AND datum LIKE '".$datum_interval_anfang."%' ");
+         $krank = $result_krank->num_rows;
+         $result_urlaub_monat = $link->query("SELECT eid FROM erfassung WHERE maid = '".$maid."' AND aid ='2' AND datum LIKE '".$datum_interval_anfang."%' ");
+          $urlaub_monat = $result_urlaub_monat->num_rows;
+         $result_gleit = $link->query("SELECT eid FROM erfassung WHERE maid = '".$maid."' AND aid ='1' AND datum LIKE '".$datum_interval_anfang."%' ");
+         $gleit = $result_gleit->num_rows;
+         ///Dem Mitarbeiter zustehende Urlaubstage
+         $result_tage= "SELECT urlbtage from mitarbeiter WHERE maid = '".$maid."'";
+         $tage_ist = mysqli_query($link, $result_tage);
+         while($row_tage=mysqli_fetch_array($tage_ist)){
+		$urlaub_tage = $row_tage['urlbtage'];
+	 }		 
+	 $gesamt= $krank + $urlaub_monat + $gleit;
+	 $abzugsoll = ($soll_std/5)*$gesamt; 
+	 $abgezogenh= ($soll_std*4)-$abzugsoll;
+	 $abgezogenmin= ($soll_std*4*60) - ($abzugsoll*60);
+	echo "<table><tr><td><div>Geleistete Arbeitsstunden</td><td>".(round($saldo/60,1))." (".(round($saldo,0))." Min)</td></tr><tr><td>Soll-Arbeitsstunden</td><td>".($abgezogenh)." (".($abgezogenmin)." Min)</td></tr><tr><td>Zeit-Saldo</td><td>".(round($saldo/60-($abgezogenh),1))." (".(round($saldo-$abgezogenmin,0))." Min)</td></tr><tr><td>Urlaubstage</td><td>".$urlaub_tage."</td></tr><tr><td>erfasste Urlaubstage</td><td>".$urlaub_ist."</td></tr><tr><td>Krank-Tage</td><td>".$krank."</td></tr></table>";
+    ?>
                 <table class="table table-striped table-bordered">
                         <thead>
                                 <tr>

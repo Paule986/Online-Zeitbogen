@@ -198,7 +198,13 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          echo '<td width="50px">'.$wochentag.", ".$date_format.'</td>';
                                                          echo '<td width="20px"><input type="text" value="'.$beginn_format.'" class="form-control" placeholder="Arbeitsbeginn Bsp.: 06:30" name="arbeitsbeginn" id="arbeitsbeginn"></td>';
                                                          echo '<td width="20px"><input type="text" value="'.$ende_format.'" class="form-control" placeholder="Arbeitsende Bsp.: 16:30" name="arbeitsende" id="arbeitsende"></td>';
-                                                         echo '<td width="20px"><input type="text" value="'.$pause.'" class="form-control" placeholder="in Minuten" name="pause" id="pause"></td>';
+                                                         if ($aid_test == 1 or $aid_test == 2 or $aid_test == 3 or $aid_test == 88){
+								  $pause_null= 0;
+								  echo '<td width="20px"><input type="text" value="'.$pause_null.'" class="form-control" placeholder="in Minuten" name="pause" id="pause"></td>';
+							 }
+							 else{
+								 echo '<td width="20px"><input type="text" value="'.$pause.'" class="form-control" placeholder="in Minuten" name="pause" id="pause"></td>';
+							 }
                                                          echo '<td width="50px"><input type="text" value="'.$row['bemerkung'].'" class="form-control" placeholder="Bemerkung Bsp.: Homeoffice" name="bemerkung" id="bemerkung"></td>';
                                                          echo '<td width="20px"><select name="arbeitsfrei" id="arbeitsfrei" class="form-control">';
                                                          // SELECT Feld mit Arbeitsfrei Varianten aus DB fÃ¼llen
@@ -214,20 +220,12 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          }
                                                          echo $liste;
                                                          echo '</select></td>';
-                                                         if ($aid_test == 1){
-								echo '<td width="50px">'.(0).'</td>';
+                                                         if ($aid_test == 1 or $aid_test == 2 or $aid_test == 3 or $aid_test == 88){
+								$pause_null= 0;
+								echo '<td width="50px">'.$pause_null.'</td>';
 							 }
-							 else if ($aid_test == 2){
-								echo '<td width="50px">'.(0).'</td>';
-							 }
-							 else if ($aid_test == 3){
-							 	echo '<td width="50px">'.(0).'</td>';
-							 }
-							 else if ($aid_test == 88){
-							 	echo '<td width="50px">'.(0).'</td>';
-							 }	
-							else {	
-							 	echo '<td width="50px">'.($minuten_ist-$minuten_soll-$pause).'</td>';
+							 else{
+							    echo '<td width="50px">'.$pause.'</td>';
 							 }
                                                          echo '<input type="hidden" name="eid" value="'.$_POST['eid'].'">';
                                                          echo '<td width="20px"><button type="submit" name="save" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-ok"></span>&nbsp;Speichern</button></td></form>';
@@ -239,23 +237,20 @@ $monat_now_t = $monate[$datum_monat_cal];
                                                          echo '<td width="50px">'.$wochentag.", ".$date_format.'</td>';
                                                          echo '<td width="50px">'.$beginn_format.'</td>';
                                                          echo '<td width="50px">'.$ende_format.'</td>';
-                                                         echo '<td width="50px">'.$pause.'</td>';
+                                                         if ($aid_test == 1 or $aid_test == 2 or $aid_test == 3 or $aid_test == 88){
+								$pause_null= 0;
+								echo '<td width="50px">'.$pause_null.'</td>';
+							 }
+							 else{
+								echo '<td width="50px">'.$pause.'</td>';
+							 }
                                                          echo '<td width="50px">'.$row['bemerkung'].'</td>';
                                                          echo '<td width="50px">'.$row['bezeichnung'].'</td>';
-                                                         if ($aid_test == 1){
+                                                         if ($aid_test == 1 or $aid_test == 2 or $aid_test == 3 or $aid_test == 88){
 								echo '<td width="50px">'.(0).'</td>';
 							 }
-							 else if ($aid_test == 2){
-								echo '<td width="50px">'.(0).'</td>';
-							 }
-							 else if ($aid_test == 3){
-							 	 echo '<td width="50px">'.(0).'</td>';
-							 }
-							 else if ($aid_test == 88){
-								 echo '<td width="50px">'.(0).'</td>';
-							 }	
 							 else {	
-							 	 echo '<td width="50px">'.($minuten_ist-$minuten_soll-$pause).'</td>';
+								echo '<td width="50px">'.($minuten_ist-$minuten_soll-$pause).'</td>';
 							 }
                                                          echo '<form class="navbar-form navbar-left" role="search" action="#row'.$row['eid'].'" method="POST" >';
                                                          echo '<input type="hidden" name="eid" value="'.$row['eid'].'">';

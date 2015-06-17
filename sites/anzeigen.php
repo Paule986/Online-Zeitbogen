@@ -79,6 +79,10 @@ $monat_now_t = $monate[$datum_monat_cal];
           $datum_interval_anfang = date("$datum_now_y-$datum_now_m",$timestamp);
           $datum_interval_ende = date("$datum_now_y-$datum_now_m",$timestamp)."-31";
           // Befehl ausführen - Daten von MA anzeigen
+         $result_sollstd = $link->query("SELECT sollstd FROM mitarbeiter WHERE maid = '".$maid."'");
+	 while($row_sollstd = mysqli_fetch_array($result_sollstd)){
+		$soll_std = $row_sollstd['sollstd'];
+	 }
           $saldo=0;
           $result_saldo = $link->query("SELECT * FROM erfassung WHERE maid = '".$maid."' AND aid ='99' AND datum LIKE '".$datum_interval_anfang."%' ");
           while($row_sts = mysqli_fetch_array($result_saldo)){

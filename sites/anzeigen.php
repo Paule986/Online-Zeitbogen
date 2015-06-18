@@ -108,11 +108,25 @@ $monat_now_t = $monate[$datum_monat_cal];
          while($row_tage=mysqli_fetch_array($tage_ist)){
 		$urlaub_tage = $row_tage['urlbtage'];
 	 }		 
+	 //Sollstunden pro Monat mit Abzug Krankentage usw
 	 $gesamt= $krank + $urlaub_monat + $gleit;
 	 $abzugsoll = ($soll_std/5)*$gesamt; 
 	 $abgezogenh= ($soll_std*4)-$abzugsoll;
 	 $abgezogenmin= ($soll_std*4*60) - ($abzugsoll*60);
-	echo "<table><tr><td><div>Geleistete Arbeitsstunden</td><td>".(round($saldo/60,1))." (".(round($saldo,0))." Min)</td></tr><tr><td>Soll-Arbeitsstunden</td><td>".($abgezogenh)." (".($abgezogenmin)." Min)</td></tr><tr><td>Zeit-Saldo</td><td>".(round($saldo/60-($abgezogenh),1))." (".(round($saldo-$abgezogenmin,0))." Min)</td></tr><tr><td>Urlaubstage</td><td>".$urlaub_tage."</td></tr><tr><td>erfasste Urlaubstage</td><td>".$urlaub_ist."</td></tr><tr><td>Krank-Tage</td><td>".$krank."</td></tr></table>";
+	
+	 //Pausenzeit
+	 $result_pause = $link->query("SELECT sum(pause) as pausensumme FROM erfassung WHERE maid='".$maid."' AND aid='99' AND datum LIKE '".$datum_interval_anfang."%';");
+	 while($row_pause=mysqli_fetch_array($result_pause)){
+		$pausensumme = $row_pause['pausensumme'];
+	 }
+         $pausenmin= $pausensumme;
+	 $pausenh= $pausensumme/60;	
+		 
+	//Berechnung der noch zu arbeitenden Zeit im Monat
+	 $nochsollh= round($saldo/60-($abgezogenh)-$pausenh,1);
+	 $nochsollmin= round($saldo-$abgezogenmin-$pausenmin,0);	
+	
+	echo "<table><tr><td><div>Geleistete Arbeitsstunden</td><td>".(round($saldo/60,1))." (".(round($saldo,0))." Min)</td></tr><tr><td>Soll-Arbeitsstunden</td><td>".($abgezogenh)." (".($abgezogenmin)." Min)</td></tr><tr><td>Zeit-Saldo</td><td>".($nochsollh)." (".($nochsollmin)." Min)</td></tr><tr><td>Urlaubstage</td><td>".$urlaub_tage."</td></tr><tr><td>erfasste Urlaubstage</td><td>".$urlaub_ist."</td></tr><tr><td>Krank-Tage</td><td>".$krank."</td></tr></table>";
     ?>
                 <table class="table table-striped table-bordered">
                         <thead>

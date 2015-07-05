@@ -15,8 +15,7 @@
 <!-- Seiteninhalt -->
 	<div class="responsive-video">
     
-		<iframe width="560" height="315" src="https://player.vimeo.com/video/129083586" frameborder="0" allowfullscreen>
-        </iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4no8NgIvC0c" frameborder="0" allowfullscreen></iframe>
         
 	</div>          
 <!-- Seiteninhalt -->
